@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HEAVY METAL PRINCESS ACADEMY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* 全体の設定 */
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      /* overflow: hidden; REMOVED to allow scrolling */
+      background-color: #000;
+      font-family: 'Courier New', Courier, monospace;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+
+    /* イントロの砂嵐ノイズ */
+    .intro-curtain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      z-index: 100;
+      animation: intro-static 1.0s steps(5) infinite, tv-switch-on 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards 1.2s;
+    }
+
+    /* 衝撃波フラッシュ */
+    .impact-flash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      z-index: 90;
+      opacity: 0;
+      mix-blend-mode: difference;
+      animation: impact-shockwave 0.5s ease-out forwards 1.7s;
+      pointer-events: none;
+    }
+
+    /* 背景動画エリア */
+    .video-wrapper {
+      position: fixed;
+      /* Changed to fixed */
+      top: -10%;
+      left: -10%;
+      width: 120%;
+      height: 120%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.8;
+      filter: contrast(130%) grayscale(50%);
+      animation: violent-glitch 1.5s infinite linear alternate-reverse;
+    }
+
+    /* 走査線レイヤー */
+    .scanlines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      background: linear-gradient(to bottom,
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 0) 50%,
+          rgba(0, 0, 0, 0.4) 50%,
+          rgba(0, 0, 0, 0.4));
+      background-size: 100% 4px;
+      pointer-events: none;
+    }
+
+    /* メニューバー設定 */
+    .main-nav {
+      position: fixed;
+      /* Fixed to stay visible on scroll */
+      top: 40px;
+      right: 50px;
+      display: flex;
+      gap: 30px;
+      z-index: 2000;
+      /* High z-index to stay above content */
+      align-items: center;
+      opacity: 0;
+      animation: fade-in 1s ease forwards 2.5s;
+    }
+
+
+    .nav-link {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      transition: all 0.2s;
+      position: relative;
+      text-transform: uppercase;
+    }
+
+    /* 全メニュー共通のホバー設定 */
+    .nav-link:hover {
+      color: #fff;
+      text-shadow: 2px 0 #ff003c, -2px 0 #00eaff;
+      transform: skew(-10deg);
+    }
+
+    /* ロゴを入れる「箱」 */
+    /* Logo Container */
+    .logo-container {
+      position: absolute;
+      /* Absolute within the fixed overlay */
+      left: 0;
+      width: 100%;
+      text-align: center;
+      bottom: 20%;
+      /* Lower position as requested (approx original was 15-20%) */
+      z-index: 10;
+      opacity: 0;
+      animation: logo-crash-landing 0.5s cubic-bezier(0.19, 1, 0.22, 1) forwards 1.7s;
+    }
+
+    .logo-image {
+      width: 60%;
+      max-width: 800px;
+      height: auto;
+      filter: brightness(0) invert(1) drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+      mix-blend-mode: overlay;
+      opacity: 0.9;
+      animation: logo-twitch 0.2s infinite;
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      /* Forced high z-index */
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 1.5rem;
+      color: #fff;
+      cursor: pointer;
+      text-shadow: 0 0 5px #FF007F;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 5px 10px;
+      border: 1px solid #FF007F;
+      border-radius: 5px;
+    }
+
+    /* アニメーション定義 */
+    @keyframes intro-static {
+      0% {
+        background: #000;
+      }
+
+      20% {
+        background: #111;
+      }
+
+      40% {
+        background: #000;
+      }
+
+      60% {
+        background: #222;
+      }
+
+      80% {
+        background: #000;
+      }
+
+      100% {
+        background: #111;
+      }
+    }
+
+    @keyframes tv-switch-on {
+      0% {
+        transform: scale(1, 1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1, 0.005);
+        opacity: 1;
+        background: #fff;
+      }
+
+      100% {
+        transform: scale(0, 0.005);
+        opacity: 0;
+        display: none;
+      }
+    }
+
+    @keyframes impact-shockwave {
+      0% {
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes logo-crash-landing {
+      0% {
+        opacity: 0;
+        transform: scale(6) translateY(-100px) rotate(5deg);
+        filter: blur(30px);
+      }
+
+      80% {
+        opacity: 1;
+        transform: scale(0.9);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes violent-glitch {
+      0% {
+        transform: translate(0, 0) scale(1);
+        filter: contrast(130%) grayscale(50%);
+      }
+
+      10% {
+        transform: translate(-5px, 5px) skew(5deg);
+        filter: contrast(200%) invert(100%) hue-rotate(90deg);
+      }
+
+      12% {
+        transform: translate(5px, -5px) skew(-5deg);
+        filter: contrast(150%) sepia(50%);
+      }
+
+      20% {
+        transform: translate(0, 0) scale(1.02);
+      }
+
+      40% {
+        transform: translate(-10px, 0) scale(1.1, 0.9);
+        filter: brightness(2);
+      }
+
+      42% {
+        transform: translate(10px, 0) scale(0.9, 1.1);
+        filter: brightness(0.5);
+      }
+
+      60% {
+        transform: translate(2px, 2px);
+      }
+
+      80% {
+        transform: translate(0, 10px) skew(20deg);
+        filter: contrast(300%) huerotate(180deg);
+      }
+
+      85% {
+        transform: translate(0, 0);
+      }
+
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+    }
+
+    @keyframes logo-twitch {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      25% {
+        transform: translate(2px, 2px);
+      }
+
+      50% {
+        transform: translate(-2px, -2px);
+      }
+
+      75% {
+        transform: translate(-2px, 2px);
+      }
+
+      100% {
+        transform: translate(2px, -2px);
+      }
+    }
+
+    @keyframes fade-in {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .logo-image {
+        max-width: 80%;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .main-nav {
+        display: none;
+        /* Hidden by default on mobile */
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.95);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        padding-top: 0;
+      }
+
+      .main-nav.active {
+        display: flex;
+      }
+
+      .nav-link {
+        font-size: 1.5rem;
+        margin: 15px 0;
+      }
+    }
+
+    /* ABOUT Section Styles */
+    .about-section {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      /* content starts below the initial viewport */
+      margin-top: 100vh;
+      padding: 100px 20px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 1) 100%);
+    }
+
+    .about-container {
+      max-width: 900px;
+      width: 100%;
+      background: rgba(10, 5, 5, 0.85);
+      border: 2px solid #FF007F;
+      /* Changed to Pink */
+      box-shadow: 0 0 20px rgba(255, 0, 127, 0.3), inset 0 0 50px rgba(0, 0, 0, 0.8);
+      padding: 60px;
+      text-align: center;
+      position: relative;
+      opacity: 0;
+      /* for scroll animation */
+      transform: translateY(50px);
+      transition: all 1s ease-out;
+    }
+
+    .about-container.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Corner Decorations */
+    .corner-decor {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border: 3px solid #FF007F;
+      /* Pink */
+      transition: all 0.3s ease;
+    }
+
+    .top-left {
+      top: -2px;
+      left: -2px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .top-right {
+      top: -2px;
+      right: -2px;
+      border-left: none;
+      border-bottom: none;
+    }
+
+    .bottom-left {
+      bottom: -2px;
+      left: -2px;
+      border-right: none;
+      border-top: none;
+    }
+
+    .bottom-right {
+      bottom: -2px;
+      right: -2px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .about-title {
+      font-family: 'Cinzel Decorative', cursive;
+      /* Changed to Noble style */
+      font-size: 3rem;
+      color: #FF007F;
+      /* Pink title */
+      margin-bottom: 50px;
+      text-shadow: 0 0 10px rgba(255, 0, 127, 0.8), 2px 2px 0px #000;
+      letter-spacing: 5px;
+    }
+
+    .about-content-en {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #f0f0f0;
+      margin-bottom: 60px;
+      text-align: justify;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    .about-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 40px 0;
+      gap: 20px;
+    }
+
+    .divider-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #FF007F, transparent);
+      /* Pink */
+      flex-grow: 1;
+    }
+
+    .crown-icon {
+      font-size: 2rem;
+      color: #FF007F;
+      /* Pink */
+      filter: drop-shadow(0 0 5px rgba(255, 0, 127, 0.8));
+      animation: pink-pulse 3s infinite;
+    }
+
+    .about-content-jp {
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: 1rem;
+      line-height: 2.0;
+      color: #ccc;
+      text-align: justify;
+    }
+
+    .emphasis {
+      color: #FF007F;
+      /* Pink */
+      font-weight: bold;
+      font-family: 'Cinzel', serif;
+    }
+
+    /* MEMBERS Section Styles */
+    .members-section {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      padding: 100px 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #050505;
+      /* Slightly lighter than pure black */
+      border-top: 1px solid #333;
+    }
+
+    .section-title {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 3rem;
+      color: #fff;
+      margin-bottom: 80px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      letter-spacing: 5px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 2px;
+      background: #FF007F;
+      /* Pink */
+    }
+
+    .member-group {
+      width: 100%;
+      max-width: 1000px;
+      margin-bottom: 100px;
+    }
+
+    .group-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      color: #FF007F;
+      /* Pink */
+      text-align: center;
+      margin-bottom: 50px;
+      letter-spacing: 3px;
+      border-bottom: 1px solid rgba(255, 0, 127, 0.3);
+      padding-bottom: 15px;
+    }
+
+    .member-card {
+      background: rgba(20, 20, 20, 0.8);
+      border: 1px solid #333;
+      padding: 30px;
+      margin-bottom: 40px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .member-card:hover {
+      border-color: #FF007F;
+      /* Pink */
+      box-shadow: 0 0 20px rgba(255, 0, 127, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .member-image-placeholder {
+      width: 200px;
+      height: 200px;
+      background: #111;
+      border: 2px solid #555;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      font-family: 'Cinzel', serif;
+      flex-shrink: 0;
+    }
+
+    .member-info {
+      flex-grow: 1;
+      text-align: left;
+    }
+
+    .member-name-en {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      color: #fff;
+      margin: 0 0 10px 0;
+    }
+
+    .member-role {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      color: #FF007F;
+      /* Pink */
+      margin-bottom: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .member-desc-en {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #ddd;
+      margin-bottom: 15px;
+    }
+
+    .member-desc-jp {
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #aaa;
+    }
+
+    .candidates-grid {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .candidate-card {
+      background: rgba(20, 20, 20, 0.8);
+      border: 1px solid #333;
+      padding: 30px;
+      width: calc(33.33% - 40px);
+      /* Adjusted for 3 columns */
+      box-sizing: border-box;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .candidate-card:hover {
+      border-color: #FF007F;
+      /* Pink hover */
+      box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+    }
+
+    .candidate-card .member-image-placeholder {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 30px auto;
+    }
+
+    .candidate-card .member-info {
+      text-align: center;
+    }
+
+    .sns-links {
+      margin-top: 15px;
+      display: flex;
+      gap: 15px;
+    }
+
+    /* Center SNS links for candidates / when stacked */
+    .member-card .member-info .sns-links {
+      /* Default left align for desktop staff cards */
+      justify-content: flex-start;
+    }
+
+    .candidate-card .member-info .sns-links {
+      justify-content: center;
+    }
+
+    .sns-icon {
+      color: #888;
+      font-size: 1.5rem;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .sns-icon:hover {
+      color: #fff;
+      transform: scale(1.2);
+      text-shadow: 0 0 10px #FF007F;
+      /* Pink glow */
+    }
+
+    @keyframes pink-pulse {
+      0% {
+        opacity: 0.7;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.1);
+        text-shadow: 0 0 15px #FF007F;
+      }
+
+      100% {
+        opacity: 0.7;
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .logo-image {
+        max-width: 80%;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .main-nav {
+        /* Removed display: none/flex toggle to allow transition */
+        display: flex;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(10px);
+        /* Glass effect */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        padding-top: 0;
+        border: none;
+        /* Removed Princess Pink Border */
+        box-shadow: inset 0 0 50px rgba(255, 0, 127, 0.2);
+        z-index: 2000;
+        pointer-events: none;
+        /* Interactable only when active */
+
+        /* Slide Animation Setup */
+        transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), visibility 0s linear 0.8s, opacity 0.8s ease;
+        visibility: hidden;
+        transform: translateY(-100%);
+        /* Start above screen */
+        opacity: 0;
+
+        animation: none;
+        /* No intro animation */
+      }
+
+      .main-nav.active {
+        visibility: visible;
+        transform: translateY(0);
+        /* Slide down */
+        opacity: 1 !important;
+        pointer-events: auto;
+        transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), visibility 0s linear 0s, opacity 0.8s ease;
+      }
+
+      .nav-link {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: 2.5rem;
+        /* Larger cooler text */
+        margin: 5px 0;
+        /* Tighter spacing */
+        color: #fff;
+        text-shadow: 0 0 10px #FF007F, 0 0 20px #FF007F;
+        /* Strong Pink Glow */
+        transform: scale(1);
+        transition: transform 0.2s;
+      }
+
+      .nav-link:hover {
+        transform: scale(1.1);
+        color: #fff;
+      }
+
+      /* Icons Removed */
+      .nav-link::after {
+        content: none;
+      }
+
+      .nav-link:last-child::after {
+        display: none;
+      }
+
+      /* Content Responsive Styles (Restored) */
+      .about-container {
+        padding: 30px 20px;
+      }
+
+      .about-title {
+        font-size: 2rem;
+      }
+
+      .about-content-en,
+      .about-content-jp {
+        font-size: 0.95rem;
+        text-align: left;
+      }
+
+      .member-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+
+      .member-info {
+        text-align: center;
+      }
+
+      .member-card .member-info .sns-links {
+        justify-content: center;
+      }
+
+      .candidates-grid {
+        flex-direction: column;
+      }
+
+      .candidate-card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="intro-curtain"></div>
+  <div class="impact-flash"></div>
+  <div class="scanlines"></div>
+
+  <nav class="main-nav">
+    <a href="#" class="nav-link">NEWS</a>
+    <a href="#about" class="nav-link">ABOUT</a>
+    <a href="#members" class="nav-link">MEMBERS</a>
+    <a href="#" class="nav-link">SHOWS</a>
+    <a href="#" class="nav-link">VIDEO</a>
+    <a href="#" class="nav-link">CONTACT</a>
+  </nav>
+
+  <div class="menu-toggle">MENU</div>
+
+  <div class="video-wrapper">
+    <video autoplay muted loop playsinline>
+      <source src="movie.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="overlay"
+    style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none;">
+    <div class="logo-container">
+      <img src="logo.png" alt="Heavy Metal Princess Academy Logo" class="logo-image">
+    </div>
+  </div>
+
+  <section id="about" class="about-section">
+    <div class="about-container">
+      <!-- Decorative Corners -->
+      <div class="corner-decor top-left"></div>
+      <div class="corner-decor top-right"></div>
+      <div class="corner-decor bottom-left"></div>
+      <div class="corner-decor bottom-right"></div>
+
+      <h2 class="about-title">ABOUT US</h2>
+
+      <div class="about-content-en">
+        <p><strong>Heavy Metal Princess Academy</strong></p>
+        <p>
+          Japanese girls' heavy metal is currently taking the world by storm. With artists like BABYMETAL and BAND-MAID
+          consistently ranking on hit charts in the US and Europe and selling out arena tours, the global spotlight is
+          firmly on the Japanese girls' metal scene. In this era of unprecedented international attention, a new project
+          has been born: <span class="emphasis">"Heavy Metal Princess Academy."</span>
+        </p>
+        <p>
+          This project is a specialized unit dedicated to training and developing female vocalists, led by true legends
+          of the Japanese girls' heavy metal scene. Produced by Masafumi "Marcy" Nishida—the legendary vocalist of
+          EARTHSHAKER—the academy seeks to discover and cultivate talented singers who are drawn to heavy metal, even if
+          they have no prior experience in the genre. Our goal is to prepare these new voices to stand atop the global
+          stage.
+        </p>
+      </div>
+
+      <div class="about-divider">
+        <div class="divider-line"></div>
+        <div class="crown-icon">♛</div>
+        <div class="divider-line"></div>
+      </div>
+
+      <div class="about-content-jp">
+        <p><strong>Heavy Metal Princess Academy （ヘヴィ・メタル・プリンセス・アカデミー）</strong></p>
+        <p>
+          今や世界を席巻する日本のガールズヘヴィメタル！BABYMETALやBAND-MAIDといったアーティストが欧米のヒットチャートを賑わせ、アリーナツアーを成功させるなど、日本のガールズメタルシーンは今、世界中から最も注目されています。そんな中、期待の新たなプロジェクト「Heavy
+          Metal Princess Academy」が誕生しました。
+        </p>
+        <p>
+          本プロジェクトは、日本のガールズヘヴィメタルのレジェンド達によって女性ボーカリストを養成していくユニットです。プロデューサーにはジャパニーズメタルのレジェンド、EARTHSHAKERのボーカリスト西田 "Marcy"
+          昌史氏を迎え、ヘヴィメタル未経験者も含めた新たな才能を発掘し、世界を舞台に活躍できるシンガーを育成していきます。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="members" class="members-section">
+    <h2 class="section-title">MEMBERS</h2>
+
+    <!-- PRODUCER -->
+    <div class="member-group">
+      <h3 class="group-title">PRODUCER</h3>
+      <div class="member-card">
+        <div class="member-image-placeholder">PHOTO</div>
+        <div class="member-info">
+          <h4 class="member-name-en">Masafumi "Marcy" Nishida<br><span style="font-size:0.8em; color:#aaa;">(西田 "Marcy"
+              昌史)</span></h4>
+          <div class="member-role">Vocalist of EARTHSHAKER</div>
+          <div class="member-desc-en">
+            Japanese metal legend, Vocalist of EARTHSHAKER. As the overall producer of this project, he discovers and
+            nurtures new talent.
+          </div>
+          <div class="member-desc-jp">
+            ジャパニーズメタルのレジェンド、EARTHSHAKERのボーカリスト。本プロジェクトの総合プロデュースを務め、新たな才能の発掘・育成を行う。
+          </div>
+          <div class="sns-links">
+            <a href="#" class="sns-icon" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" class="sns-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENTORS -->
+    <div class="member-group">
+      <h3 class="group-title">MENTORS</h3>
+
+      <div class="member-card">
+        <div class="member-image-placeholder">PHOTO</div>
+        <div class="member-info">
+          <h4 class="member-name-en">MARI</h4>
+          <div class="member-role">Drums (ex-Mary's Blood)</div>
+          <div class="member-desc-en">
+            Former drummer of Mary's Blood. Supports academy students with powerful rhythm combining technique and
+            expressiveness.
+          </div>
+          <div class="member-desc-jp">
+            元Mary's Bloodのドラマー。技術と表現力を兼ね備えた強力なリズムで、アカデミー生を支える。
+          </div>
+          <div class="sns-links">
+            <a href="#" class="sns-icon" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" class="sns-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-image-placeholder">PHOTO</div>
+        <div class="member-info">
+          <h4 class="member-name-en">YUI</h4>
+          <div class="member-role">Guitar (ex-CYNTIA)</div>
+          <div class="member-desc-en">
+            Former guitarist of CYNTIA. A talented musician who also provided music for "Saint Seiya Omega".
+          </div>
+          <div class="member-desc-jp">
+            元CYNTIAのギタリスト。「聖闘士星矢Ω」などの楽曲提供も行う実力派。
+          </div>
+          <div class="sns-links">
+            <a href="#" class="sns-icon" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" class="sns-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-image-placeholder">PHOTO</div>
+        <div class="member-info">
+          <h4 class="member-name-en">Sawa</h4>
+          <div class="member-role">Bass (ex-ALDIOUS)</div>
+          <div class="member-desc-en">
+            Former bassist of ALDIOUS. Teaches stage performance based on experience at major stages like Summer Sonic
+            and LOUD PARK.
+          </div>
+          <div class="member-desc-jp">
+            元ALDIOUSのベーシスト。サマーソニックやLOUD PARKなどの大舞台を経験したステージングを伝授。
+          </div>
+          <div class="sns-links">
+            <a href="#" class="sns-icon" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" class="sns-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CANDIDATES -->
+    <div class="member-group">
+      <h3 class="group-title">CANDIDATES</h3>
+      <div class="candidates-grid">
+        <div class="candidate-card">
+          <div class="member-image-placeholder">PHOTO</div>
+          <div class="member-info">
+            <h4 class="member-name-en">HINA</h4>
+            <div class="member-role">Vocal Candidate</div>
+            <div class="member-desc-en">
+              Heavy Metal Princess Academy 1st Generation Candidate.
+            </div>
+            <div class="member-desc-jp">
+              Heavy Metal Princess Academy 第一期候補生。
+            </div>
+            <div class="sns-links">
+              <a href="#" class="sns-icon" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#" class="sns-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="candidate-card">
+          <div class="member-image-placeholder">PHOTO</div>
+          <div class="member-info">
+            <h4 class="member-name-en">CHIO</h4>
+            <div class="member-role">Vocal Candidate</div>
+            <div class="member-desc-en">
+              Heavy Metal Princess Academy 1st Generation Candidate.
+            </div>
+            <div class="member-desc-jp">
+              Heavy Metal Princess Academy 第一期候補生。
+            </div>
+            <div class="sns-links">
+              <a href="#" class="sns-icon" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#" class="sns-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- New 3rd Candidate -->
+        <div class="candidate-card">
+          <div class="member-image-placeholder">PHOTO</div>
+          <div class="member-info">
+            <h4 class="member-name-en">TBA</h4>
+            <div class="member-role">Vocal Candidate</div>
+            <div class="member-desc-en">
+              Heavy Metal Princess Academy 1st Generation Candidate.
+            </div>
+            <div class="member-desc-jp">
+              Heavy Metal Princess Academy 第一期候補生。
+            </div>
+            <div class="sns-links">
+              <a href="#" class="sns-icon" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#" class="sns-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Scroll Animation Observer
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Add staggered animation for children if needed
+          }
+        });
+      }, { threshold: 0.1 });
+
+      const aboutContainer = document.querySelector('.about-container');
+      if (aboutContainer) observer.observe(aboutContainer);
+
+      // Observe member cards
+      const memberCards = document.querySelectorAll('.member-card, .candidate-card');
+      memberCards.forEach(card => {
+        // Initial state
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'all 0.6s ease-out';
+        observer.observe(card);
+      });
+
+      // Add visible class styling for cards via JS or extend CSS
+      // Simple inline observer logic for brevity
+      const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      memberCards.forEach(card => cardObserver.observe(card));
+
+      // Mobile Menu Logic
+      const menuToggle = document.querySelector('.menu-toggle');
+      const mainNav = document.querySelector('.main-nav');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', () => {
+          mainNav.classList.toggle('active');
+          menuToggle.textContent = mainNav.classList.contains('active') ? 'CLOSE' : 'MENU';
+        });
+
+        // Close menu when a link is clicked
+        navLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+              mainNav.classList.remove('active');
+              menuToggle.textContent = 'MENU';
+            }
+          });
+        });
+      }
+    });
+  </script>
+
+</body>
+
+</html>
