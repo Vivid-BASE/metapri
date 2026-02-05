@@ -144,9 +144,12 @@
       width: 60%;
       max-width: 800px;
       height: auto;
-      filter: brightness(0) invert(1) drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
-      /* Removed mix-blend-mode: overlay to prevent black logo on dark backgrounds */
-      opacity: 0.9;
+      filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+      /* Emphasize White */
+      mix-blend-mode: normal !important;
+      /* Force Normal Blend */
+      opacity: 1;
+      /* Full Opacity */
       animation: logo-twitch 0.2s infinite;
     }
 
