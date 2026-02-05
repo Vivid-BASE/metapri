@@ -57,10 +57,10 @@
     .video-wrapper {
       position: fixed;
       /* Changed to fixed */
-      top: -10%;
-      left: -10%;
-      width: 120%;
-      height: 120%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       z-index: 0;
       overflow: hidden;
     }
@@ -145,7 +145,7 @@
       max-width: 800px;
       height: auto;
       filter: brightness(0) invert(1) drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
-      mix-blend-mode: overlay;
+      /* Removed mix-blend-mode: overlay to prevent black logo on dark backgrounds */
       opacity: 0.9;
       animation: logo-twitch 0.2s infinite;
     }
@@ -698,12 +698,25 @@
     }
 
     @media (max-width: 768px) {
+      .video-wrapper {
+        width: 100%;
+        /* Reset from 120% to reduce zoom */
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
+
       .logo-image {
         max-width: 80%;
       }
 
       .menu-toggle {
         display: block;
+      }
+
+      .logo-container {
+        bottom: 25%;
+        /* Slightly higher on mobile to avoid overlap */
       }
 
       .main-nav {
@@ -718,9 +731,14 @@
         left: 0;
         width: 100%;
         height: 100vh;
-        justify-content: center;
-        align-items: center;
-        padding-top: 0;
+        /* Enable scrolling for landscape/small screens */
+        overflow-y: auto;
+        justify-content: flex-start;
+        /* Start from top to allow scrolling */
+        padding-top: 80px;
+        /* Space for close button */
+        padding-bottom: 50px;
+
         border: none;
         /* Removed Princess Pink Border */
         box-shadow: inset 0 0 50px rgba(255, 0, 127, 0.2);
