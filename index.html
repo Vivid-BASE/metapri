@@ -75,6 +75,8 @@
         <p id="modalRole" class="modal-role"></p>
         <div id="modalDescEn" class="modal-desc-en"></div>
         <div id="modalDescJp" class="modal-desc-jp"></div>
+        <div id="modalSns" class="modal-sns-links"
+          style="margin-top: 20px; display: flex; gap: 20px; justify-content: flex-start;"></div>
       </div>
     </div>
   </div>
@@ -1781,6 +1783,7 @@
           const role = card.querySelector('.member-role').textContent;
           const descEn = card.querySelector('.member-desc-en') ? card.querySelector('.member-desc-en').innerHTML : '';
           const descJp = card.querySelector('.member-desc-jp') ? card.querySelector('.member-desc-jp').innerHTML : '';
+          const snsLinks = card.querySelector('.sns-links') ? card.querySelector('.sns-links').innerHTML : ''; // Extract SNS links
 
           // Populate modal
           modalImage.src = img;
@@ -1788,6 +1791,7 @@
           modalRole.textContent = role;
           modalDescEn.innerHTML = descEn;
           modalDescJp.innerHTML = descJp;
+          modalSns.innerHTML = snsLinks; // Populate the new SNS container
 
           // Show modal with robust animation frame logic
           modal.style.display = 'flex';
