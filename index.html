@@ -13,6 +13,40 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      font-size: 2rem;
+      z-index: 20;
+      /* Above video, below header/overlay */
+      animation: bounce 2s infinite;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      40% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+
+      60% {
+        transform: translateX(-50%) translateY(-5px);
+      }
+    }
+
     /* Password Overlay Styles */
     #passwordOverlay {
       position: fixed;
@@ -1018,6 +1052,9 @@
       z-index: 10;
       width: 100%;
       margin-top: 100vh;
+      /* Fallback */
+      margin-top: 100svh;
+      /* Mobile viewport fix */
       background: #000;
     }
 
@@ -1292,7 +1329,7 @@
       const errorMsg = document.getElementById('passwordError');
 
       if (input === '1111') {
-        sessionStorage.setItem('site_authenticated', 'true');
+        localStorage.setItem('site_authenticated', 'true');
         overlay.style.opacity = '0';
         setTimeout(() => {
           overlay.style.display = 'none';
@@ -1305,7 +1342,7 @@
 
     // Check on load
     document.addEventListener('DOMContentLoaded', () => {
-      if (sessionStorage.getItem('site_authenticated') === 'true') {
+      if (localStorage.getItem('site_authenticated') === 'true') {
         document.getElementById('passwordOverlay').style.display = 'none';
       }
     });
@@ -1319,6 +1356,10 @@
     <video autoplay muted loop playsinline>
       <source src="movie.mp4" type="video/mp4">
     </video>
+  </div>
+
+  <div class="scroll-indicator">
+    <i class="fa-solid fa-chevron-down"></i>
   </div>
 
   <div class="overlay"
