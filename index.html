@@ -886,20 +886,23 @@
       .header-logo {
         height: 30px;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
+        /* Left align on mobile */
         align-items: center;
-        width: 100%;
-        position: absolute;
-        /* Absolute center to ignore menu toggle */
-        left: 50%;
-        transform: translateX(-50%);
-        pointer-events: none;
-        /* Let clicks pass through if needed, though logo has click handler */
+        width: auto;
+        /* Allow it to size naturally */
+        position: static;
+        /* Remove absolute centering */
+        transform: none;
+        pointer-events: auto;
+        /* Ensure clickable */
       }
 
       .header-logo img {
         pointer-events: auto;
-        /* Re-enable clicks on the image itself */
+        height: 100%;
+        /* Ensure ratio */
+        width: auto;
       }
 
       .logo-container {
@@ -922,6 +925,9 @@
 
       .menu-toggle {
         display: block;
+        z-index: 2100;
+        /* Ensure above full-screen menu overlay */
+        position: relative;
       }
 
       /* Duplicate logo-container rule removed */
