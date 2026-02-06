@@ -891,8 +891,18 @@
       .logo-container {
         display: block;
         /* Visible on Mobile */
-        bottom: 15%;
-        /* Position adjustment from existing rule */
+        top: 50%;
+        bottom: auto;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        /* Ensure width allows centering */
+        text-align: center;
+      }
+
+      .logo-container img {
+        /* Ensure image doesn't overflow if container is constrained */
+        max-width: 80%;
       }
 
       .menu-toggle {
@@ -1149,7 +1159,8 @@
       height: 100%;
       background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(5px);
-      z-index: 1000;
+      z-index: 3000;
+      /* Increased to be above header (2000) */
       justify-content: center;
       align-items: center;
       opacity: 0;
