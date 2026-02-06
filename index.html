@@ -886,10 +886,19 @@
         height: 30px;
         display: flex;
         justify-content: center;
-        /* Center logo in flex container */
+        align-items: center;
         width: 100%;
-        /* Ensure it takes full width to center properly */
-        /* Visible on Mobile */
+        position: absolute;
+        /* Absolute center to ignore menu toggle */
+        left: 50%;
+        transform: translateX(-50%);
+        pointer-events: none;
+        /* Let clicks pass through if needed, though logo has click handler */
+      }
+
+      .header-logo img {
+        pointer-events: auto;
+        /* Re-enable clicks on the image itself */
       }
 
       .logo-container {
@@ -1216,18 +1225,30 @@
 
     .close-modal {
       position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 2rem;
-      color: #999;
+      /* Changed from absolute relative to content */
+      top: 10px;
+      right: 10px;
+      font-size: 2.5rem;
+      /* Larger touch target */
+      color: #ccc;
       cursor: pointer;
       font-family: 'Cinzel', serif;
       transition: color 0.3s;
-      z-index: 10;
+      z-index: 20;
+      /* Above modal content */
+      background: rgba(0, 0, 0, 0.5);
+      /* Slight background for visibility */
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
     }
 
     .close-modal:hover {
       color: #FF007F;
+      background: rgba(0, 0, 0, 0.8);
     }
 
     .modal-image {
