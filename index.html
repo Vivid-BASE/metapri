@@ -956,116 +956,98 @@
         transform: translateY(-100%);
       }
 
-      justify-content: center;
-      align-items: center;
-      padding-top: 0;
-
-      /* Reset styles from previous fixed nav bar */
-      border: none;
-      opacity: 0;
-
-      /* Slide Animation Setup */
-      transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1),
-      visibility 0s linear 0.8s,
-      opacity 0.8s ease;
-      visibility: hidden;
-      transform: translateY(-100%);
-      /* Start above screen */
-
-      animation: none;
-      /* No intro animation for the mobile menu itself, handled by toggle */
-    }
-
-    .main-nav.active {
-      display: flex;
-      visibility: visible;
-      transform: translateY(0);
-      /* Slide down */
-      opacity: 1 !important;
-      pointer-events: auto;
-      transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), visibility 0s linear 0s, opacity 0.8s ease;
-    }
 
 
-    .nav-link {
-      font-family: 'Cinzel Decorative', cursive;
-      font-size: 2.5rem;
-      /* Larger cooler text */
-      margin: 5px 0;
-      /* Tighter spacing */
-      color: #fff;
-      text-shadow: 0 0 10px #FF007F, 0 0 20px #FF007F;
-      /* Strong Pink Glow */
-      transform: scale(1);
-      transition: transform 0.2s;
-    }
+      .main-nav.active {
+        display: flex;
+        visibility: visible;
+        transform: translateY(0);
+        /* Slide down */
+        opacity: 1 !important;
+        pointer-events: auto;
+        transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), visibility 0s linear 0s, opacity 0.8s ease;
+      }
 
-    .nav-link:hover {
-      transform: scale(1.1);
-      color: #fff;
-    }
 
-    /* Icons Removed */
-    .nav-link::after {
-      content: none;
-    }
+      .nav-link {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: 2.5rem;
+        /* Larger cooler text */
+        margin: 5px 0;
+        /* Tighter spacing */
+        color: #fff;
+        text-shadow: 0 0 10px #FF007F, 0 0 20px #FF007F;
+        /* Strong Pink Glow */
+        transform: scale(1);
+        transition: transform 0.2s;
+      }
 
-    .nav-link:last-child::after {
-      display: none;
-    }
+      .nav-link:hover {
+        transform: scale(1.1);
+        color: #fff;
+      }
 
-    /* Content Responsive Styles (Restored) */
-    .about-container {
-      padding: 30px 20px;
-    }
+      /* Icons Removed */
+      .nav-link::after {
+        content: none;
+      }
 
-    .about-title {
-      font-size: 2rem;
-    }
+      .nav-link:last-child::after {
+        display: none;
+      }
 
-    .about-content-en,
-    .about-content-jp {
-      font-size: 0.95rem;
-      text-align: left;
-    }
+      /* Content Responsive Styles (Restored) */
+      .about-container {
+        padding: 30px 20px;
+      }
 
-    .member-card {
-      flex-direction: column;
-      text-align: center;
-      gap: 20px;
-    }
+      .about-title {
+        font-size: 2rem;
+      }
 
-    .member-info {
-      text-align: center;
-    }
+      .about-content-en,
+      .about-content-jp {
+        font-size: 0.95rem;
+        text-align: left;
+      }
 
-    .member-card .member-info .sns-links {
-      justify-content: center;
-    }
+      .member-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
 
-    .candidates-grid {
-      flex-direction: column;
-    }
+      .member-info {
+        text-align: center;
+      }
 
-    .candidate-card {
-      width: 100%;
-    }
+      .member-card .member-info .sns-links {
+        justify-content: center;
+      }
 
-    /* Reorder Candidates on Mobile: HINA -> CHIO -> KEIKA */
-    .candidates-grid .candidate-card:nth-child(2) {
-      order: 1;
-      /* HINA */
-    }
+      .candidates-grid {
+        flex-direction: column;
+      }
 
-    .candidates-grid .candidate-card:nth-child(3) {
-      order: 2;
-      /* CHIO */
-    }
+      .candidate-card {
+        width: 100%;
+      }
 
-    .candidates-grid .candidate-card:nth-child(1) {
-      order: 3;
-      /* KEIKA */
-    }
+      /* Reorder Candidates on Mobile: HINA -> CHIO -> KEIKA */
+      .candidates-grid .candidate-card:nth-child(2) {
+        order: 1;
+        /* HINA */
+      }
+
+      .candidates-grid .candidate-card:nth-child(3) {
+        order: 2;
+        /* CHIO */
+      }
+
+      .candidates-grid .candidate-card:nth-child(1) {
+        order: 3;
+        /* KEIKA */
+      }
     }
 
     .text-link {
