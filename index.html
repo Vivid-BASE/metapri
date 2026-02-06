@@ -867,7 +867,8 @@
     @media (max-width: 768px) {
       .site-header {
         padding: 0 20px;
-        /* Smaller padding on mobile */
+        height: 60px;
+        /* Reduced height for mobile */
       }
 
       .video-wrapper {
@@ -904,12 +905,13 @@
       .logo-container {
         display: block;
         /* Visible on Mobile */
+        position: absolute;
+        /* REQUIRED for top/left/transform centering */
         top: 50%;
         bottom: auto;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 100%;
-        /* Ensure width allows centering */
         text-align: center;
       }
 
@@ -1163,25 +1165,37 @@
     }
 
     /* Member Modal Styles */
-    /* Member Modal Styles */
-    .member-modal {
+    .main-nav {
+      /* Hidden by default on mobile */
       display: none;
+      flex-direction: column;
+      background: rgba(0, 0, 0, 0.95);
+
       position: fixed;
-      top: 80px;
-      /* Start below the header */
+      /* Fixed to viewport */
+      top: 0;
       left: 0;
       width: 100%;
-      height: calc(100% - 80px);
-      /* Fill remaining height */
-      background: rgba(0, 0, 0, 0.9);
-      /* Darker background since it's not full screen */
-      backdrop-filter: blur(5px);
-      z-index: 1900;
-      /* Below header (2000) so menu is visible */
-      justify-content: center;
+      height: 100vh;
+      z-index: 1999;
+
+      /* Adjusted for full screen overlay */
+      top: 0;
+      height: 100vh;
+
+      justify-content: flex-start;
+      /* Start from top so HOME isn't cut off */
+      padding-top: 100px;
+      /* Push items down below header */
       align-items: center;
+
+      /* Reset styles from previous fixed nav bar */
+      border: none;
       opacity: 0;
-      transition: opacity 0.3s ease;
+
+      transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), visibility 0s linear 0.8s, opacity 0.8s ease;
+      visibility: hidden;
+      transform: translateY(-100%);
     }
 
     .member-modal.active {
