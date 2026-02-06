@@ -756,18 +756,17 @@
       }
 
       .logo-container {
-        display: none;
-        /* Hidden on Mobile */
+        display: block;
+        /* Visible on Mobile */
+        bottom: 15%;
+        /* Position adjustment from existing rule */
       }
 
       .menu-toggle {
         display: block;
       }
 
-      .logo-container {
-        bottom: 25%;
-        /* Slightly higher on mobile to avoid overlap */
-      }
+      /* Duplicate logo-container rule removed */
 
       /* Previously .main-nav was the bar, now it is the overlay content only */
       .main-nav {
