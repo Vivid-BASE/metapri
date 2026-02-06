@@ -933,7 +933,6 @@
         flex-direction: column;
         background: rgba(0, 0, 0, 0.95);
 
-        /* Adjusted to fill screen below header? Or full screen overlay? let's do full screen overlay but below header or covering everything */
         position: fixed;
         /* Fixed to viewport */
         top: 0;
@@ -941,122 +940,132 @@
         width: 100%;
         height: 100vh;
         z-index: 1999;
-        /* Just below header z-index (2000) if we want header visible,
-           BUT if we want full screen menu covering everything, z-index needs to be higher?
-           User said "scroll through menu", usually means menu covers screen.
-           However, let's keep header visible. */
-        top: 80px;
-        /* Start below header */
-        height: calc(100vh - 80px);
 
-        justify-content: center;
+        justify-content: flex-start;
+        /* Start from top so HOME isn't cut off */
+        padding-top: 80px;
+        /* Push items down below header (60px) + space */
         align-items: center;
-        padding-top: 0;
 
         /* Reset styles from previous fixed nav bar */
         border: none;
         opacity: 0;
 
-        /* Slide Animation Setup */
         transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), visibility 0s linear 0.8s, opacity 0.8s ease;
         visibility: hidden;
         transform: translateY(-100%);
-        /* Start above screen */
-
-        animation: none;
-        /* No intro animation for the mobile menu itself, handled by toggle */
       }
 
-      .main-nav.active {
-        display: flex;
-        visibility: visible;
-        transform: translateY(0);
-        /* Slide down */
-        opacity: 1 !important;
-        pointer-events: auto;
-        transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), visibility 0s linear 0s, opacity 0.8s ease;
-      }
+      justify-content: center;
+      align-items: center;
+      padding-top: 0;
+
+      /* Reset styles from previous fixed nav bar */
+      border: none;
+      opacity: 0;
+
+      /* Slide Animation Setup */
+      transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1),
+      visibility 0s linear 0.8s,
+      opacity 0.8s ease;
+      visibility: hidden;
+      transform: translateY(-100%);
+      /* Start above screen */
+
+      animation: none;
+      /* No intro animation for the mobile menu itself, handled by toggle */
+    }
+
+    .main-nav.active {
+      display: flex;
+      visibility: visible;
+      transform: translateY(0);
+      /* Slide down */
+      opacity: 1 !important;
+      pointer-events: auto;
+      transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), visibility 0s linear 0s, opacity 0.8s ease;
+    }
 
 
-      .nav-link {
-        font-family: 'Cinzel Decorative', cursive;
-        font-size: 2.5rem;
-        /* Larger cooler text */
-        margin: 5px 0;
-        /* Tighter spacing */
-        color: #fff;
-        text-shadow: 0 0 10px #FF007F, 0 0 20px #FF007F;
-        /* Strong Pink Glow */
-        transform: scale(1);
-        transition: transform 0.2s;
-      }
+    .nav-link {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 2.5rem;
+      /* Larger cooler text */
+      margin: 5px 0;
+      /* Tighter spacing */
+      color: #fff;
+      text-shadow: 0 0 10px #FF007F, 0 0 20px #FF007F;
+      /* Strong Pink Glow */
+      transform: scale(1);
+      transition: transform 0.2s;
+    }
 
-      .nav-link:hover {
-        transform: scale(1.1);
-        color: #fff;
-      }
+    .nav-link:hover {
+      transform: scale(1.1);
+      color: #fff;
+    }
 
-      /* Icons Removed */
-      .nav-link::after {
-        content: none;
-      }
+    /* Icons Removed */
+    .nav-link::after {
+      content: none;
+    }
 
-      .nav-link:last-child::after {
-        display: none;
-      }
+    .nav-link:last-child::after {
+      display: none;
+    }
 
-      /* Content Responsive Styles (Restored) */
-      .about-container {
-        padding: 30px 20px;
-      }
+    /* Content Responsive Styles (Restored) */
+    .about-container {
+      padding: 30px 20px;
+    }
 
-      .about-title {
-        font-size: 2rem;
-      }
+    .about-title {
+      font-size: 2rem;
+    }
 
-      .about-content-en,
-      .about-content-jp {
-        font-size: 0.95rem;
-        text-align: left;
-      }
+    .about-content-en,
+    .about-content-jp {
+      font-size: 0.95rem;
+      text-align: left;
+    }
 
-      .member-card {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-      }
+    .member-card {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+    }
 
-      .member-info {
-        text-align: center;
-      }
+    .member-info {
+      text-align: center;
+    }
 
-      .member-card .member-info .sns-links {
-        justify-content: center;
-      }
+    .member-card .member-info .sns-links {
+      justify-content: center;
+    }
 
-      .candidates-grid {
-        flex-direction: column;
-      }
+    .candidates-grid {
+      flex-direction: column;
+    }
 
-      .candidate-card {
-        width: 100%;
-      }
+    .candidate-card {
+      width: 100%;
+    }
 
-      /* Reorder Candidates on Mobile: HINA -> CHIO -> KEIKA */
-      .candidates-grid .candidate-card:nth-child(2) {
-        order: 1;
-        /* HINA */
-      }
+    /* Reorder Candidates on Mobile: HINA -> CHIO -> KEIKA */
+    .candidates-grid .candidate-card:nth-child(2) {
+      order: 1;
+      /* HINA */
+    }
 
-      .candidates-grid .candidate-card:nth-child(3) {
-        order: 2;
-        /* CHIO */
-      }
+    .candidates-grid .candidate-card:nth-child(3) {
+      order: 2;
+      /* CHIO */
+    }
 
-      .candidates-grid .candidate-card:nth-child(1) {
-        order: 3;
-        /* KEIKA */
-      }
+    .candidates-grid .candidate-card:nth-child(1) {
+      order: 3;
+      /* KEIKA */
+    }
     }
 
     .text-link {
@@ -1165,37 +1174,21 @@
     }
 
     /* Member Modal Styles */
-    .main-nav {
-      /* Hidden by default on mobile */
+    .member-modal {
       display: none;
-      flex-direction: column;
-      background: rgba(0, 0, 0, 0.95);
-
       position: fixed;
-      /* Fixed to viewport */
       top: 0;
       left: 0;
       width: 100%;
-      height: 100vh;
-      z-index: 1999;
-
-      /* Adjusted for full screen overlay */
-      top: 0;
-      height: 100vh;
-
-      justify-content: flex-start;
-      /* Start from top so HOME isn't cut off */
-      padding-top: 100px;
-      /* Push items down below header */
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(5px);
+      z-index: 3000;
+      /* Above header */
+      justify-content: center;
       align-items: center;
-
-      /* Reset styles from previous fixed nav bar */
-      border: none;
       opacity: 0;
-
-      transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), visibility 0s linear 0.8s, opacity 0.8s ease;
-      visibility: hidden;
-      transform: translateY(-100%);
+      transition: opacity 0.3s ease;
     }
 
     .member-modal.active {
