@@ -101,9 +101,8 @@
 
   <!-- Member Modal -->
   <div id="memberModal" class="member-modal">
-    <div class="modal-content" style="padding-top: 60px; position: relative;">
-      <span class="close-modal"
-        style="position: absolute; top: 10px; right: 20px; font-size: 3rem; color: #fff; z-index: 20;">&times;</span>
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
       <img id="modalImage" src="" alt="" class="modal-image">
       <div class="modal-info">
         <h3 id="modalName"></h3>
@@ -223,6 +222,9 @@
       display: flex;
       /* Visible on Desktop */
       align-items: center;
+      cursor: pointer;
+      position: relative;
+      z-index: 2005;
     }
 
     .header-logo img {
@@ -1013,10 +1015,29 @@
         /* Remove margin */
       }
 
-      /* Close Button Safety Adjustment */
+      /* Close Button Safety Adjustment (Mobile Only) */
       .close-modal {
-        top: 50px !important;
-        /* Move down for safety */
+        position: absolute !important;
+        /* Override fixed */
+        top: 10px !important;
+        right: 10px !important;
+        background: rgba(0, 0, 0, 0.5);
+        /* Visibility background */
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem !important;
+        z-index: 100;
+      }
+
+      .modal-content {
+        padding-top: 60px !important;
+        /* Space for close button */
+        position: relative;
+        /* For absolute button */
       }
 
 
@@ -1225,6 +1246,8 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+      padding-top: 60px;
+      /* Moved from inline style */
     }
 
     @media (min-width: 768px) {
@@ -1241,18 +1264,28 @@
     }
 
     .close-modal {
-      position: fixed;
-      /* Fixed to viewport to stay visible */
-      top: 30px;
-      /* Adjusted for Safe Area */
+      position: absolute;
+      /* Moved from inline style */
+      top: 10px;
+      /* Moved from inline style */
       right: 20px;
-      font-size: 2.5rem;
+      /* Moved from inline style */
+      font-size: 3rem;
+      /* Moved from inline style */
+      color: #fff;
+      /* Moved from inline style */
+      z-index: 20;
+      /* Moved from inline style */
+      /* Fixed to viewport to stay visible */
+      /* top: 30px; */
+      /* right: 30px; */
+      /* font-size: 2.5rem; */
       /* Larger touch target */
-      color: #ccc;
+      /* color: #ccc; */
       cursor: pointer;
       font-family: 'Cinzel', serif;
       transition: color 0.3s;
-      z-index: 20;
+      /* z-index: 20; */
       /* Above modal content */
       background: rgba(0, 0, 0, 0.5);
       /* Slight background for visibility */
@@ -1429,8 +1462,7 @@
   </div>
 
   <header class="site-header">
-    <div class="header-logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'});"
-      style="cursor: pointer; position: relative; z-index: 2005;">
+    <div class="header-logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
       <img src="logo.png" alt="Heavy Metal Princess Academy Logo">
     </div>
     <nav class="main-nav">
