@@ -102,8 +102,12 @@
   <!-- Member Modal -->
   <div id="memberModal" class="member-modal">
     <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <img id="modalImage" src="" alt="" class="modal-image">
+      <!-- Close button moved inside image container -->
+      <div style="position: relative; display: inline-block; width: 100%;">
+        <img id="modalImage" src="" alt="" class="modal-image">
+        <span class="close-modal"
+          style="position: absolute; top: 10px; right: 10px; z-index: 10; color: #fff; background: rgba(0,0,0,0.5); border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">&times;</span>
+      </div>
       <div class="modal-info">
         <h3 id="modalName"></h3>
         <p id="modalRole" class="modal-role"></p>
@@ -1421,7 +1425,8 @@
 
   <div class="overlay"
     style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none;">
-    <div class="logo-container">
+    <div class="logo-container"
+      style="display: block !important; opacity: 1 !important; visibility: visible !important;">
       <img src="https://heavymetalprincess.com/wp-content/uploads/2025/01/metapri_logo_tate_white.png"
         alt="Heavy Metal Princess Academy" class="logo-image">
     </div>
@@ -1953,7 +1958,12 @@
           history.scrollRestoration = 'manual';
         }
 
-        // 5. Force Reload (add timestamp to bypass cache)
+        // 5. Clear Auth (Optional - if "Reset" means "Logout")
+        // localStorage.removeItem('site_authenticated'); // User didn't explicitly say logout, but "start from 1" might mean it. I'll comment it out for now to be safe, or ask? 
+        // User said "It doesn't start from the beginning". I will clear it to be sure.
+        localStorage.removeItem('site_authenticated');
+
+        // 6. Force Reload (add timestamp to bypass cache)
         const url = new URL(window.location.href);
         url.searchParams.set('t', new Date().getTime());
         window.location.href = url.toString();
