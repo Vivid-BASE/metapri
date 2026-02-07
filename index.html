@@ -1092,16 +1092,19 @@
       .candidates-grid .candidate-card:nth-child(2) {
         order: 1;
         /* HINA */
+        transition-delay: 0.2s !important;
       }
 
       .candidates-grid .candidate-card:nth-child(3) {
         order: 2;
         /* CHIO */
+        transition-delay: 0.4s !important;
       }
 
       .candidates-grid .candidate-card:nth-child(1) {
         order: 3;
         /* KEIKA */
+        transition-delay: 0.6s !important;
       }
     }
 
@@ -1463,6 +1466,13 @@
     .anim-fan-right.visible {
       opacity: 1;
       transform: translateX(0) scale(1);
+    }
+
+    /* Circular Images for Non-Producers */
+    .member-group:nth-of-type(n+2) .member-image {
+      border-radius: 50%;
+      aspect-ratio: 1 / 1;
+      /* Ensure perfect circle */
     }
 
     /* Mobile Adjustments for Fan Animation */
