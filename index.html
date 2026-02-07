@@ -129,6 +129,8 @@
       font-family: 'Courier New', Courier, monospace;
       color: #fff;
       scroll-behavior: smooth;
+      overscroll-behavior-y: none;
+      /* Prevents rubber-banding/video reveal at bottom */
     }
 
     /* イントロの砂嵐ノイズ */
@@ -1504,6 +1506,18 @@
       /* User said "Professional", usually implies responsive adaptivity. */
       /* I will modify the mobile media query below to override if necessary. */
     }
+
+    .site-footer {
+      background: #000;
+      color: #888;
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid #333;
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 20;
+    }
   </style>
 </head>
 
@@ -1909,6 +1923,10 @@
         </form>
       </div>
     </section>
+
+    <footer class="site-footer">
+      &copy; 2026 Heavy Metal Princess Academy. All Rights Reserved.
+    </footer>
 
   </div> <!-- End of main-content-wrapper -->
 
