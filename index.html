@@ -1794,10 +1794,12 @@
       style="padding: 100px 20px; text-align: center; background: #000; border-top: 1px solid #333;">
       <h2 class="section-title">CONTACT</h2>
       <div style="max-width: 600px; margin: 0 auto;">
-        <form class="contact-form" style="display: flex; flex-direction: column; gap: 30px;">
-          <input type="text" placeholder="NAME">
-          <input type="email" placeholder="EMAIL">
-          <textarea placeholder="MESSAGE" rows="5"></textarea>
+        <form class="contact-form" style="display: flex; flex-direction: column; gap: 30px;"
+          action="https://formspree.io/showtimelabel@gmail.com" method="POST">
+          <input type="text" name="name" placeholder="NAME" required>
+          <input type="email" name="email" placeholder="EMAIL" required>
+          <textarea name="message" placeholder="MESSAGE" rows="5" required></textarea>
+          <input type="hidden" name="_subject" value="New Inquiry from Heavy Metal Princess Academy Website">
           <button type="submit" class="contact-btn">SEND MESSAGE</button>
         </form>
       </div>
