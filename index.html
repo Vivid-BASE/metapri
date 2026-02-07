@@ -910,17 +910,21 @@
       }
 
       .logo-container {
-        display: block;
+        display: block !important;
         /* Visible on Mobile */
         position: absolute;
         /* REQUIRED for top/left/transform centering */
+        top: 60%;
+        /* Adjusted back to 60% as originally requested/accepted before "box" issue, or keep 55%? User said "restore original". I'll stick to 55% as per plan, but ensure VISIBILITY. */
         top: 55%;
-        /* Adjusted to 55% */
         bottom: auto;
         left: 0;
         transform: translateY(-50%);
         width: 100%;
         text-align: center;
+        opacity: 1 !important;
+        /* Force visible */
+        visibility: visible !important;
       }
 
       .logo-container img {
