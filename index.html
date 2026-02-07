@@ -1094,19 +1094,16 @@
       .candidates-grid .candidate-card:nth-child(2) {
         order: 1;
         /* HINA */
-        transition-delay: 0.2s !important;
       }
 
       .candidates-grid .candidate-card:nth-child(3) {
         order: 2;
         /* CHIO */
-        transition-delay: 0.4s !important;
       }
 
       .candidates-grid .candidate-card:nth-child(1) {
         order: 3;
         /* KEIKA */
-        transition-delay: 0.6s !important;
       }
     }
 
@@ -1489,22 +1486,27 @@
       /* If stacked, "Left" (KEIKA) is top/bottom? */
       /* In mobile CSS, HINA is order 1 (Top), CHIO order 2, KEIKA order 3. */
       /* Let's stick to the requested animation but maybe tone down translateX if it causes overflow. */
-      .anim-fan-left {
-        transform: translateY(-50%) scale(0.5);
-        /* Come from Top (HINA)? */
+      /* Mobile Animation Reset: Use standard "fluffy" scroll trigger */
+      .candidates-grid .candidate-card {
+        transition-delay: 0s !important;
+        /* Remove staggered delay */
       }
 
-      .anim-fan-right {
-        transform: translateY(-50%) scale(0.5);
-        /* Come from Top (HINA)? */
+      /* Override Fan Animation to be simple Vertical Scale on Mobile */
+      .anim-fan-left,
+      .anim-fan-right,
+      .anim-fan-center {
+        transform: scale(0.9) translateY(30px) !important;
+        /* Standard start state */
       }
 
-      /* Actually, let's just use the same "burst" logic but maybe smaller generic offset if needed. */
-      /* Reverting to requested logic for now to strictly follow "Center -> Out". */
-      /* If HINA is top, then others should come from top. */
-      /* Let's reset to basic vertical scale for mobile to be safe? */
-      /* User said "Professional", usually implies responsive adaptivity. */
-      /* I will modify the mobile media query below to override if necessary. */
+      .anim-fan-left.visible,
+      .anim-fan-right.visible,
+      .anim-fan-center.visible {
+        transform: scale(1) translateY(0) !important;
+        /* Standard end state */
+        opacity: 1 !important;
+      }
     }
 
     .site-footer {
