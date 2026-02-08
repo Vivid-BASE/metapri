@@ -1490,14 +1490,16 @@
       .candidates-grid .candidate-card {
         transition-delay: 0s !important;
         /* Remove staggered delay */
+        transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+        /* Force "fluffy" speed */
       }
 
       /* Override Fan Animation to be simple Vertical Scale on Mobile */
       .anim-fan-left,
       .anim-fan-right,
       .anim-fan-center {
-        transform: scale(0.9) translateY(30px) !important;
-        /* Standard start state */
+        transform: scale(0.8) translateY(30px) !important;
+        /* Matches anim-vertical (0.8 scale) */
       }
 
       .anim-fan-left.visible,
