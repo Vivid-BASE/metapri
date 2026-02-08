@@ -1094,16 +1094,19 @@
       .candidates-grid .candidate-card:nth-child(2) {
         order: 1;
         /* HINA */
+        transition-delay: 0.3s !important;
       }
 
       .candidates-grid .candidate-card:nth-child(3) {
         order: 2;
         /* CHIO */
+        transition-delay: 0.3s !important;
       }
 
       .candidates-grid .candidate-card:nth-child(1) {
         order: 3;
         /* KEIKA */
+        transition-delay: 0.3s !important;
       }
     }
 
@@ -1272,37 +1275,28 @@
     }
 
     .close-modal {
-      position: absolute;
-      /* Moved from inline style */
-      top: 10px;
-      /* Moved from inline style */
+      position: fixed;
+      /* Fix: Keep close button on screen */
+      top: 20px;
       right: 20px;
-      /* Moved from inline style */
+      /* Increased top/right for safe area */
       font-size: 3rem;
-      /* Moved from inline style */
       color: #fff;
-      /* Moved from inline style */
-      z-index: 20;
-      /* Moved from inline style */
-      /* Fixed to viewport to stay visible */
-      /* top: 30px; */
-      /* right: 30px; */
-      /* font-size: 2.5rem; */
-      /* Larger touch target */
-      /* color: #ccc; */
+      z-index: 3001;
+      /* Above modal overlay */
       cursor: pointer;
       font-family: 'Cinzel', serif;
       transition: color 0.3s;
-      /* z-index: 20; */
-      /* Above modal content */
-      background: rgba(0, 0, 0, 0.5);
-      /* Slight background for visibility */
-      width: 40px;
-      height: 40px;
+      background: rgba(0, 0, 0, 0.6);
+      /* Stronger background for visibility against image */
+      width: 50px;
+      height: 50px;
+      /* Larger touch target */
       display: flex;
       justify-content: center;
       align-items: center;
       border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
 
     .close-modal:hover {
@@ -1328,6 +1322,22 @@
       color: #FF007F;
       margin-bottom: 5px;
       text-shadow: 0 0 5px rgba(255, 0, 127, 0.5);
+    }
+
+    /* Mobile Modal Adjustment */
+    @media (max-width: 768px) {
+      .member-modal {
+        align-items: flex-start;
+        /* Start from top instead of center */
+        padding-top: 80px;
+        /* Push content down below Close Button & Status Bar */
+      }
+
+      .modal-content {
+        max-height: 80vh;
+        /* Ensure it fits */
+        width: 90%;
+      }
     }
 
     /* Video Overlay Styles */
@@ -1691,7 +1701,7 @@
       <!-- PRODUCER -->
       <div class="member-group">
         <h3 class="group-title">PRODUCER</h3>
-        <div class="member-card scroll-hidden anim-vertical">
+        <div class="member-card scroll-hidden anim-vertical" style="transition-delay: 0.3s;">
           <img src="marcy.png" alt="Masafumi Marcy Nishida" class="member-image">
           <div class="member-info">
             <h4 class="member-name-en">Masafumi "Marcy" Nishida<br><span style="font-size:0.8em; color:#aaa;">(西田
@@ -1721,7 +1731,7 @@
       <div class="member-group">
         <h3 class="group-title">ULTIMATE BAND</h3>
 
-        <div class="member-card scroll-hidden anim-vertical" style="transition-delay: 0.1s;">
+        <div class="member-card scroll-hidden anim-vertical" style="transition-delay: 0.3s;">
           <img src="MARI.jpg" alt="MARI" class="member-image">
           <div class="member-info">
             <h4 class="member-name-en">MARI</h4>
@@ -1740,7 +1750,7 @@
           </div>
         </div>
 
-        <div class="member-card scroll-hidden anim-vertical" style="transition-delay: 0.2s;">
+        <div class="member-card scroll-hidden anim-vertical" style="transition-delay: 0.3s;">
           <img src="YUI.jpg" alt="YUI" class="member-image">
           <div class="member-info">
             <h4 class="member-name-en">YUI</h4>
