@@ -272,36 +272,33 @@
       /* Glow effect on hover */
     }
 
-    /* Header SNS Icons */
+    /* Header SNS Icons (Mobile Only now) */
     .header-sns {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-left: 20px;
-      padding-left: 20px;
-      border-left: 1px solid rgba(255, 255, 255, 0.3);
+      display: none;
+      /* Hidden on Desktop */
     }
 
-    .header-sns a {
-      color: #ccc;
-      /* Monotone */
-      font-size: 1.2rem;
+    /* Footer SNS Icons */
+    .footer-sns {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 20px;
+    }
+
+    .footer-sns a {
+      color: #777;
+      /* Monotone dark gray */
+      font-size: 1.5rem;
       transition: all 0.3s ease;
-      display: flex;
-      /* Ensure centering */
     }
 
-    .header-sns a:hover {
+    .footer-sns a:hover {
       color: #fff;
-      text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
       transform: scale(1.1);
     }
 
-    .header-sns i {
-      /* Ensure FontAwesome icons mimic thin lines if possible, 
-           or just rely on the font-weight rendering. 
-           FA5/6 Brands are standard weight. */
-    }
 
     /* Removed Tiara Decoration */
 
@@ -559,13 +556,16 @@
 
       /* Mobile SNS Styles */
       .header-sns {
+        display: flex;
+        /* Show on Mobile */
         margin-left: 0;
         padding-left: 0;
         border-left: none;
-        margin-top: 40px;
-        /* Push to bottom of links */
+        margin-top: 20px;
         gap: 40px;
         /* Wider gap for touch */
+        margin-bottom: 80px;
+        /* Push up from bottom (safe area) */
       }
 
       .header-sns a {
@@ -2136,6 +2136,14 @@
     </section>
 
     <footer class="site-footer">
+      <div class="footer-sns">
+        <a href="https://x.com/Metapri_Legacy" target="_blank" aria-label="X (Twitter)"><i
+            class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/metapri_legacy" target="_blank" aria-label="Instagram"><i
+            class="fa-brands fa-instagram"></i></a>
+        <a href="https://youtube.com/@metapri_legacy" target="_blank" aria-label="YouTube"><i
+            class="fa-brands fa-youtube"></i></a>
+      </div>
       &copy; 2026 Heavy Metal Princess Academy. All Rights Reserved.
     </footer>
 
