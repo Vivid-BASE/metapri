@@ -299,6 +299,44 @@
       transform: scale(1.1);
     }
 
+    /* Styles for Mobile Bottom Nav - Hidden on Desktop */
+    .mobile-footer-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 9999;
+    }
+
+    .mf-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #aaa;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      transition: all 0.3s;
+    }
+
+    .mf-link i {
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+      color: #fff;
+    }
+
+    .mf-link:hover,
+    .mf-link:active {
+      color: #FF007F;
+    }
+
+    .mf-link:hover i,
+    .mf-link:active i {
+      color: #FF007F;
+      text-shadow: 0 0 10px #FF007F;
+    }
+
 
     /* Removed Tiara Decoration */
 
@@ -573,6 +611,24 @@
         /* White */
         font-size: 2rem;
         /* Larger */
+      }
+
+      /* Mobile Footer Navigation */
+      .mobile-footer-nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 10px 0;
+        padding-bottom: env(safe-area-inset-bottom, 20px);
+        /* iPhone Home Bar Support */
+        border-top: 1px solid rgba(255, 0, 127, 0.3);
+      }
+
+      /* Adjust main content to not be hidden behind footer */
+      .site-footer {
+        padding-bottom: 80px !important;
       }
     }
 
@@ -2135,7 +2191,8 @@
       </div>
     </section>
 
-    <footer class="site-footer">
+    <footer class="site-footer"
+      style="padding: 40px 20px; text-align: center; background: #000 !important; position: relative; z-index: 10;">
       <div class="footer-sns">
         <a href="https://x.com/Metapri_Legacy" target="_blank" aria-label="X (Twitter)"><i
             class="fa-brands fa-x-twitter"></i></a>
@@ -2146,6 +2203,30 @@
       </div>
       &copy; 2026 Heavy Metal Princess Academy. All Rights Reserved.
     </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-footer-nav">
+      <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="mf-link">
+        <i class="fa-solid fa-house"></i>
+        <span>TOP</span>
+      </a>
+      <a href="#news" class="mf-link">
+        <i class="fa-solid fa-bell"></i>
+        <span>NEWS</span>
+      </a>
+      <a href="#members" class="mf-link">
+        <i class="fa-solid fa-users"></i>
+        <span>MEMBER</span>
+      </a>
+      <a href="#shows" class="mf-link">
+        <i class="fa-solid fa-ticket"></i>
+        <span>SHOWS</span>
+      </a>
+      <a href="#contact" class="mf-link">
+        <i class="fa-solid fa-envelope"></i>
+        <span>CONTACT</span>
+      </a>
+    </nav>
 
   </div> <!-- End of main-content-wrapper -->
 
