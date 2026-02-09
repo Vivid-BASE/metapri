@@ -318,11 +318,28 @@
       transform: scale(1.1);
     }
 
-    /* Footer Nav (Desktop default stye if needed, but primarily for mobile per request) */
+    /* Footer Nav (Desktop) */
     .footer-nav {
-      display: none;
-      /* Hide on Desktop by default if user only asked for mobile? Or just style it nice? */
-      /* User said "Add menu to footer when viewed on smartphone". I will hide it on desktop to be safe/clean. */
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      /* Safety wrap */
+    }
+
+    .footer-nav a {
+      color: #aaa;
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+      letter-spacing: 1px;
+    }
+
+    .footer-nav a:hover {
+      color: #FF007F;
+      text-shadow: 0 0 10px #FF007F;
     }
 
     /* Styles for Mobile Bottom Nav - Hidden on Desktop */
