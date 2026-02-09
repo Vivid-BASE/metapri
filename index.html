@@ -138,8 +138,19 @@
       font-family: 'Courier New', Courier, monospace;
       color: #fff;
       scroll-behavior: smooth;
-      overscroll-behavior-y: none;
-      /* Prevents rubber-banding/video reveal at bottom */
+      overscroll-behavior: none;
+      /* Stricter overscroll prevention */
+    }
+
+    html {
+      background-color: #000;
+      /* Ensure overscroll area is black */
+    }
+
+    body {
+      background-color: transparent;
+      /* Let video show through */
+      min-height: 100dvh;
     }
 
     /* イントロの砂嵐ノイズ */
@@ -172,13 +183,16 @@
     /* 背景動画エリア */
     .video-wrapper {
       position: fixed;
-      /* Changed to fixed */
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      z-index: 0;
+      height: 100dvh;
+      /* Use dynamic viewport height for mobile */
+      z-index: -1;
+      /* Move behind body content */
       overflow: hidden;
+      background: #000;
+      /* Fallback */
     }
 
     video {
@@ -204,7 +218,10 @@
           rgba(0, 0, 0, 0.4) 50%,
           rgba(0, 0, 0, 0.4));
       background-size: 100% 4px;
+      background-size: 100% 4px;
       pointer-events: none;
+      height: 100dvh;
+      /* Match video height */
     }
 
     /* Header Container */
