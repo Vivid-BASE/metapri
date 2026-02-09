@@ -242,7 +242,8 @@
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255, 0, 127, 0.3);
       opacity: 0;
-      animation: fade-in 1s ease forwards 2.5s;
+      animation: fade-in 1s ease forwards 0.5s;
+      /* Reduced delay from 2.5s */
     }
 
     .header-logo {
@@ -264,9 +265,10 @@
     /* Main Nav (Desktop) */
     .main-nav {
       display: flex;
+      /* Ensure visible on Desktop */
       gap: 30px;
       margin-left: auto;
-      /* Push to right */
+      align-items: center;
     }
 
     .nav-link {
