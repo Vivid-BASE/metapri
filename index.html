@@ -299,6 +299,13 @@
       transform: scale(1.1);
     }
 
+    /* Footer Nav (Desktop default stye if needed, but primarily for mobile per request) */
+    .footer-nav {
+      display: none;
+      /* Hide on Desktop by default if user only asked for mobile? Or just style it nice? */
+      /* User said "Add menu to footer when viewed on smartphone". I will hide it on desktop to be safe/clean. */
+    }
+
     /* Styles for Mobile Bottom Nav - Hidden on Desktop */
     .mobile-footer-nav {
       display: none;
@@ -613,22 +620,26 @@
         /* Larger */
       }
 
-      /* Mobile Footer Navigation */
-      .mobile-footer-nav {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        background: rgba(0, 0, 0, 0.95);
-        backdrop-filter: blur(10px);
-        padding: 10px 0;
-        padding-bottom: env(safe-area-inset-bottom, 20px);
-        /* iPhone Home Bar Support */
-        border-top: 1px solid rgba(255, 0, 127, 0.3);
-      }
+      /* Mobile Footer Navigation (REMOVED FIXED NAV) */
+      /* .mobile-footer-nav { ... } Removed */
 
       /* Adjust main content to not be hidden behind footer */
-      .site-footer {
-        padding-bottom: 80px !important;
+      /* .site-footer { padding-bottom: 80px !important; } Removed */
+
+      .footer-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .footer-nav a {
+        color: #aaa;
+        font-family: 'Cinzel', serif;
+        text-decoration: none;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
       }
     }
 
@@ -2201,32 +2212,19 @@
         <a href="https://youtube.com/@metapri_legacy" target="_blank" aria-label="YouTube"><i
             class="fa-brands fa-youtube"></i></a>
       </div>
+
+      <!-- Footer Navigation (placed below SNS icons as requested) -->
+      <div class="footer-nav">
+        <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">TOP</a>
+        <a href="#news">NEWS</a>
+        <a href="#about">ABOUT</a>
+        <a href="#members">MEMBER</a>
+        <a href="#shows">SHOWS</a>
+        <a href="#contact">CONTACT</a>
+      </div>
+
       &copy; 2026 Heavy Metal Princess Academy. All Rights Reserved.
     </footer>
-
-    <!-- Mobile Bottom Navigation -->
-    <nav class="mobile-footer-nav">
-      <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="mf-link">
-        <i class="fa-solid fa-house"></i>
-        <span>TOP</span>
-      </a>
-      <a href="#news" class="mf-link">
-        <i class="fa-solid fa-bell"></i>
-        <span>NEWS</span>
-      </a>
-      <a href="#members" class="mf-link">
-        <i class="fa-solid fa-users"></i>
-        <span>MEMBER</span>
-      </a>
-      <a href="#shows" class="mf-link">
-        <i class="fa-solid fa-ticket"></i>
-        <span>SHOWS</span>
-      </a>
-      <a href="#contact" class="mf-link">
-        <i class="fa-solid fa-envelope"></i>
-        <span>CONTACT</span>
-      </a>
-    </nav>
 
   </div> <!-- End of main-content-wrapper -->
 
