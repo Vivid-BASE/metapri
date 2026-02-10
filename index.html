@@ -1436,6 +1436,44 @@
       box-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
     }
 
+    .store-btn {
+      display: inline-block;
+      padding: 20px 50px;
+      background: rgba(255, 0, 127, 0.1);
+      border: 2px solid #FF007F;
+      color: #fff;
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+      cursor: pointer;
+    }
+
+    .store-btn:hover {
+      background: #FF007F;
+      color: #fff;
+      transform: scale(1.1);
+      box-shadow: 0 0 40px rgba(255, 0, 127, 0.8), 0 0 80px rgba(255, 0, 127, 0.4);
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+    }
+
+    .store-btn::before {
+      content: '♛';
+      margin-right: 15px;
+      font-size: 1.2em;
+    }
+
+    .store-btn::after {
+      content: '♛';
+      margin-left: 15px;
+      font-size: 1.2em;
+    }
+
     /* Member Modal Styles */
     .member-modal {
       display: none;
@@ -2259,9 +2297,11 @@
     </section>
 
     <section id="store" class="store-section"
-      style="padding: 100px 20px; text-align: center; background: #050505; border-top: 1px solid #333;">
+      style="padding: 120px 20px; text-align: center; background: #050505; border-top: 1px solid #333;">
       <h2 class="section-title">STORE</h2>
-      <h3 style="font-family: 'Cinzel', serif; font-size: 2rem; color: #ccc; margin-top: 50px;">Coming Soon</h3>
+      <div style="margin-top: 60px;">
+        <a href="https://customfever.shop/?all_items=true" target="_blank" class="store-btn">GO TO OFFICIAL STORE</a>
+      </div>
     </section>
 
     <section id="contact" class="contact-section"
