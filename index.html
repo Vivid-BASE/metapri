@@ -2620,7 +2620,31 @@
           if (player && player.playVideo) {
             player.playVideo();
           }
+
+          // Force play hero video
+          const heroVideo = document.getElementById('heroVideo');
+          if (heroVideo) {
+            heroVideo.play().catch(e => console.log('Hero video play error:', e));
+          }
         });
+      }
+
+      // Intersection Observer for Hero Video Auto-play
+      // Ensures video plays when user manually scrolls back to top
+      const heroSection = document.getElementById('home');
+      if (heroSection) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            const heroVideo = document.getElementById('heroVideo');
+            if (entry.isIntersecting && heroVideo) {
+              heroVideo.play().catch(e => console.log('Auto-play error:', e));
+            } else if (heroVideo) {
+              // Optional: pause when out of view to save battery/performance
+              // heroVideo.pause();
+            }
+          });
+        }, { threshold: 0.1 }); // Trigger when 10% visible
+        observer.observe(heroSection);
       }
 
       // 4. Member Modal Logic
