@@ -2520,6 +2520,67 @@
         });
       }
 
+      // --- YouTube IFrame API Setup ---
+      let player;
+      const videoId = '278LvSGkGdM';
+
+      // Load the IFrame Player API code asynchronously.
+      const tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // This function creates an <iframe> (and YouTube player)
+      // after the API code downloads.
+      window.onYouTubeIframeAPIReady = function () {
+        // We don't initialize here to keep the "Click to Play" placeholder functionality
+      };
+
+      window.playVideo = function () {
+        player = new YT.Player('videoContainer', {
+          height: '100%',
+          width: '100%',
+          videoId: videoId,
+          playerVars: {
+            'autoplay': 1,
+            'controls': 1,
+            'rel': 0,
+            'playsinline': 1,
+            'enablejsapi': 1
+          },
+          events: {
+            'onReady': onPlayerReady,
+            'onError': onPlayerError
+          }
+        });
+      };
+
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      function onPlayerError(event) {
+        console.error('YouTube Player Error:', event.data);
+        // Automatic reload on error (light process)
+        const container = document.getElementById('videoContainer');
+        if (container) {
+          container.innerHTML = '<div class="video-placeholder" onclick="playVideo()"><img src="https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg" alt="Play Video" class="video-thumb" style="object-fit: cover; opacity: 0.7;"><div class="play-button"></div></div>';
+          // Small delay before allowing retry
+          setTimeout(() => playVideo(), 1000);
+        }
+      }
+
+      // Auto-play when returning to the tab
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden && player && player.getPlayerState) {
+          const state = player.getPlayerState();
+          // If paused or buffering, try to play
+          if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.BUFFERING) {
+            player.playVideo();
+          }
+        }
+      });
+
       // 3. Back to Top Button Logic
       const backToTopButton = document.getElementById('backToTop');
 
