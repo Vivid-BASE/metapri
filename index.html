@@ -1817,42 +1817,65 @@
 <body>
 
   <!-- Password Protection Overlay -->
-  <div id="passwordOverlay">
-    <h2 style="margin-bottom: 30px; letter-spacing: 3px;">ENTER PASSWORD</h2>
-    <input type="password" id="passwordInput" placeholder="Pass Code">
-    <button onclick="checkPassword()">ENTER</button>
-    <div id="passwordError" class="error-msg">INCORRECT PASSWORD</div>
+  <!-- PRODUCTION COUNTDOWN OVERLAY -->
+  <div id="launchOverlay"
+    style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; font-family: 'Cinzel', serif;">
+    <div
+      style="font-size: 1.5rem; letter-spacing: 3px; color: #FF007F; margin-bottom: 20px; text-shadow: 0 0 10px rgba(255, 0, 127, 0.5);">
+      2026.2.21 12:00 OPEN
+    </div>
+    <div id="countdownTimer"
+      style="font-size: 3.5rem; font-weight: bold; text-shadow: 0 0 20px rgba(255, 0, 127, 0.5);">
+      00:00:00:00
+    </div>
   </div>
 
   <script>
-    // Simple Password Logic
-    function checkPassword() {
-      const input = document.getElementById('passwordInput').value;
-      const overlay = document.getElementById('passwordOverlay');
-      const errorMsg = document.getElementById('passwordError');
+    (function () {
+      // PRODUCTION LAUNCH: Feb 21, 2026 12:00:00 JST
+      const countDownDate = new Date("Feb 21, 2026 12:00:00").getTime();
+      const overlay = document.getElementById('launchOverlay');
+      const timerDisplay = document.getElementById('countdownTimer');
 
-      if (input === '1111') {
-        localStorage.setItem('site_authenticated', 'true');
-        // Trigger video play on user interaction for iOS reliability
-        const heroVideo = document.getElementById('heroVideo');
-        if (heroVideo) heroVideo.play();
+      function updateTimer() {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
 
-        overlay.style.opacity = '0';
-        setTimeout(() => {
-          overlay.style.display = 'none';
-        }, 500); // Fade out
-      } else {
-        errorMsg.style.display = 'block';
-        setTimeout(() => errorMsg.style.display = 'none', 2000);
+        if (distance < 0) {
+          clearInterval(timerInterval);
+          // Auto-open
+          overlay.style.transition = 'opacity 1s ease';
+          overlay.style.opacity = '0';
+          setTimeout(() => {
+            overlay.style.display = 'none';
+          }, 1000);
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Format with leading zeros
+        const d = days < 10 ? "0" + days : days;
+        const h = hours < 10 ? "0" + hours : hours;
+        const m = minutes < 10 ? "0" + minutes : minutes;
+        const s = seconds < 10 ? "0" + seconds : seconds;
+
+        // Display days if > 0, otherwise just HH:MM:SS ?
+        // User asked for "numbers decreasing". Usually showing days is helpful if it's > 24h.
+        // I'll show D:HH:MM:SS format to be clear.
+        if (days > 0) {
+          timerDisplay.innerHTML = d + ":" + h + ":" + m + ":" + s;
+        } else {
+          timerDisplay.innerHTML = h + ":" + m + ":" + s;
+        }
       }
-    }
 
-    // Check on load
-    document.addEventListener('DOMContentLoaded', () => {
-      if (localStorage.getItem('site_authenticated') === 'true') {
-        document.getElementById('passwordOverlay').style.display = 'none';
-      }
-    });
+      const timerInterval = setInterval(updateTimer, 1000);
+      updateTimer(); // Initial call
+    })();
   </script>
   <script type="application/ld+json">
     {
