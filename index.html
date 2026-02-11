@@ -1141,8 +1141,8 @@
         /* Visible on Mobile */
         position: absolute;
         /* REQUIRED for top/left/transform centering */
-        top: 55%;
-        /* Adjusted for iPhone X safe area and visibility */
+        top: 75%;
+        /* Reverted to 75% as requested */
         bottom: auto;
         left: 0;
         transform: translateY(-50%);
@@ -1351,8 +1351,8 @@
       width: 100%;
       margin-top: 100vh;
       /* Fallback */
-      margin-top: 100svh;
-      /* Mobile viewport fix */
+      margin-top: 100dvh;
+      /* Unified with hero overlay for scroll consistency */
       background: #000;
     }
 
@@ -2587,14 +2587,27 @@
 
       // 3. Back to Top Button Logic
       const backToTopButton = document.getElementById('backToTop');
+      const heroOverlay = document.querySelector('.overlay');
+      const scrollIndicator = document.querySelector('.scroll-indicator');
 
       if (backToTopButton) {
         window.addEventListener('scroll', () => {
+          // Back to Top button visibility
           if (window.scrollY > 300) {
             backToTopButton.classList.add('visible');
           } else {
             backToTopButton.classList.remove('visible');
           }
+
+          // Hero Elements Scroll Fade-out Logic
+          // As the user scrolls down, hero logo and indicator fade away smoothly.
+          const scrollY = window.scrollY;
+          const fadeEnd = window.innerHeight * 0.6; // Fade out by 60% of viewport height
+          let opacity = 1 - (scrollY / fadeEnd);
+          opacity = Math.max(0, Math.min(1, opacity));
+
+          if (heroOverlay) heroOverlay.style.opacity = opacity;
+          if (scrollIndicator) scrollIndicator.style.opacity = opacity * 0.8;
         });
 
         backToTopButton.addEventListener('click', (e) => {
