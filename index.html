@@ -2602,8 +2602,13 @@
           // Hero Elements Scroll Fade-out Logic
           // As the user scrolls down, hero logo and indicator fade away smoothly.
           const scrollY = window.scrollY;
-          const fadeEnd = window.innerHeight * 0.6; // Fade out by 60% of viewport height
-          let opacity = 1 - (scrollY / fadeEnd);
+          const fadeStart = 100; // Buffer: don't start fading until 100px scrolled
+          const fadeEnd = window.innerHeight; // Fade out completely by 100% viewport height (slower fade)
+
+          let opacity = 1;
+          if (scrollY > fadeStart) {
+            opacity = 1 - ((scrollY - fadeStart) / (fadeEnd - fadeStart));
+          }
           opacity = Math.max(0, Math.min(1, opacity));
 
           if (heroOverlay) heroOverlay.style.opacity = opacity;
