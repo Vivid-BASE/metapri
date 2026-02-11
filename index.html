@@ -27,6 +27,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
+    /* Utility Classes for Responsive Line Breaks */
+    .sp-br {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .sp-br {
+        display: block;
+      }
+
+      .pc-br {
+        display: none;
+      }
+    }
+
     /* Scroll Indicator */
     .scroll-indicator {
       position: fixed;
@@ -2067,7 +2082,7 @@
           <p style="margin-bottom: 20px;">
             <strong>日本のガールズヘヴィメタルのレジェンド達による<br class="pc-br"></strong>
             <strong>女性ボーカリストを養成してゆくユニット。</strong><br>
-            <strong>その名も <span style="color: #FF007F;">Heavy Metal Princess Academy</span><br>
+            <strong>その名も <span style="color: #FF007F;">Heavy Metal Princess Academy</span><br class="sp-br">
               <span style="font-size: 0.9em; color: #FF007F;">（ヘヴィ・メタル・プリンセス・アカデミー）</span></strong>
           </p>
           <p>
