@@ -1832,7 +1832,8 @@
   <script>
     (function () {
       // PRODUCTION LAUNCH: Feb 21, 2026 12:00:00 JST
-      const countDownDate = new Date("Feb 21, 2026 12:00:00").getTime();
+      // PREVIEW OVERRIDE: Set to PAST date to unlock immediately
+      const countDownDate = new Date("Feb 01, 2026 12:00:00").getTime();
       const overlay = document.getElementById('launchOverlay');
       const timerDisplay = document.getElementById('countdownTimer');
 
