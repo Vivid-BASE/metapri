@@ -1141,8 +1141,8 @@
         /* Visible on Mobile */
         position: absolute;
         /* REQUIRED for top/left/transform centering */
-        top: 75%;
-        /* Lowered as per request (near scroll indicator) */
+        top: 55%;
+        /* Adjusted for iPhone X safe area and visibility */
         bottom: auto;
         left: 0;
         transform: translateY(-50%);
@@ -1814,6 +1814,10 @@
 
       if (input === '1111') {
         localStorage.setItem('site_authenticated', 'true');
+        // Trigger video play on user interaction for iOS reliability
+        const heroVideo = document.getElementById('heroVideo');
+        if (heroVideo) heroVideo.play();
+
         overlay.style.opacity = '0';
         setTimeout(() => {
           overlay.style.display = 'none';
@@ -1837,7 +1841,7 @@
   <div class="scanlines"></div>
 
   <div id="home" class="video-wrapper">
-    <video autoplay muted loop playsinline>
+    <video id="heroVideo" autoplay muted loop playsinline>
       <source src="movie.mp4" type="video/mp4">
     </video>
   </div>
@@ -1847,7 +1851,7 @@
   </div>
 
   <div class="overlay"
-    style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none;">
+    style="position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; z-index: 5; pointer-events: none;">
     <div class="logo-container">
       <img src="logo.png" alt="Heavy Metal Princess Academy" class="logo-image">
     </div>
