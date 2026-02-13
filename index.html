@@ -14,6 +14,15 @@
     gtag('config', 'G-2VYYFREWLJ');
   </script>
   <meta name="description" content="ガールズメタルレジェンドによる新たなボーカリストの発掘、育成の為のスーパーユニット！プロデューサーはEARTHSHAKERのMARCYが担当">
+  <meta property="og:title" content="HEAVY METAL PRINCESS ACADEMY | ヘヴィ・メタル・プリンセス・アカデミー">
+  <meta property="og:description" content="ガールズメタルレジェンドによる新たなボーカリストの発掘、育成の為のスーパーユニット！">
+  <meta property="og:image" content="https://official-5pt.pages.dev/ogp.jpg">
+  <meta property="og:url" content="https://official-5pt.pages.dev/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HEAVY METAL PRINCESS ACADEMY">
+  <meta name="twitter:description" content="ガールズメタルレジェンドによる新たなボーカリストの発掘、育成の為のスーパーユニット！">
+  <meta name="twitter:image" content="https://official-5pt.pages.dev/ogp.jpg">
   <meta name="keywords"
     content="HMPA, Heavy Metal Princess Academy, ヘビーメタルプリンセスアカデミー, メタプリ, BABYMETAL, BAND-MAID, NEMOPHILA, LOVEBITES, ANGRA, Nova Era, EARTHSHAKER, アースシェイカー, Aldious, Mary's Blood, CYNTIA, YUI, Gacharic Spin, HAGANE, 花冷え, Japanese Girls Metal, ジャパメタ, J-METAL, 嬢メタル, メタルカヴァー, メタルカバー, Power Metal, パワーメタル, Melodic Speed Metal, メロスピ, Neo-Classical Metal, ネオクラ, SHOW-YA, DESTROSE, LOUDNESS, Female Fronted Metal, Shred, Guitar Playthrough, Reaction, BURRN!, BRIDEAR">
   <title>HEAVY METAL PRINCESS ACADEMY | ヘヴィ・メタル・プリンセス・アカデミー</title>
@@ -142,6 +151,34 @@
       </div>
     </div>
   </div>
+
+  <!-- Social Share Script -->
+  <script>
+    function shareOnX() {
+      const url = encodeURIComponent(window.location.href);
+      const text = encodeURIComponent("Heavy Metal Princess Academy - New Project Launched! #HMPA #Metapri");
+      window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+    }
+
+    function shareOnFacebook() {
+      const url = encodeURIComponent(window.location.href);
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+    }
+
+    function shareOnLine() {
+      const url = encodeURIComponent(window.location.href);
+      const text = encodeURIComponent("Heavy Metal Princess Academy");
+      window.open(`https://social-plugins.line.me/lineit/share?url=${url}`, '_blank');
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert("Link copied to clipboard!");
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <style>
@@ -1810,6 +1847,37 @@
       position: relative;
       z-index: 20;
     }
+
+    /* Social Share Buttons */
+    .share-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    .share-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #333;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 1px solid #555;
+    }
+
+    .share-btn:hover {
+      background: #FF007F;
+      border-color: #FF007F;
+      box-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+      transform: translateY(-3px);
+    }
   </style>
 </head>
 
@@ -1928,6 +1996,66 @@
           "jobTitle": "Vocalist"
         }
       ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "Heavy Metal Princess Academy - NOVA ERA (ANGRA Cover) MV",
+      "description": "The first music video from Heavy Metal Princess Academy, featuring a cover of ANGRA's 'NOVA ERA'. Produced by Marcy (EARTHSHAKER).",
+      "thumbnailUrl": [
+        "https://official-5pt.pages.dev/ogp.jpg",
+        "https://img.youtube.com/vi/278LvSGkGdM/hqdefault.jpg"
+      ],
+      "uploadDate": "2026-02-21T12:00:00+09:00",
+      "duration": "PT4M54S",
+      "contentUrl": "https://www.youtube.com/watch?v=278LvSGkGdM",
+      "embedUrl": "https://www.youtube.com/embed/278LvSGkGdM",
+      "interactionStatistic": {
+        "@type": "InteractionCounter",
+        "interactionType": { "@type": "WatchAction" },
+        "userInteractionCount": 5647018
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Heavy Metal Princess Academy 1st SHOW",
+      "startDate": "2026-05-16T17:00:00+09:00",
+      "endDate": "2026-05-16T21:00:00+09:00",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Akabane ReNY alpha",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Akabane 1-7-9",
+          "addressLocality": "Kita-ku",
+          "postalCode": "115-0045",
+          "addressRegion": "Tokyo",
+          "addressCountry": "JP"
+        }
+      },
+      "image": [
+        "https://official-5pt.pages.dev/ogp.jpg"
+      ],
+      "description": "The debut live performance of Heavy Metal Princess Academy. Produced by Marcy (EARTHSHAKER).",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://official-5pt.pages.dev/#shows",
+        "price": "4500",
+        "priceCurrency": "JPY",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-02-21T12:00:00+09:00"
+      },
+      "performer": {
+        "@type": "MusicGroup",
+        "name": "Heavy Metal Princess Academy"
+      }
     }
   </script>
 
@@ -2506,12 +2634,36 @@
         <form id="contactForm" class="contact-form" style="display: flex; flex-direction: column; gap: 30px;">
           <input type="text" name="name" placeholder="NAME" required>
           <input type="email" name="email" placeholder="EMAIL" required>
+          <input type="text" name="subject" placeholder="SUBJECT" required> <!-- Added Subject -->
           <textarea name="message" placeholder="MESSAGE" rows="5" required></textarea>
           <!-- Anti-spam Honeypot -->
           <input type="text" name="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
           <button type="submit" id="submitBtn" class="contact-btn">SEND MESSAGE</button>
           <div id="formStatus" style="margin-top: 20px; font-family: 'Cinzel', serif; display: none;"></div>
         </form>
+      </div>
+    </section>
+
+    <!-- SHARE Section -->
+    <section id="share" class="share-section"
+      style="padding: 60px 20px; text-align: center; background: #050505; border-top: 1px solid #333;">
+      <h3
+        style="font-family: 'Cinzel', serif; color: #fff; font-size: 1.5rem; margin-bottom: 30px; letter-spacing: 2px;">
+        SHARE THIS SITE
+      </h3>
+      <div class="share-buttons">
+        <div class="share-btn" onclick="shareOnX()" aria-label="Share on X">
+          <i class="fa-brands fa-x-twitter"></i>
+        </div>
+        <div class="share-btn" onclick="shareOnFacebook()" aria-label="Share on Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </div>
+        <div class="share-btn" onclick="shareOnLine()" aria-label="Share on LINE">
+          <i class="fa-brands fa-line"></i>
+        </div>
+        <div class="share-btn" onclick="copyLink()" aria-label="Copy Link">
+          <i class="fa-solid fa-link"></i>
+        </div>
       </div>
     </section>
 
@@ -2758,6 +2910,7 @@
       const modalRole = document.getElementById('modalRole');
       const modalDescEn = document.getElementById('modalDescEn');
       const modalDescJp = document.getElementById('modalDescJp');
+      const modalSns = document.getElementById('modalSns');
 
       memberCards.forEach(card => {
         card.style.cursor = 'pointer'; // Make clickable
@@ -2832,36 +2985,38 @@
           submitBtn.disabled = true;
 
           const formData = new FormData(contactForm);
+
+          // --- CONFIGURATION ---
+          // TODO: Replace with your actual Web App URL after deployment
+          const GAS_URL = "https://script.google.com/macros/s/AKfycbyWj00v5nLhI3DpLwKYsfV430KI5S1UwFnTFw8q7PgAoa7b8rXHIxtuFDwbaQNRuabAJQ/exec";
+          // ---------------------
+
           const payload = {
-            accessKey: 'sf_agnjij237k379h9cagbadb5d',
-            subject: 'New Inquiry from Website',
             name: formData.get('name'),
             email: formData.get('email'),
+            subject: formData.get('subject'),
             message: formData.get('message'),
-            replyTo: formData.get('email'),
             honeypot: formData.get('honeypot')
           };
 
           try {
-            const response = await fetch('https://api.staticforms.xyz/submit', {
+            await fetch(GAS_URL, {
               method: 'POST',
+              mode: 'no-cors', // Important: Google Apps Script requires no-cors for simple POST
               headers: {
                 'Content-Type': 'application/json'
               },
               body: JSON.stringify(payload)
             });
 
-            const result = await response.json();
+            // unique behavior of no-cors: we cannot check response.ok or status.
+            // If fetch doesn't throw, it means the request was sent.
+            formStatus.style.color = '#FF007F';
+            formStatus.textContent = 'MESSAGE SENT SUCCESSFULLY!';
+            contactForm.reset();
 
-            if (result.success) {
-              formStatus.style.color = '#FF007F';
-              formStatus.textContent = 'MESSAGE SENT SUCCESSFULLY!';
-              contactForm.reset();
-            } else {
-              formStatus.style.color = '#ff4444';
-              formStatus.textContent = 'ERROR: ' + (result.message || 'PLEASE TRY AGAIN LATER.');
-            }
           } catch (error) {
+            console.error('Submission Error:', error);
             formStatus.style.color = '#ff4444';
             formStatus.textContent = 'SOMETHING WENT WRONG. PLEASE TRY AGAIN.';
           } finally {
