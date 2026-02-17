@@ -251,6 +251,16 @@
       /* Fallback */
     }
 
+    #videoContainer iframe,
+    #videoContainer object,
+    #videoContainer embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
     video {
       width: 100%;
       height: 100%;
@@ -2255,7 +2265,7 @@
         <!-- Click-to-Play Container -->
         <div id="videoContainer"
           style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000;">
-          <div class="video-placeholder" onclick="playVideo()">
+          <div id="videoPlayerTarget" class="video-placeholder" onclick="playVideo()">
             <!-- Real YouTube Thumbnail -->
             <img src="https://img.youtube.com/vi/2ZgN-2QM5wM/hqdefault.jpg" alt="Play Video" class="video-thumb"
               style="object-fit: cover; opacity: 0.7;">
@@ -2789,7 +2799,7 @@
       };
 
       window.playVideo = function () {
-        player = new YT.Player('videoContainer', {
+        player = new YT.Player('videoPlayerTarget', {
           height: '100%',
           width: '100%',
           videoId: videoId,
@@ -2816,7 +2826,7 @@
         // Automatic reload on error (light process)
         const container = document.getElementById('videoContainer');
         if (container) {
-          container.innerHTML = '<div class="video-placeholder" onclick="playVideo()"><img src="https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg" alt="Play Video" class="video-thumb" style="object-fit: cover; opacity: 0.7;"><div class="play-button"></div></div>';
+          container.innerHTML = '<div id="videoPlayerTarget" class="video-placeholder" onclick="playVideo()"><img src="https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg" alt="Play Video" class="video-thumb" style="object-fit: cover; opacity: 0.7;"><div class="play-button"></div></div>';
           // Small delay before allowing retry
           setTimeout(() => playVideo(), 1000);
         }
