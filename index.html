@@ -2650,32 +2650,37 @@
     <section id="contact" class="contact-section"
       style="padding: 100px 20px; text-align: center; background: #000; border-top: 1px solid #333;">
       <h2 class="section-title">CONTACT</h2>
-      <div style="max-width: 600px; margin: 0 auto;">
-        <form id="contactForm"
-          action="https://docs.google.com/forms/d/e/1FAIpQLScJio_709lrWxm1s7JCRiCllR_aqYsXvQdg4Eo9sxsmZ4Id7Q/formResponse"
-          method="POST" target="hidden_iframe" class="contact-form"
-          style="display: flex; flex-direction: column; gap: 30px;">
+      <div style="max-width: 600px; margin: 0 auto; position: relative;">
+        <!-- Transparent Google Form iframe (hidden but functional) -->
+        <iframe id="googleFormIframe"
+          src="https://docs.google.com/forms/d/e/1FAIpQLScJio_709lrWxm1s7JCRiCllR_aqYsXvQdg4Eo9sxsmZ4Id7Q/viewform?embedded=true"
+          width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0"
+          style="position: absolute; top: 0; left: 0; opacity: 0; pointer-events: none; z-index: 1;">
+          読み込んでいます…
+        </iframe>
+
+        <!-- Custom styled form (visible overlay) -->
+        <form id="contactForm" class="contact-form"
+          style="display: flex; flex-direction: column; gap: 30px; position: relative; z-index: 2;">
           <div class="form-group">
             <label for="name" style="color: #FF007F; font-family: 'Cinzel', serif;">NAME</label>
-            <input type="text" id="name" name="entry.1691176212" required>
+            <input type="text" id="name" required>
           </div>
           <div class="form-group">
             <label for="email" style="color: #FF007F; font-family: 'Cinzel', serif;">EMAIL</label>
-            <input type="email" id="email" name="entry.1491223961" required>
+            <input type="email" id="email" required>
           </div>
           <div class="form-group">
             <label for="subject" style="color: #FF007F; font-family: 'Cinzel', serif;">SUBJECT</label>
-            <input type="text" id="subject" name="entry.1413813876" required>
+            <input type="text" id="subject" required>
           </div>
           <div class="form-group">
             <label for="message" style="color: #FF007F; font-family: 'Cinzel', serif;">MESSAGE</label>
-            <textarea id="message" name="entry.2039151525" rows="5" required></textarea>
+            <textarea id="message" rows="5" required></textarea>
           </div>
           <button type="submit" class="contact-btn">SEND MESSAGE</button>
           <div id="formStatus" style="margin-top: 20px; font-family: 'Cinzel', serif; display: none;"></div>
         </form>
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
-          onload="if(window.submitted){showSuccessMessage();}"></iframe>
       </div>
     </section>
 
@@ -2987,39 +2992,75 @@
         }
       });
 
-      // --- Contact Form Submission Logic (Google Forms Direct) ---
-      window.submitted = false; // Define submitted globally (on window)
-
+      // --- Contact Form Submission Logic (Transparent iframe overlay) ---
       const contactForm = document.getElementById('contactForm');
       const formStatus = document.getElementById('formStatus');
+      const googleFormIframe = document.getElementById('googleFormIframe');
 
-      if (contactForm) {
-        // Send button behavior
-        contactForm.addEventListener('submit', function () {
-          window.submitted = true; // Set flag
+      if (contactForm && googleFormIframe) {
+        contactForm.addEventListener('submit', function (e) {
+          e.preventDefault(); // Prevent default form submission
+
+          // Show sending status
           formStatus.textContent = 'SENDING...';
           formStatus.style.display = 'block';
-          formStatus.style.color = '#fff'; // Reset color
+          formStatus.style.color = '#fff';
           formStatus.className = 'form-status';
+
+          // Get values from custom form
+          const nameValue = document.getElementById('name').value;
+          const emailValue = document.getElementById('email').value;
+          const subjectValue = document.getElementById('subject').value;
+          const messageValue = document.getElementById('message').value;
+
+          // Wait for iframe to load, then fill and submit
+          const iframeDoc = googleFormIframe.contentDocument || googleFormIframe.contentWindow.document;
+
+          // Try to fill the form fields in the iframe
+          try {
+            // Find input fields by their entry IDs
+            const nameInput = iframeDoc.querySelector('input[name="entry.1691176212"]');
+            const emailInput = iframeDoc.querySelector('input[name="entry.1491223961"]');
+            const subjectInput = iframeDoc.querySelector('input[name="entry.1413813876"]');
+            const messageInput = iframeDoc.querySelector('textarea[name="entry.2039151525"]');
+
+            if (nameInput) nameInput.value = nameValue;
+            if (emailInput) emailInput.value = emailValue;
+            if (subjectInput) subjectInput.value = subjectValue;
+            if (messageInput) messageInput.value = messageValue;
+
+            // Find and click the submit button in the iframe
+            const submitButton = iframeDoc.querySelector('div[role="button"]') ||
+              iframeDoc.querySelector('span[role="button"]') ||
+              iframeDoc.querySelector('button[type="submit"]');
+
+            if (submitButton) {
+              submitButton.click();
+
+              // Show success message after a delay
+              setTimeout(() => {
+                formStatus.textContent = 'MESSAGE SENT SUCCESSFULLY!';
+                formStatus.style.color = '#FF007F';
+                formStatus.className = 'form-status success';
+                contactForm.reset();
+
+                setTimeout(() => {
+                  formStatus.style.display = 'none';
+                }, 5000);
+              }, 1000);
+            } else {
+              throw new Error('Submit button not found');
+            }
+          } catch (error) {
+            console.error('Form submission error:', error);
+            formStatus.textContent = 'ERROR: Please try again';
+            formStatus.style.color = '#ff0000';
+            setTimeout(() => {
+              formStatus.style.display = 'none';
+            }, 5000);
+          }
         });
       }
-
-      // Hidden iframe onload callback
-      window.showSuccessMessage = function () {
-        if (window.submitted) {
-          formStatus.textContent = 'MESSAGE SENT SUCCESSFULLY!';
-          formStatus.style.color = '#FF007F'; // Pink success
-          formStatus.className = 'form-status success';
-          contactForm.reset(); // Reset form
-
-          // Hide message after 5 seconds
-          setTimeout(() => {
-            formStatus.style.display = 'none';
-          }, 5000);
-
-          window.submitted = false; // Reset flag
-        }
-      };
 
       // Global Reset Function
       window.resetSite = function () {
