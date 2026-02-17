@@ -1436,6 +1436,33 @@
     }
 
     /* NEWS Layout */
+    .news-container {
+      max-height: 400px;
+      overflow-y: auto;
+      padding-right: 15px;
+      text-align: left;
+    }
+
+    /* Custom Scrollbar for NEWS */
+    .news-container::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .news-container::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+
+    .news-container::-webkit-scrollbar-thumb {
+      background: #FF007F;
+      border-radius: 10px;
+    }
+
+    .news-container::-webkit-scrollbar-thumb:hover {
+      background: #ff3399;
+    }
+
+    /* Keep existing styles just in case but they seem unused in current HTML */
     .news-item {
       display: flex;
       align-items: flex-start;
@@ -2130,67 +2157,72 @@
     <section id="news" class="news-section"
       style="padding: 100px 20px 60px 20px; text-align: center; background: transparent; position: relative;">
       <h2 class="section-title">NEWS</h2>
-      <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div class="news-container">
+          <!-- NEWS ITEM 1: YouTube (Linked) -->
+          <a href="https://www.youtube.com/watch?v=2ZgN-2QM5wM" target="_blank"
+            style="text-decoration: none; display: block; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); transition: all 0.3s; margin-bottom: 20px;">
+            <div style="display: flex; align-items: baseline; padding: 15px 10px; transition: all 0.3s;"
+              onmouseover="this.style.background='rgba(255,0,127,0.05)'"
+              onmouseout="this.style.background='transparent'">
+              <div
+                style="width: 150px; flex-shrink: 0; font-family: 'Cinzel', serif; color: #FF007F; font-weight: bold;">
+                2026.02.21
+              </div>
+              <div style="flex-grow: 1;">
+                <div
+                  style="font-family: 'Cinzel', serif; font-size: 1.1rem; color: #fff; margin-bottom: 5px; letter-spacing: 1px;">
+                  1ST MUSIC VIDEO "NOVA ERA" (ANGRA COVER) OUT NOW
+                </div>
+                <div style="font-family: 'Yu Mincho', serif; font-size: 0.85rem; color: #aaa;">
+                  1st MV「NOVA ERA」（ANGRA カヴァー）YouTubeにて解禁
+                </div>
+              </div>
+              <div style="color: #FF007F; font-size: 0.8rem; padding-left: 10px;">
+                <i class="fa-brands fa-youtube" style="font-size: 1.2rem; color: #ff0000;"></i>
+              </div>
+            </div>
+          </a>
 
-        <!-- NEWS ITEM 1: YouTube (Linked) -->
-        <a href="https://www.youtube.com/watch?v=2ZgN-2QM5wM" target="_blank"
-          style="text-decoration: none; display: block; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); transition: all 0.3s; margin-bottom: 20px;">
-          <div style="display: flex; align-items: baseline; padding: 15px 10px; transition: all 0.3s;"
-            onmouseover="this.style.background='rgba(255,0,127,0.05)'" onmouseout="this.style.background='transparent'">
+          <!-- NEWS ITEM 2: LIVE (Linked to shows) -->
+          <a href="#shows"
+            style="text-decoration: none; display: block; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); transition: all 0.3s; margin-bottom: 20px;">
+            <div style="display: flex; align-items: baseline; padding: 15px 10px; transition: all 0.3s;"
+              onmouseover="this.style.background='rgba(255,0,127,0.05)'"
+              onmouseout="this.style.background='transparent'">
+              <div
+                style="width: 150px; flex-shrink: 0; font-family: 'Cinzel', serif; color: #FF007F; font-weight: bold;">
+                2026.02.21
+              </div>
+              <div style="flex-grow: 1;">
+                <div
+                  style="font-family: 'Cinzel', serif; font-size: 1.1rem; color: #fff; margin-bottom: 5px; letter-spacing: 1px;">
+                  1st SHOW Information Announced
+                </div>
+                <div style="font-family: 'Yu Mincho', serif; font-size: 0.85rem; color: #aaa;">
+                  ライブ情報告知
+                </div>
+              </div>
+              <div style="color: #FF007F; font-size: 0.8rem; padding-left: 10px;">
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+            </div>
+          </a>
+
+          <!-- NEWS ITEM 3: HP OPEN -->
+          <div
+            style="display: flex; align-items: baseline; margin-bottom: 20px; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); padding: 15px 10px;">
             <div style="width: 150px; flex-shrink: 0; font-family: 'Cinzel', serif; color: #FF007F; font-weight: bold;">
               2026.02.21
             </div>
             <div style="flex-grow: 1;">
               <div
                 style="font-family: 'Cinzel', serif; font-size: 1.1rem; color: #fff; margin-bottom: 5px; letter-spacing: 1px;">
-                1ST MUSIC VIDEO "NOVA ERA" (ANGRA COVER) OUT NOW
+                Official Website Launched
               </div>
               <div style="font-family: 'Yu Mincho', serif; font-size: 0.85rem; color: #aaa;">
-                1st MV「NOVA ERA」（ANGRA カヴァー）YouTubeにて解禁
+                オフィシャルサイト公開
               </div>
-            </div>
-            <div style="color: #FF007F; font-size: 0.8rem; padding-left: 10px;">
-              <i class="fa-brands fa-youtube" style="font-size: 1.2rem; color: #ff0000;"></i>
-            </div>
-          </div>
-        </a>
-
-        <!-- NEWS ITEM 2: LIVE (Linked to shows) -->
-        <a href="#shows"
-          style="text-decoration: none; display: block; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); transition: all 0.3s; margin-bottom: 20px;">
-          <div style="display: flex; align-items: baseline; padding: 15px 10px; transition: all 0.3s;"
-            onmouseover="this.style.background='rgba(255,0,127,0.05)'" onmouseout="this.style.background='transparent'">
-            <div style="width: 150px; flex-shrink: 0; font-family: 'Cinzel', serif; color: #FF007F; font-weight: bold;">
-              2026.02.21
-            </div>
-            <div style="flex-grow: 1;">
-              <div
-                style="font-family: 'Cinzel', serif; font-size: 1.1rem; color: #fff; margin-bottom: 5px; letter-spacing: 1px;">
-                1st SHOW Information Announced
-              </div>
-              <div style="font-family: 'Yu Mincho', serif; font-size: 0.85rem; color: #aaa;">
-                ライブ情報告知
-              </div>
-            </div>
-            <div style="color: #FF007F; font-size: 0.8rem; padding-left: 10px;">
-              <i class="fa-solid fa-chevron-right"></i>
-            </div>
-          </div>
-        </a>
-
-        <!-- NEWS ITEM 3: HP OPEN -->
-        <div
-          style="display: flex; align-items: baseline; margin-bottom: 20px; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); padding: 15px 10px;">
-          <div style="width: 150px; flex-shrink: 0; font-family: 'Cinzel', serif; color: #FF007F; font-weight: bold;">
-            2026.02.21
-          </div>
-          <div style="flex-grow: 1;">
-            <div
-              style="font-family: 'Cinzel', serif; font-size: 1.1rem; color: #fff; margin-bottom: 5px; letter-spacing: 1px;">
-              Official Website Launched
-            </div>
-            <div style="font-family: 'Yu Mincho', serif; font-size: 0.85rem; color: #aaa;">
-              オフィシャルサイト公開
             </div>
           </div>
         </div>
