@@ -1,0 +1,10 @@
+name = "contact-form-worker"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# Environment variables (secrets)
+# Set these using: wrangler secret put RESEND_API_KEY
+# Set these using: wrangler secret put NOTIFICATION_EMAIL
+
+[vars]
+# Public variables can go here if needed
