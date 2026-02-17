@@ -2651,49 +2651,35 @@
       style="padding: 100px 20px; text-align: center; background: #000; border-top: 1px solid #333;">
       <h2 class="section-title">CONTACT</h2>
       <div style="max-width: 600px; margin: 0 auto;">
-        <form id="contactForm" class="contact-form" style="display: flex; flex-direction: column; gap: 30px;">
-          <input type="text" name="name" placeholder="NAME" required>
-          <input type="email" name="email" placeholder="EMAIL" required>
-          <input type="text" name="subject" placeholder="SUBJECT" required> <!-- Added Subject -->
-          <textarea name="message" placeholder="MESSAGE" rows="5" required></textarea>
-          <!-- Anti-spam Honeypot -->
-          <input type="text" name="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
-          <button type="submit" id="submitBtn" class="contact-btn">SEND MESSAGE</button>
+        <form id="contactForm"
+          action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSe7yY_qU75Y1V9h8A64Y0Ebe_9z4E0z33rX-jB1C4Q3fW_YgA/formResponse"
+          method="POST" target="hidden_iframe" class="contact-form"
+          style="display: flex; flex-direction: column; gap: 30px;">
+          <div class="form-group">
+            <label for="name" style="color: #FF007F; font-family: 'Cinzel', serif;">NAME</label>
+            <input type="text" id="name" name="entry.198308726" required>
+          </div>
+          <div class="form-group">
+            <label for="email" style="color: #FF007F; font-family: 'Cinzel', serif;">EMAIL</label>
+            <input type="email" id="email" name="entry.1500366650" required>
+          </div>
+          <div class="form-group">
+            <label for="subject" style="color: #FF007F; font-family: 'Cinzel', serif;">SUBJECT</label>
+            <input type="text" id="subject" name="entry.1070381622" required>
+          </div>
+          <div class="form-group">
+            <label for="message" style="color: #FF007F; font-family: 'Cinzel', serif;">MESSAGE</label>
+            <textarea id="message" name="entry.1444583084" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="contact-btn">SEND MESSAGE</button>
           <div id="formStatus" style="margin-top: 20px; font-family: 'Cinzel', serif; display: none;"></div>
         </form>
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+          onload="if(window.submitted){showSuccessMessage();}"></iframe>
       </div>
     </section>
 
-    <!-- SHARE Section -->
-    <section id="share" class="share-section"
-      style="padding: 60px 20px; text-align: center; background: #050505; border-top: 1px solid #333;">
-      <h3
-        style="font-family: 'Cinzel', serif; color: #fff; font-size: 1.5rem; margin-bottom: 30px; letter-spacing: 2px;">
-        SHARE THIS SITE
-      </h3>
-      <div class="share-buttons">
-        <!-- X (Share) -->
-        <div class="share-btn" onclick="shareOnX()" aria-label="Share on X" style="cursor: pointer;">
-          <i class="fa-brands fa-x-twitter"></i>
-        </div>
-        <!-- Facebook (Share) -->
-        <div class="share-btn" onclick="shareOnFacebook()" aria-label="Share on Facebook" style="cursor: pointer;">
-          <i class="fa-brands fa-facebook-f"></i>
-        </div>
-        <!-- Instagram (Copy Link) -->
-        <div class="share-btn" onclick="copyLink()" aria-label="Copy Link for Instagram" style="cursor: pointer;">
-          <i class="fa-brands fa-instagram"></i>
-        </div>
-        <!-- TikTok (Copy Link) -->
-        <div class="share-btn" onclick="copyLink()" aria-label="Copy Link for TikTok" style="cursor: pointer;">
-          <i class="fa-brands fa-tiktok"></i>
-        </div>
-        <!-- YouTube (Copy Link) -->
-        <div class="share-btn" onclick="copyLink()" aria-label="Copy Link for YouTube" style="cursor: pointer;">
-          <i class="fa-brands fa-youtube"></i>
-        </div>
-      </div>
-    </section>
+    <!-- SHARE Section REMOVED upon request -->
 
     <footer class="site-footer"
       style="padding: 40px 20px; text-align: center; background: #000 !important; position: relative; z-index: 10; box-shadow: 0 120vh 0 100vh #000;">
@@ -3001,67 +2987,39 @@
         }
       });
 
-      // --- Contact Form Submission Logic (StaticForms) ---
+      // --- Contact Form Submission Logic (Google Forms Direct) ---
+      window.submitted = false; // Define submitted globally (on window)
+
       const contactForm = document.getElementById('contactForm');
       const formStatus = document.getElementById('formStatus');
-      const submitBtn = document.getElementById('submitBtn');
 
       if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-          e.preventDefault();
-
-          // Reset status
-          formStatus.style.display = 'block';
-          formStatus.style.color = '#fff';
+        // Send button behavior
+        contactForm.addEventListener('submit', function () {
+          window.submitted = true; // Set flag
           formStatus.textContent = 'SENDING...';
-          submitBtn.disabled = true;
-
-          const formData = new FormData(contactForm);
-
-          // --- CONFIGURATION ---
-          // TODO: Replace with your actual Web App URL after deployment
-          const GAS_URL = "https://script.google.com/macros/s/AKfycbyWj00v5nLhI3DpLwKYsfV430KI5S1UwFnTFw8q7PgAoa7b8rXHIxtuFDwbaQNRuabAJQ/exec";
-          // ---------------------
-
-          const payload = {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            subject: formData.get('subject'),
-            message: formData.get('message'),
-            honeypot: formData.get('honeypot')
-          };
-
-          try {
-            await fetch(GAS_URL, {
-              method: 'POST',
-              mode: 'no-cors', // Important: Google Apps Script requires no-cors for simple POST
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(payload)
-            });
-
-            // unique behavior of no-cors: we cannot check response.ok or status.
-            // If fetch doesn't throw, it means the request was sent.
-            formStatus.style.color = '#FF007F';
-            formStatus.textContent = 'MESSAGE SENT SUCCESSFULLY!';
-            contactForm.reset();
-
-          } catch (error) {
-            console.error('Submission Error:', error);
-            formStatus.style.color = '#ff4444';
-            formStatus.textContent = 'SOMETHING WENT WRONG. PLEASE TRY AGAIN.';
-          } finally {
-            submitBtn.disabled = false;
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-              if (formStatus.textContent.includes('SUCCESSFULLY')) {
-                formStatus.style.display = 'none';
-              }
-            }, 5000);
-          }
+          formStatus.style.display = 'block';
+          formStatus.style.color = '#fff'; // Reset color
+          formStatus.className = 'form-status';
         });
       }
+
+      // Hidden iframe onload callback
+      window.showSuccessMessage = function () {
+        if (window.submitted) {
+          formStatus.textContent = 'MESSAGE SENT SUCCESSFULLY!';
+          formStatus.style.color = '#FF007F'; // Pink success
+          formStatus.className = 'form-status success';
+          contactForm.reset(); // Reset form
+
+          // Hide message after 5 seconds
+          setTimeout(() => {
+            formStatus.style.display = 'none';
+          }, 5000);
+
+          window.submitted = false; // Reset flag
+        }
+      };
 
       // Global Reset Function
       window.resetSite = function () {
