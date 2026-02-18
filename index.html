@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2VYYFREWLJ"></script>
   <script>
@@ -14,8 +13,17 @@
 
     gtag('config', 'G-2VYYFREWLJ');
   </script>
-  <meta name="description"
-    content="Heavy Metal Princess Academy (HMPA/ヘヴィ・メタル・プリンセス・アカデミー) is a premier training unit for the next generation of female metal vocalists, produced by legendary EARTHSHAKER vocalist Masafumi 'Marcy' Nishida. Featuring new talents and support from members of Mary's Blood, CYNTIA, and ALDIOUS.">
+  <meta name="description" content="HMPA（ヘビーメタルプリンセスアカデミー）始動。Aldious、Mary's Blood、CYNTIAのメンバーが参加。西田昌史プロデュース。">
+  <meta property="og:title" content="HEAVY METAL PRINCESS ACADEMY | ヘヴィ・メタル・プリンセス・アカデミー">
+  <meta property="og:description" content="HMPA（ヘビーメタルプリンセスアカデミー）始動。Aldious、Mary's Blood、CYNTIAのメンバーが参加。西田昌史プロデュース。">
+  <meta property="og:image" content="https://official-5pt.pages.dev/ogp.jpg">
+  <meta property="og:url" content="https://official-5pt.pages.dev/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HEAVY METAL PRINCESS ACADEMY">
+  <meta name="twitter:description" content="HMPA（ヘビーメタルプリンセスアカデミー）始動。Aldious、Mary's Blood、CYNTIAのメンバーが参加。西田昌史プロデュース。">
+  <meta name="twitter:image" content="https://official-5pt.pages.dev/ogp.jpg">
+  <meta name="twitter:site" content="@Metapri_Legacy">
   <meta name="keywords"
     content="HMPA, Heavy Metal Princess Academy, ヘビーメタルプリンセスアカデミー, メタプリ, BABYMETAL, BAND-MAID, NEMOPHILA, LOVEBITES, ANGRA, Nova Era, EARTHSHAKER, アースシェイカー, Aldious, Mary's Blood, CYNTIA, YUI, Gacharic Spin, HAGANE, 花冷え, Japanese Girls Metal, ジャパメタ, J-METAL, 嬢メタル, メタルカヴァー, メタルカバー, Power Metal, パワーメタル, Melodic Speed Metal, メロスピ, Neo-Classical Metal, ネオクラ, SHOW-YA, DESTROSE, LOUDNESS, Female Fronted Metal, Shred, Guitar Playthrough, Reaction, BURRN!, BRIDEAR">
   <title>HEAVY METAL PRINCESS ACADEMY | ヘヴィ・メタル・プリンセス・アカデミー</title>
@@ -145,6 +153,34 @@
     </div>
   </div>
 
+  <!-- Social Share Script -->
+  <script>
+    function shareOnX() {
+      const url = encodeURIComponent(window.location.href);
+      const text = encodeURIComponent("Heavy Metal Princess Academy - New Project Launched! #HMPA #Metapri");
+      window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+    }
+
+    function shareOnFacebook() {
+      const url = encodeURIComponent(window.location.href);
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+    }
+
+    function shareOnLine() {
+      const url = encodeURIComponent(window.location.href);
+      const text = encodeURIComponent("Heavy Metal Princess Academy");
+      window.open(`https://social-plugins.line.me/lineit/share?url=${url}`, '_blank');
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert("Link copied to clipboard!");
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  </script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <style>
     /* 全体の設定 */
@@ -214,6 +250,19 @@
       overflow: hidden;
       background: #000;
       /* Fallback */
+    }
+
+    #videoContainer iframe,
+    #videoContainer object,
+    #videoContainer embed {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 10;
+      opacity: 1 !important;
+      display: block !important;
     }
 
     video {
@@ -1388,6 +1437,33 @@
     }
 
     /* NEWS Layout */
+    .news-container {
+      max-height: 400px;
+      overflow-y: auto;
+      padding-right: 15px;
+      text-align: left;
+    }
+
+    /* Custom Scrollbar for NEWS */
+    .news-container::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .news-container::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+
+    .news-container::-webkit-scrollbar-thumb {
+      background: #FF007F;
+      border-radius: 10px;
+    }
+
+    .news-container::-webkit-scrollbar-thumb:hover {
+      background: #ff3399;
+    }
+
+    /* Keep existing styles just in case but they seem unused in current HTML */
     .news-item {
       display: flex;
       align-items: flex-start;
@@ -1812,48 +1888,103 @@
       position: relative;
       z-index: 20;
     }
+
+    /* Social Share Buttons */
+    .share-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    .share-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #333;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 1px solid #555;
+    }
+
+    .share-btn:hover {
+      background: #FF007F;
+      border-color: #FF007F;
+      box-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+      transform: translateY(-3px);
+    }
   </style>
 </head>
 
 <body>
 
   <!-- Password Protection Overlay -->
-  <div id="passwordOverlay">
-    <h2 style="margin-bottom: 30px; letter-spacing: 3px;">ENTER PASSWORD</h2>
-    <input type="password" id="passwordInput" placeholder="Pass Code">
-    <button onclick="checkPassword()">ENTER</button>
-    <div id="passwordError" class="error-msg">INCORRECT PASSWORD</div>
+  <!-- PRODUCTION COUNTDOWN OVERLAY -->
+  <div id="launchOverlay"
+    style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; font-family: 'Cinzel', serif;">
+    <div
+      style="font-size: 1.5rem; letter-spacing: 3px; color: #FF007F; margin-bottom: 20px; text-shadow: 0 0 10px rgba(255, 0, 127, 0.5);">
+      2026.2.21 12:00 OPEN
+    </div>
+    <div id="countdownTimer"
+      style="font-size: 3.5rem; font-weight: bold; text-shadow: 0 0 20px rgba(255, 0, 127, 0.5);">
+      00:00:00:00
+    </div>
   </div>
 
   <script>
-    // Simple Password Logic
-    function checkPassword() {
-      const input = document.getElementById('passwordInput').value;
-      const overlay = document.getElementById('passwordOverlay');
-      const errorMsg = document.getElementById('passwordError');
+    (function () {
+      // PRODUCTION LAUNCH: Feb 21, 2026 12:00:00 JST
+      // PREVIEW OVERRIDE: Set to PAST date to unlock immediately
+      const countDownDate = new Date("Feb 01, 2026 12:00:00").getTime();
+      const overlay = document.getElementById('launchOverlay');
+      const timerDisplay = document.getElementById('countdownTimer');
 
-      if (input === '1111') {
-        localStorage.setItem('site_authenticated', 'true');
-        // Trigger video play on user interaction for iOS reliability
-        const heroVideo = document.getElementById('heroVideo');
-        if (heroVideo) heroVideo.play();
+      function updateTimer() {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
 
-        overlay.style.opacity = '0';
-        setTimeout(() => {
-          overlay.style.display = 'none';
-        }, 500); // Fade out
-      } else {
-        errorMsg.style.display = 'block';
-        setTimeout(() => errorMsg.style.display = 'none', 2000);
+        if (distance < 0) {
+          clearInterval(timerInterval);
+          // Auto-open
+          overlay.style.transition = 'opacity 1s ease';
+          overlay.style.opacity = '0';
+          setTimeout(() => {
+            overlay.style.display = 'none';
+          }, 1000);
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Format with leading zeros
+        const d = days < 10 ? "0" + days : days;
+        const h = hours < 10 ? "0" + hours : hours;
+        const m = minutes < 10 ? "0" + minutes : minutes;
+        const s = seconds < 10 ? "0" + seconds : seconds;
+
+        // Display days if > 0, otherwise just HH:MM:SS ?
+        // User asked for "numbers decreasing". Usually showing days is helpful if it's > 24h.
+        // I'll show D:HH:MM:SS format to be clear.
+        if (days > 0) {
+          timerDisplay.innerHTML = d + ":" + h + ":" + m + ":" + s;
+        } else {
+          timerDisplay.innerHTML = h + ":" + m + ":" + s;
+        }
       }
-    }
 
-    // Check on load
-    document.addEventListener('DOMContentLoaded', () => {
-      if (localStorage.getItem('site_authenticated') === 'true') {
-        document.getElementById('passwordOverlay').style.display = 'none';
-      }
-    });
+      const timerInterval = setInterval(updateTimer, 1000);
+      updateTimer(); // Initial call
+    })();
   </script>
   <script type="application/ld+json">
     {
@@ -1868,7 +1999,7 @@
         "https://www.instagram.com/metapri_legacy",
         "https://www.youtube.com/@metapri_official"
       ],
-      "description": "A premier training unit dedicated to forging the next generation of female vocalists, led by General Producer Masafumi 'Marcy' Nishida.",
+      "description": "ガールズメタルレジェンドによる新たなボーカリストの発掘、育成の為のスーパーユニット！プロデューサーはEARTHSHAKERのMARCYが担当",
       "founder": {
         "@type": "Person",
         "name": "Masafumi 'Marcy' Nishida",
@@ -1906,6 +2037,42 @@
           "jobTitle": "Vocalist"
         }
       ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "NOVA ERA - HEAVY METAL PRINCESS ACADEMY (Official MV)",
+      "description": "ANGRAの名曲『NOVA ERA』を、豪華メンバーによるカヴァーで全世界解禁。",
+      "thumbnailUrl": "https://img.youtube.com/vi/2ZgN-2QM5wM/hqdefault.jpg",
+      "uploadDate": "2026-02-21",
+      "embedUrl": "https://www.youtube.com/embed/2ZgN-2QM5wM"
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Heavy Metal Princess Academy 1st Recital",
+      "startDate": "2026-05-16T17:00:00+09:00",
+      "location": {
+        "@type": "Place",
+        "name": "赤羽ReNY alpha",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "北区赤羽",
+          "addressRegion": "JP",
+          "streetAddress": "1-7-9"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://eplus.jp/hmpa/",
+        "price": "4500",
+        "priceCurrency": "JPY",
+        "availability": "https://schema.org/PreOrder"
+      }
     }
   </script>
 
@@ -1948,8 +2115,12 @@
       <div class="header-sns">
         <a href="https://x.com/Metapri_Legacy" target="_blank" aria-label="X (Twitter)"><i
             class="fa-brands fa-x-twitter"></i></a>
-        <a href="https://www.instagram.com/metapri_legacy" target="_blank" aria-label="Instagram"><i
-            class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61587962325602&locale=ja_JP" target="_blank"
+          aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/heavy_metal_princess_academy/?hl=ja" target="_blank"
+          aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@meta_pri_official" target="_blank" aria-label="TikTok"><i
+            class="fa-brands fa-tiktok"></i></a>
         <a href="https://www.youtube.com/@metapri_official" target="_blank" aria-label="YouTube"><i
             class="fa-brands fa-youtube"></i></a>
       </div>
@@ -1963,67 +2134,72 @@
     <section id="news" class="news-section"
       style="padding: 100px 20px 60px 20px; text-align: center; background: transparent; position: relative;">
       <h2 class="section-title">NEWS</h2>
-      <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div class="news-container">
+          <!-- NEWS ITEM 1: YouTube (Linked) -->
+          <a href="https://www.youtube.com/watch?v=2ZgN-2QM5wM" target="_blank"
+            style="text-decoration: none; display: block; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); transition: all 0.3s; margin-bottom: 20px;">
+            <div style="display: flex; align-items: baseline; padding: 15px 10px; transition: all 0.3s;"
+              onmouseover="this.style.background='rgba(255,0,127,0.05)'"
+              onmouseout="this.style.background='transparent'">
+              <div
+                style="width: 150px; flex-shrink: 0; font-family: 'Cinzel', serif; color: #FF007F; font-weight: bold;">
+                2026.02.21
+              </div>
+              <div style="flex-grow: 1;">
+                <div
+                  style="font-family: 'Cinzel', serif; font-size: 1.1rem; color: #fff; margin-bottom: 5px; letter-spacing: 1px;">
+                  1st MV "NOVA ERA" (ANGRA Cover) Out Now
+                </div>
+                <div style="font-family: 'Yu Mincho', serif; font-size: 0.85rem; color: #aaa;">
+                  1st MV「NOVA ERA」（ANGRA カヴァー） 解禁
+                </div>
+              </div>
+              <div style="color: #FF007F; font-size: 0.8rem; padding-left: 10px;">
+                <i class="fa-brands fa-youtube" style="font-size: 1.2rem; color: #ff0000;"></i>
+              </div>
+            </div>
+          </a>
 
-        <!-- NEWS ITEM 1: YouTube (Linked) -->
-        <a href="https://www.youtube.com/@metapri_official" target="_blank"
-          style="text-decoration: none; display: block; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); transition: all 0.3s; margin-bottom: 20px;">
-          <div style="display: flex; align-items: baseline; padding: 15px 10px; transition: all 0.3s;"
-            onmouseover="this.style.background='rgba(255,0,127,0.05)'" onmouseout="this.style.background='transparent'">
+          <!-- NEWS ITEM 2: LIVE (Linked to shows) -->
+          <a href="#shows"
+            style="text-decoration: none; display: block; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); transition: all 0.3s; margin-bottom: 20px;">
+            <div style="display: flex; align-items: baseline; padding: 15px 10px; transition: all 0.3s;"
+              onmouseover="this.style.background='rgba(255,0,127,0.05)'"
+              onmouseout="this.style.background='transparent'">
+              <div
+                style="width: 150px; flex-shrink: 0; font-family: 'Cinzel', serif; color: #FF007F; font-weight: bold;">
+                2026.02.21
+              </div>
+              <div style="flex-grow: 1;">
+                <div
+                  style="font-family: 'Cinzel', serif; font-size: 1.2rem; color: #fff; margin-bottom: 5px; letter-spacing: 1px;">
+                  1st Recital Details Unveiled
+                </div>
+                <div style="font-family: 'Yu Mincho', serif; font-size: 1.1rem; color: #fff; line-height: 1.6;">
+                  1stリサイタル情報告知解禁
+                </div>
+              </div>
+              <div style="color: #FF007F; font-size: 0.8rem; padding-left: 10px;">
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+            </div>
+          </a>
+
+          <!-- NEWS ITEM 3: HP OPEN -->
+          <div
+            style="display: flex; align-items: baseline; margin-bottom: 20px; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); padding: 15px 10px;">
             <div style="width: 150px; flex-shrink: 0; font-family: 'Cinzel', serif; color: #FF007F; font-weight: bold;">
               2026.02.21
             </div>
             <div style="flex-grow: 1;">
               <div
                 style="font-family: 'Cinzel', serif; font-size: 1.1rem; color: #fff; margin-bottom: 5px; letter-spacing: 1px;">
-                1ST MUSIC VIDEO "NOVA ERA" (ANGRA COVER) OUT NOW
+                Official Website Now Open
               </div>
               <div style="font-family: 'Yu Mincho', serif; font-size: 0.85rem; color: #aaa;">
-                1st MV「NOVA ERA」（ANGRA カヴァー）YouTubeにて解禁
+                オフィシャルサイト公開
               </div>
-            </div>
-            <div style="color: #FF007F; font-size: 0.8rem; padding-left: 10px;">
-              <i class="fa-brands fa-youtube" style="font-size: 1.2rem; color: #ff0000;"></i>
-            </div>
-          </div>
-        </a>
-
-        <!-- NEWS ITEM 2: LIVE (Linked to shows) -->
-        <a href="#shows"
-          style="text-decoration: none; display: block; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); transition: all 0.3s; margin-bottom: 20px;">
-          <div style="display: flex; align-items: baseline; padding: 15px 10px; transition: all 0.3s;"
-            onmouseover="this.style.background='rgba(255,0,127,0.05)'" onmouseout="this.style.background='transparent'">
-            <div style="width: 150px; flex-shrink: 0; font-family: 'Cinzel', serif; color: #FF007F; font-weight: bold;">
-              2026.02.21
-            </div>
-            <div style="flex-grow: 1;">
-              <div
-                style="font-family: 'Cinzel', serif; font-size: 1.1rem; color: #fff; margin-bottom: 5px; letter-spacing: 1px;">
-                1st SHOW Information Announced
-              </div>
-              <div style="font-family: 'Yu Mincho', serif; font-size: 0.85rem; color: #aaa;">
-                ライブ情報告知
-              </div>
-            </div>
-            <div style="color: #FF007F; font-size: 0.8rem; padding-left: 10px;">
-              <i class="fa-solid fa-chevron-right"></i>
-            </div>
-          </div>
-        </a>
-
-        <!-- NEWS ITEM 3: HP OPEN -->
-        <div
-          style="display: flex; align-items: baseline; margin-bottom: 20px; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); padding: 15px 10px;">
-          <div style="width: 150px; flex-shrink: 0; font-family: 'Cinzel', serif; color: #FF007F; font-weight: bold;">
-            2026.02.21
-          </div>
-          <div style="flex-grow: 1;">
-            <div
-              style="font-family: 'Cinzel', serif; font-size: 1.1rem; color: #fff; margin-bottom: 5px; letter-spacing: 1px;">
-              Official Website Launched
-            </div>
-            <div style="font-family: 'Yu Mincho', serif; font-size: 0.85rem; color: #aaa;">
-              オフィシャルサイト公開
             </div>
           </div>
         </div>
@@ -2105,9 +2281,9 @@
         <!-- Click-to-Play Container -->
         <div id="videoContainer"
           style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000;">
-          <div class="video-placeholder" onclick="playVideo()">
+          <div id="videoPlayerTarget" class="video-placeholder" onclick="playVideo()">
             <!-- Real YouTube Thumbnail -->
-            <img src="https://img.youtube.com/vi/278LvSGkGdM/hqdefault.jpg" alt="Play Video" class="video-thumb"
+            <img src="https://img.youtube.com/vi/2ZgN-2QM5wM/hqdefault.jpg" alt="Play Video" class="video-thumb"
               style="object-fit: cover; opacity: 0.7;">
             <div class="play-button"></div>
           </div>
@@ -2320,57 +2496,68 @@
           </div>
 
           <h3
-            style="font-family: 'Cinzel', serif; font-size: 2.2rem; color: #fff; text-align: center; margin-bottom: 10px; letter-spacing: 4px;">
-            1st SHOW
+            style="font-family: 'Cinzel', serif; font-size: 2.2rem; color: #fff; text-align: center; margin-bottom: 50px; letter-spacing: 3px; line-height: 1.3;">
+            Heavy Metal Princess Academy<br>1st Recital
           </h3>
-          <p
-            style="font-family: 'Cinzel', serif; color: #FF007F; font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 50px;">
-            Heavy Metal Princess Academy
-          </p>
 
           <!-- Main Info -->
           <div style="margin-bottom: 60px; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); padding-bottom: 40px;">
-            <div style="margin-bottom: 25px;">
-              <div style="font-family: 'Cinzel', serif; font-size: 2rem; color: #fff; line-height: 1;">2026.05.16 <span
-                  style="font-size: 1.2rem; color: #FF007F;">SAT</span></div>
-              <div style="font-size: 0.85rem; color: #aaa; margin-top: 8px;">2026年5月16日(土)</div>
+            <div style="margin-bottom: 35px;">
+              <div
+                style="font-family: 'Cinzel', serif; font-size: 1.6rem; color: #FF007F; line-height: 1; letter-spacing: 2px; margin-bottom: 10px;">
+                [DATE]<br>2026.05.16 SAT</div>
+              <div style="font-size: 1.4rem; color: #fff; font-weight: bold;">
+                2026年5月16日(土)
+              </div>
             </div>
 
-            <div style="margin-bottom: 25px;">
-              <div style="font-family: 'Cinzel', serif; font-size: 1.5rem; color: #fff;">
+            <div style="margin-bottom: 35px;">
+              <div
+                style="font-family: 'Cinzel', serif; font-size: 1.6rem; color: #FF007F; line-height: 1; letter-spacing: 2px; margin-bottom: 10px;">
+                [VENUE]<br><a href="https://ruido.org/akabane_reny/" target="_blank"
+                  style="color: #FF007F; text-decoration: none; border-bottom: 2px dashed #FF007F; padding-bottom: 2px;">AKABANE
+                  ReNY alpha</a></div>
+              <div style="font-size: 1.4rem; color: #fff; font-weight: bold;">
                 <a href="https://ruido.org/akabane_reny/" target="_blank"
-                  style="color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255, 0, 127, 0.5);">AKABANE
-                  ReNY alpha</a>
+                  style="color: #fff; text-decoration: none; border-bottom: 2px dashed #fff;">赤羽ReNY alpha</a>
               </div>
-              <div style="font-size: 0.85rem; color: #aaa; margin-top: 8px;"><a href="https://ruido.org/akabane_reny/"
-                  target="_blank" style="color: #aaa; text-decoration: none; border-bottom: 1px dashed #aaa;">赤羽ReNY
-                  alpha</a></div>
             </div>
 
             <div
-              style="display: flex; justify-content: center; gap: 40px; margin-bottom: 30px; font-family: 'Cinzel', serif; font-size: 1.2rem;">
-              <div><span style="color: #FF007F; font-size: 0.9rem; display: block; margin-bottom: 5px;">OPEN</span>
-                16:30</div>
-              <div><span style="color: #FF007F; font-size: 0.9rem; display: block; margin-bottom: 5px;">START</span>
-                17:00</div>
+              style="display: flex; justify-content: center; gap: 60px; margin-bottom: 35px; font-family: 'Cinzel', serif; font-size: 1.4rem;">
+              <div>
+                <span
+                  style="color: #FF007F; font-size: 1rem; display: block; margin-bottom: 5px; letter-spacing: 1px;">OPEN</span>
+                16:30
+              </div>
+              <div>
+                <span
+                  style="color: #FF007F; font-size: 1rem; display: block; margin-bottom: 5px; letter-spacing: 1px;">START</span>
+                17:00
+              </div>
             </div>
 
             <div style="margin-bottom: 10px;">
-              <div style="font-family: 'Cinzel', serif; color: #fff; font-size: 1.3rem; letter-spacing: 1px;">ADV
-                &yen;4,500 / DOOR &yen;5,000</div>
-              <div style="font-size: 0.8rem; color: #aaa; margin-top: 5px;">
-                前売 4,500円 / 当日 5,000円 <span style="margin-left: 10px;">(+1 Drink Order)</span>
+              <div
+                style="font-family: 'Cinzel', serif; color: #FF007F; font-size: 1.6rem; letter-spacing: 2px; margin-bottom: 10px;">
+                [TICKET]<br>&yen;4,500 <span style="font-size: 0.9rem; vertical-align: middle;">(TAX INCL.)</span></div>
+              <div style="font-size: 1.4rem; color: #fff; font-weight: bold;">
+                &yen;4,500 (税込)
               </div>
-            </div>
-            <div
-              style="font-size: 0.85rem; color: #FF007F; font-family: 'Cinzel', serif; margin-top: 10px; letter-spacing: 1px;">
-              ALL STANDING <span style="font-size: 0.8rem; color: #888; margin-left:10px;">(オールスタンディング)</span>
+              <div style="font-size: 1.2rem; color: #fff; margin-top: 5px; font-weight: bold;">
+                All Standing / オールスタンディング
+              </div>
+              <div style="font-size: 1.1rem; color: #ddd; font-weight: normal; margin-top: 15px;">
+                *Drink order required at entry. / ※入場時、別途ドリンク代が必要です。
+              </div>
             </div>
           </div>
 
           <h4
-            style="font-family: 'Cinzel', serif; color: #fff; font-size: 1.4rem; margin-bottom: 30px; letter-spacing: 4px; position: relative; display: inline-block;">
-            TICKET INFO
+            style="font-family: 'Cinzel', serif; color: #fff; font-size: 1.4rem; margin-bottom: 30px; letter-spacing: 2px; position: relative; display: inline-block; line-height: 1.2;">
+            TICKET SCHEDULE
+            <span
+              style="display: block; font-size: 0.8rem; color: #FF007F; font-family: sans-serif; letter-spacing: 1px;">チケットスケジュール</span>
             <span
               style="position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); width: 30px; height: 1px; background: #FF007F;"></span>
           </h4>
@@ -2380,86 +2567,171 @@
 
             <!-- YouTube Pre-sale -->
             <div
-              style="margin-bottom: 40px; padding: 25px; background: rgba(255, 0, 127, 0.03); border-left: 2px solid #FF007F; text-align: center;">
+              style="margin-bottom: 40px; padding: 25px; background: rgba(255, 0, 127, 0.05); border-left: 3px solid #FF007F; border-right: 3px solid #FF007F; text-align: center;">
               <div
-                style="font-family: 'Cinzel', serif; color: #FF007F; font-weight: bold; font-size: 1.2rem; margin-bottom: 5px;">
-                OFFICIAL YouTube PRE-SALE <span style="font-size: 0.8rem; vertical-align: middle;">(LOTTERY)</span>
+                style="font-family: 'Cinzel', serif; color: #FF007F; font-weight: bold; font-size: 1.3rem; margin-bottom: 8px;">
+                ① OFFICIAL YouTube PRE-SALE (LOTTERY)
               </div>
-              <div style="font-size: 0.8rem; color: #aaa; margin-bottom: 15px;">最速オフィシャルWeb YouTube先行</div>
+              <div style="font-size: 1rem; color: #fff; margin-bottom: 15px; font-weight: bold; letter-spacing: 1px;">
+                最速オフィシャルYouTube先行 (抽選)
+              </div>
 
-              <div style="font-family: 'Cinzel', serif; color: #fff; font-size: 1.1rem; margin-bottom: 15px;">
-                03.14 <span style="font-size: 0.8rem; color: #FF007F;">SAT</span> 10:00 - 03.29 <span
-                  style="font-size: 0.8rem; color: #FF007F;">SUN</span> 23:59
+              <div
+                style="font-family: 'Cinzel', serif; font-size: 1.2rem; color: #fff; margin-bottom: 5px; font-weight: bold;">
+                03.14 (Sat) 12:00 - 03.29 (Sun) 23:59
+              </div>
+              <div style="font-size: 1.2rem; color: #fff; margin-bottom: 20px; font-weight: bold;">
+                3月14日(土) 12:00 ～ 3月29日(日) 23:59
+              </div>
+
+              <div
+                style="font-size: 1.1rem; color: #fff; margin-bottom: 25px; border: 3px solid #FF007F; padding: 20px; display: inline-block; background: rgba(255,0,127,0.15); border-radius: 6px;">
+                <span style="color: #FF007F; font-weight: bold; letter-spacing: 1px;">RESULTS ANNOUNCEMENT /
+                  当落発表:</span><br>
+                <span style="color: #fff; font-weight: bold; font-size: 1.3rem; display: block; margin-top: 8px;">April
+                  1st (Wed) 18:00 JST</span>
+                <span style="color: #fff; font-weight: bold; font-size: 1.3rem; display: block;">4月1日(水) 18:00頃</span>
               </div>
 
               <div style="margin-bottom: 20px;">
                 <a href="https://www.youtube.com/@metapri_official" target="_blank"
                   style="display: inline-flex; align-items: center; color: #fff; text-decoration: none; font-size: 0.9rem; background: rgba(255,0,0,0.2); padding: 5px 15px; border-radius: 20px; border: 1px solid rgba(255,0,0,0.3); transition: all 0.3s;">
                   <i class="fa-brands fa-youtube" style="color: #ff0000; margin-right: 8px; font-size: 1.1rem;"></i>
-                  Official YouTube
+                  Official YouTube Channel
                 </a>
               </div>
 
-              <div
-                style="font-size: 0.9rem; color: #ccc; font-family: 'Cinzel', serif; border-top: 0.5px solid rgba(255,255,255,0.1); padding-top: 15px;">
-                TICKET PIA / <span style="font-size: 0.8rem;">チケットぴあ</span>
-              </div>
 
-              <!-- Glassmorphism Guide Box -->
-              <div
-                style="margin-top: 30px; font-size: 0.85rem; border: 0.5px solid rgba(255, 0, 127, 0.4); padding: 20px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 4px; text-align: left;">
-                <div style="margin-bottom: 15px; display: flex; align-items: flex-start;">
-                  <i class="fa-solid fa-circle-info"
-                    style="color: #FF007F; margin-top: 3px; margin-right: 12px; font-size: 1rem;"></i>
-                  <div>
-                    <a href="https://eplus.jp/sf/guide/spticket/howto" target="_blank"
-                      style="color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.3); font-weight: bold; font-family: 'Cinzel', serif; letter-spacing: 1px;">
-                      EPLUS <span style="font-size: 0.8rem; font-family: sans-serif;">(イープラス)</span>
-                    </a>
-                  </div>
-                </div>
-                <div style="margin-bottom: 15px; display: flex; align-items: flex-start;">
-                  <i class="fa-solid fa-circle-info"
-                    style="color: #FF007F; margin-top: 3px; margin-right: 12px; font-size: 1rem;"></i>
-                  <div>
-                    <a href="https://t.pia.jp/guide/tixplus.jsp" target="_blank"
-                      style="color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.3); font-weight: bold; font-family: 'Cinzel', serif; letter-spacing: 1px;">
-                      TICKET PIA <span style="font-size: 0.8rem; font-family: sans-serif;">(チケットぴあ)</span>
-                    </a>
-                  </div>
-                </div>
-                <p style="margin: 10px 0 0 28px; color: #888; font-size: 0.75rem; line-height: 1.5;">
-                  How to Use Electronic Tickets / 電子チケットの使い方をご案内しています。
-                </p>
-              </div>
             </div>
 
             <!-- Playguide Pre-sale -->
-            <div style="margin-bottom: 40px; padding: 20px 0; border-bottom: 0.5px solid rgba(255,255,255,0.1);">
+            <div style="margin-bottom: 40px; padding: 25px 0; border-bottom: 0.5px solid rgba(255,255,255,0.1);">
               <div
-                style="font-family: 'Cinzel', serif; color: #fff; font-weight: bold; font-size: 1.2rem; margin-bottom: 5px; letter-spacing: 2px;">
-                PLAYGUIDE PRE-SALE <span style="font-size: 0.8rem; vertical-align: middle;">(LOTTERY)</span>
+                style="font-family: 'Cinzel', serif; color: #fff; font-weight: bold; font-size: 1.4rem; margin-bottom: 8px; letter-spacing: 2px;">
+                ② PLAYGUIDE PRE-SALE (LOTTERY)
               </div>
-              <div style="font-size: 0.8rem; color: #888; margin-bottom: 15px;">プレイガイド先行</div>
-              <div style="font-family: 'Cinzel', serif; color: #fff; font-size: 1.1rem; margin-bottom: 10px;">
-                04.04 <span style="font-size: 0.8rem; color: #FF007F;">SAT</span> 10:00 - 04.12 <span
-                  style="font-size: 0.8rem; color: #FF007F;">SUN</span> 23:59
+              <div style="font-size: 1rem; color: #fff; margin-bottom: 15px; font-weight: bold; letter-spacing: 1px;">
+                プレイガイド先行 (抽選)
               </div>
-              <div style="font-size: 0.85rem; color: #aaa; font-family: 'Cinzel', serif;">TICKET PIA, e+</div>
+              <div
+                style="font-family: 'Cinzel', serif; font-size: 1.2rem; color: #fff; margin-bottom: 5px; font-weight: bold;">
+                04.04 (Sat) 12:00 - 04.12 (Sun) 23:59
+              </div>
+              <div style="font-size: 1.2rem; color: #fff; margin-bottom: 20px; font-weight: bold;">
+                4月4日(土) 12:00 ～ 4月12日(日) 23:59
+              </div>
+
+              <div style="font-size: 1.1rem; color: #fff; margin-bottom: 25px;">
+                <span style="color: #FF007F; font-weight: bold; letter-spacing: 1px;">RESULTS ANNOUNCEMENT /
+                  当落発表:</span><br>
+                <span style="color: #fff; font-weight: bold; font-size: 1.3rem; display: block; margin-top: 8px;">April
+                  14th (Tue) / 4月14日(火)</span>
+                <span style="font-size: 1.1rem; color: #ddd; margin-top: 8px; display: block;">(<span
+                    style="font-family: sans-serif; text-transform: none;">e+</span> /イープラス: 10:00 JST ,
+                  Ticket Pia / チケットぴあ: 18:00 JST)</span>
+              </div>
+
+
+
+              <div
+                style="margin-top: 30px; font-size: 1.1rem; padding: 25px; background: rgba(255,0,127,0.12); border: 2px solid rgba(255,0,127,0.5); border-radius: 8px;">
+                <div
+                  style="color: #FF007F; font-weight: bold; margin-bottom: 15px; font-family: 'Cinzel', serif; letter-spacing: 1.5px; font-size: 1.2rem;">
+                  PAYMENT DEADLINE / 入金締切日</div>
+                <div style="color: #fff; line-height: 1.8; font-size: 1.2rem; font-weight: bold;">
+                  TICKET PIA / チケットぴあ：April 16th (Thu) 23:59 / 4月16日(木) 23:59まで<br>
+                  <span style="font-family: sans-serif; text-transform: none;">e+</span> / イープラス：April 15th (Wed) 21:00
+                  / 4月15日(水) 21:00まで
+                </div>
+              </div>
             </div>
 
             <!-- General Sale -->
-            <div style="padding: 20px 0;">
+            <div style="padding: 20px 0; margin-bottom: 40px;">
               <div
-                style="font-family: 'Cinzel', serif; color: #fff; font-weight: bold; font-size: 1.2rem; margin-bottom: 5px; letter-spacing: 2px;">
-                GENERAL SALE
+                style="font-family: 'Cinzel', serif; color: #fff; font-weight: bold; font-size: 1.5rem; margin-bottom: 15px; letter-spacing: 2px;">
+                ③ GENERAL SALE (FIRST-COME)
               </div>
-              <div style="font-size: 0.8rem; color: #888; margin-bottom: 15px;">一般発売</div>
-              <div
-                style="font-family: 'Cinzel', serif; color: #FF007F; font-size: 1.2rem; margin-bottom: 10px; font-weight: bold;">
-                2026.04.18 <span style="font-size: 0.9rem;">SAT</span> 10:00 ON SALE
+              <div style="font-size: 1rem; color: #fff; margin-bottom: 15px; font-weight: bold; letter-spacing: 1px;">
+                一般発売 (先着)
               </div>
-              <div style="font-size: 0.85rem; color: #aaa; font-family: 'Cinzel', serif;">TICKET PIA, e+</div>
+              <div style="font-size: 1.4rem; color: #fff; margin-bottom: 10px; font-weight: bold;">
+                04.18 (Sat) 12:00 - / 4月18日(土) 12:00 ～
+              </div>
+
+            </div>
+
+            <!-- Additional Ticket Info -->
+            <div
+              style="margin-top: 20px; color: #fff; font-weight: bold; font-size: 1.1rem; text-align: center; border-top: 1px solid rgba(255, 0, 127, 0.3); padding-top: 20px;">
+              Max 4 tickets per person / お一人様4枚まで<br><br>
+              Credit Card Fee: Free / クレジットカード決済手数料：無料<br>
+              Convenience Store Fee: &yen;220/txn (tax incl.) / コンビニ等の決済手数料：220円/件 (税込)
+            </div>
+
+            <!-- Notes Section -->
+            <div
+              style="margin-top: 50px; font-size: 0.85rem; border: 0.5px solid rgba(255, 0, 127, 0.4); padding: 30px 20px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); text-align: left;">
+              <h5
+                style="font-family: 'Cinzel', serif; color: #fff; font-size: 1.1rem; margin-bottom: 20px; border-bottom: 1px solid rgba(255,0,127,0.3); padding-bottom: 10px; line-height: 1.3;">
+                GUIDELINES
+                <span
+                  style="display: block; font-size: 0.8rem; color: #FF007F; font-family: sans-serif; letter-spacing: 1px;">注意事項</span>
+              </h5>
+
+              <div style="margin-bottom: 25px;">
+                <span
+                  style="color: #FF007F; font-weight: bold; display: block; margin-bottom: 8px; font-size: 1.1rem; letter-spacing: 1px;">TICKET
+                  LIMIT / 枚数制限</span>
+                <span style="color: #eee; font-size: 1.1rem;">Max 4 tickets per person(お一人様4枚まで)</span>
+              </div>
+
+              <div style="margin-bottom: 25px;">
+                <span
+                  style="color: #FF007F; font-weight: bold; display: block; margin-bottom: 8px; font-size: 1.1rem; letter-spacing: 1px;">ADMISSION
+                  / 発券・入場方法</span>
+                <span style="color: #fff; font-weight: bold; display: block; margin-bottom: 5px; font-size: 1.1rem;">All
+                  tickets are digital. / 本公演は、全て電子チケットとなります。</span>
+                <span style="color: #eee; display: block; margin-bottom: 8px; font-size: 1.1rem;">(MOALA Ticket /
+                  スマチケ)</span>
+                <span
+                  style="color: #FF007F; font-weight: bold; font-size: 1.1rem; border-bottom: 1.5px solid #FF007F; padding-bottom: 2px;">Smartphone
+                  required for entry. / ご入場にはスマートフォンが必須となります。</span>
+              </div>
+
+              <div style="margin-bottom: 25px;">
+                <span
+                  style="color: #FF007F; font-weight: bold; display: block; margin-bottom: 8px; font-size: 1.1rem; letter-spacing: 1px;">FEES
+                  / 決済手数料</span>
+                <ul style="list-style: none; padding: 0; color: #eee; margin: 0; line-height: 1.8; font-size: 1.1rem;">
+                  <li>Credit Card Fee: Free / クレジットカード決済手数料：無料</li>
+                  <li>Convenience Store Fee: &yen;220/txn (tax incl.) / コンビニ等の決済手数料：220円/件 (税込)</li>
+                </ul>
+              </div>
+
+              <div style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px;">
+                <div style="margin-bottom: 15px; display: flex; align-items: flex-start;">
+                  <i class="fa-solid fa-circle-info"
+                    style="color: #FF007F; margin-top: 5px; margin-right: 15px; font-size: 1.1rem;"></i>
+                  <div>
+                    <a href="https://eplus.jp/sf/guide/spticket/howto" target="_blank"
+                      style="color: #fff; text-decoration: none; border-bottom: 2px solid rgba(255, 255, 255, 0.4); font-size: 1.1rem; font-family: 'Cinzel', serif; letter-spacing: 1px; font-weight: bold;">
+                      <span style="font-family: sans-serif; text-transform: none;">e+</span> DIGITAL TICKET GUIDE /
+                      イープラス 電子チケットガイド
+                    </a>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: flex-start;">
+                  <i class="fa-solid fa-circle-info"
+                    style="color: #FF007F; margin-top: 5px; margin-right: 15px; font-size: 1.1rem;"></i>
+                  <div>
+                    <a href="https://t.pia.jp/guide/tixplus.jsp" target="_blank"
+                      style="color: #fff; text-decoration: none; border-bottom: 2px solid rgba(255, 255, 255, 0.4); font-size: 1.1rem; font-family: 'Cinzel', serif; letter-spacing: 1px; font-weight: bold;">
+                      PIA DIGITAL TICKET GUIDE / チケットぴあ 電子チケットガイド
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -2473,7 +2745,10 @@
       style="padding: 120px 20px; text-align: center; background: #050505; border-top: 1px solid #333;">
       <h2 class="section-title">STORE</h2>
       <div style="margin-top: 60px;">
-        <a href="https://customfever.shop/?all_items=true" target="_blank" class="store-btn">GO TO OFFICIAL STORE</a>
+        <!-- <a href="https://customfever.shop/?all_items=true" target="_blank" class="store-btn">GO TO OFFICIAL STORE</a> -->
+        <div
+          style="font-family: 'Cinzel', serif; font-size: 2rem; color: #fff; letter-spacing: 5px; text-shadow: 0 0 10px rgba(255, 0, 127, 0.5);">
+          COMING SOON</div>
       </div>
     </section>
 
@@ -2482,24 +2757,41 @@
       <h2 class="section-title">CONTACT</h2>
       <div style="max-width: 600px; margin: 0 auto;">
         <form id="contactForm" class="contact-form" style="display: flex; flex-direction: column; gap: 30px;">
-          <input type="text" name="name" placeholder="NAME" required>
-          <input type="email" name="email" placeholder="EMAIL" required>
-          <textarea name="message" placeholder="MESSAGE" rows="5" required></textarea>
-          <!-- Anti-spam Honeypot -->
-          <input type="text" name="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
-          <button type="submit" id="submitBtn" class="contact-btn">SEND MESSAGE</button>
+          <div class="form-group">
+            <label for="name" style="color: #FF007F; font-family: 'Cinzel', serif;">NAME</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email" style="color: #FF007F; font-family: 'Cinzel', serif;">EMAIL</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="subject" style="color: #FF007F; font-family: 'Cinzel', serif;">SUBJECT</label>
+            <input type="text" id="subject" name="subject" required>
+          </div>
+          <div class="form-group">
+            <label for="message" style="color: #FF007F; font-family: 'Cinzel', serif;">MESSAGE</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="contact-btn">SEND MESSAGE</button>
           <div id="formStatus" style="margin-top: 20px; font-family: 'Cinzel', serif; display: none;"></div>
         </form>
       </div>
     </section>
+
+    <!-- SHARE Section REMOVED upon request -->
 
     <footer class="site-footer"
       style="padding: 40px 20px; text-align: center; background: #000 !important; position: relative; z-index: 10; box-shadow: 0 120vh 0 100vh #000;">
       <div class="footer-sns">
         <a href="https://x.com/Metapri_Legacy" target="_blank" aria-label="X (Twitter)"><i
             class="fa-brands fa-x-twitter"></i></a>
-        <a href="https://www.instagram.com/metapri_legacy" target="_blank" aria-label="Instagram"><i
-            class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61587962325602&locale=ja_JP" target="_blank"
+          aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/heavy_metal_princess_academy/?hl=ja" target="_blank"
+          aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@meta_pri_official" target="_blank" aria-label="TikTok"><i
+            class="fa-brands fa-tiktok"></i></a>
         <a href="https://www.youtube.com/@metapri_official" target="_blank" aria-label="YouTube"><i
             class="fa-brands fa-youtube"></i></a>
       </div>
@@ -2600,7 +2892,7 @@
 
       // --- YouTube IFrame API Setup ---
       let player;
-      const videoId = '278LvSGkGdM';
+      const videoId = '2ZgN-2QM5wM';
 
       // Load the IFrame Player API code asynchronously.
       const tag = document.createElement('script');
@@ -2615,7 +2907,7 @@
       };
 
       window.playVideo = function () {
-        player = new YT.Player('videoContainer', {
+        player = new YT.Player('videoPlayerTarget', {
           height: '100%',
           width: '100%',
           videoId: videoId,
@@ -2642,7 +2934,7 @@
         // Automatic reload on error (light process)
         const container = document.getElementById('videoContainer');
         if (container) {
-          container.innerHTML = '<div class="video-placeholder" onclick="playVideo()"><img src="https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg" alt="Play Video" class="video-thumb" style="object-fit: cover; opacity: 0.7;"><div class="play-button"></div></div>';
+          container.innerHTML = '<div id="videoPlayerTarget" class="video-placeholder" onclick="playVideo()"><img src="https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg" alt="Play Video" class="video-thumb" style="object-fit: cover; opacity: 0.7;"><div class="play-button"></div></div>';
           // Small delay before allowing retry
           setTimeout(() => playVideo(), 1000);
         }
@@ -2736,6 +3028,7 @@
       const modalRole = document.getElementById('modalRole');
       const modalDescEn = document.getElementById('modalDescEn');
       const modalDescJp = document.getElementById('modalDescJp');
+      const modalSns = document.getElementById('modalSns');
 
       memberCards.forEach(card => {
         card.style.cursor = 'pointer'; // Make clickable
@@ -2794,61 +3087,49 @@
         }
       });
 
-      // --- Contact Form Submission Logic (StaticForms) ---
+      // --- Contact Form Submission Logic (Cloudflare Worker) ---
       const contactForm = document.getElementById('contactForm');
       const formStatus = document.getElementById('formStatus');
-      const submitBtn = document.getElementById('submitBtn');
 
       if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
+        contactForm.addEventListener('submit', async function (e) {
           e.preventDefault();
 
-          // Reset status
+          // Show sending status
+          formStatus.textContent = 'SENDING...';
           formStatus.style.display = 'block';
           formStatus.style.color = '#fff';
-          formStatus.textContent = 'SENDING...';
-          submitBtn.disabled = true;
+          formStatus.className = 'form-status';
 
+          // Get form data
           const formData = new FormData(contactForm);
-          const payload = {
-            accessKey: 'sf_agnjij237k379h9cagbadb5d',
-            subject: 'New Inquiry from Website',
-            name: formData.get('name'),
-            email: formData.get('email'),
-            message: formData.get('message'),
-            replyTo: formData.get('email'),
-            honeypot: formData.get('honeypot')
-          };
 
           try {
-            const response = await fetch('https://api.staticforms.xyz/submit', {
+            // Submit to Cloudflare Worker
+            const response = await fetch('https://contact-form-worker.hmp-academy0516.workers.dev', {
               method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(payload)
+              body: formData,
             });
 
-            const result = await response.json();
-
-            if (result.success) {
-              formStatus.style.color = '#FF007F';
+            if (response.ok) {
+              // Success
               formStatus.textContent = 'MESSAGE SENT SUCCESSFULLY!';
+              formStatus.style.color = '#FF007F';
+              formStatus.className = 'form-status success';
               contactForm.reset();
+
+              setTimeout(() => {
+                formStatus.style.display = 'none';
+              }, 5000);
             } else {
-              formStatus.style.color = '#ff4444';
-              formStatus.textContent = 'ERROR: ' + (result.message || 'PLEASE TRY AGAIN LATER.');
+              throw new Error('Submission failed');
             }
           } catch (error) {
-            formStatus.style.color = '#ff4444';
-            formStatus.textContent = 'SOMETHING WENT WRONG. PLEASE TRY AGAIN.';
-          } finally {
-            submitBtn.disabled = false;
-            // Hide success message after 5 seconds
+            console.error('Form submission error:', error);
+            formStatus.textContent = 'ERROR: Please try again';
+            formStatus.style.color = '#ff0000';
             setTimeout(() => {
-              if (formStatus.textContent.includes('SUCCESSFULLY')) {
-                formStatus.style.display = 'none';
-              }
+              formStatus.style.display = 'none';
             }, 5000);
           }
         });
@@ -2887,59 +3168,6 @@
       };
 
     });
-  </script>
-
-  <!-- REHEARSAL COUNTDOWN OVERLAY -->
-  <div id="rehearsalOverlay"
-    style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; font-family: 'Cinzel', serif;">
-    <div
-      style="font-size: 1.5rem; letter-spacing: 5px; color: #FF007F; margin-bottom: 20px; animation: pulse 2s infinite;">
-      SYSTEM INITIALIZATION
-    </div>
-    <div id="countdownTimer" style="font-size: 4rem; font-weight: bold; text-shadow: 0 0 20px rgba(255, 0, 127, 0.5);">
-      00:00:00
-    </div>
-    <div style="margin-top: 30px; font-size: 0.9rem; color: #555;">
-      HEAVY METAL PRINCESS ACADEMY
-    </div>
-  </div>
-
-  <script>
-    (function () {
-      // Set the date we're counting down to
-      // TGT: Feb 11, 2026 16:15:00 JST
-      const countDownDate = new Date("Feb 11, 2026 16:15:00").getTime();
-      const overlay = document.getElementById('rehearsalOverlay');
-      const timerDisplay = document.getElementById('countdownTimer');
-
-      function updateTimer() {
-        const now = new Date().getTime();
-        const distance = countDownDate - now;
-
-        if (distance < 0) {
-          clearInterval(timerInterval);
-          timerDisplay.innerHTML = "LAUNCH";
-          overlay.style.transition = 'opacity 1s ease';
-          overlay.style.opacity = '0';
-          setTimeout(() => {
-            overlay.style.display = 'none';
-          }, 1000);
-          return;
-        }
-
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        timerDisplay.innerHTML =
-          (hours < 10 ? "0" + hours : hours) + ":" +
-          (minutes < 10 ? "0" + minutes : minutes) + ":" +
-          (seconds < 10 ? "0" + seconds : seconds);
-      }
-
-      const timerInterval = setInterval(updateTimer, 1000);
-      updateTimer(); // Initial call
-    })();
   </script>
 
 </body>
