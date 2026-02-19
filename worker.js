@@ -47,6 +47,7 @@ export default {
                 body: JSON.stringify({
                     from: 'Contact Form <onboarding@resend.dev>',
                     to: [env.NOTIFICATION_EMAIL],
+                    reply_to: [email],
                     subject: `[Contact Form] ${subject}`,
                     html: `
             <h2>New Contact Form Submission</h2>
@@ -61,8 +62,44 @@ export default {
 
             if (!resendResponse.ok) {
                 const errorData = await resendResponse.text();
-                console.error('Resend API error:', errorData);
-                throw new Error('Failed to send email');
+                console.error('Resend API (Notification) error:', errorData);
+                throw new Error('Failed to send notification email');
+            }
+
+            // Send auto-reply to the user
+            // Note: This will only work once the domain is verified in Resend.
+            // Until then, it may fail if 'email' is not the verified sender.
+            const autoReplyResponse = await fetch('https://api.resend.com/emails', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    from: 'HMPA Official <onboarding@resend.dev>',
+                    to: [email],
+                    subject: 'Thank you for your inquiry',
+                    html: `
+            <p>${name} 様</p>
+            <p>お問い合わせありがとうございます。</p>
+            <p>以下の内容で受け付けいたしました。</p>
+            <hr>
+            <p><strong>件名:</strong> ${subject}</p>
+            <p><strong>回答:</strong></p>
+            <p>${message.replace(/\n/g, '<br>')}</p>
+            <hr>
+            <p>担当者より折り返しご連絡いたしますので、今しばらくお待ちください。</p>
+            <br>
+            <p>HEAVY METAL PRINCESS ACADEMY</p>
+          `,
+                }),
+            });
+
+            if (!autoReplyResponse.ok) {
+                const errorData = await autoReplyResponse.text();
+                console.warn('Resend API (Auto-reply) error:', errorData);
+                // We don't throw here to ensure the submission is still considered "successful" 
+                // even if the auto-reply fails (likely due to Resend restrictions).
             }
 
             // Return success response
