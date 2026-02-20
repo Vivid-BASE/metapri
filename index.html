@@ -1967,7 +1967,7 @@
     style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; font-family: 'Cinzel', serif;">
     <div
       style="font-size: 1.5rem; letter-spacing: 3px; color: #FF007F; margin-bottom: 20px; text-shadow: 0 0 10px rgba(255, 0, 127, 0.5);">
-      2026.2.21 12:00 OPEN
+      2026.2.20 13:00 TEST OPEN
     </div>
     <div id="countdownTimer"
       style="font-size: 3.5rem; font-weight: bold; text-shadow: 0 0 20px rgba(255, 0, 127, 0.5);">
@@ -1977,11 +1977,9 @@
 
   <script>
     (function () {
-      // PRODUCTION LAUNCH: Feb 21, 2026 12:00:00 JST (Independent of user system clock)
-      // JS uses UTC behind the scenes. Jan=0, Feb=1, etc.
-      // Date(year, month, day, hours, minutes, seconds, ms) in UTC:
-      // Feb 21, 2026 12:00:00 JST is Feb 21, 2026 03:00:00 UTC
-      const countDownDate = Date.UTC(2026, 1, 21, 3, 0, 0);
+      // TEST LAUNCH: Feb 20, 2026 13:00:00 JST
+      // Feb 20, 2026 13:00:00 JST is Feb 20, 2026 04:00:00 UTC
+      const countDownDate = Date.UTC(2026, 1, 20, 4, 0, 0);
       const overlay = document.getElementById('launchOverlay');
       const timerDisplay = document.getElementById('countdownTimer');
 
