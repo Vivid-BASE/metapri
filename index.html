@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://hmpa-official.com/">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2VYYFREWLJ"></script>
   <script>
@@ -1958,6 +1957,25 @@
       box-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
       transform: translateY(-3px);
     }
+
+    /* Pulse Animation for Ticket Buttons */
+    @keyframes ticket-pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 127, 0.4);
+      }
+
+      70% {
+        box-shadow: 0 0 0 10px rgba(255, 0, 127, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 127, 0);
+      }
+    }
+
+    .btn-pulse {
+      animation: ticket-pulse 2s infinite;
+    }
   </style>
 </head>
 
@@ -2212,7 +2230,7 @@
   <div class="scanlines"></div>
 
   <div id="home" class="video-wrapper">
-    <video id="heroVideo" autoplay muted loop playsinline>
+    <video id="heroVideo" autoplay muted loop playsinline poster="images/zentai01.jpeg">
       <source src="movie.mp4" type="video/mp4">
     </video>
   </div>
@@ -2737,6 +2755,7 @@
                 </a>
                 <a href="https://w.pia.jp/s/hmpa26rsys/" target="_blank"
                   style="display: inline-flex; align-items: center; color: #fff; text-decoration: none; font-size: 0.9rem; background: rgba(255,255,255,0.05); padding: 8px 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s;"
+                  class="btn-pulse"
                   onmouseover="this.style.background='rgba(255,0,127,0.1)'; this.style.borderColor='#FF007F';"
                   onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.2)';">
                   Ticket Pia / チケットぴあ
@@ -2758,12 +2777,14 @@
               <div style="margin-bottom: 20px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
                 <a href="https://w.pia.jp/t/hmpa-1st/" target="_blank"
                   style="display: inline-flex; align-items: center; color: #fff; text-decoration: none; font-size: 0.9rem; background: rgba(255,255,255,0.05); padding: 8px 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s;"
+                  class="btn-pulse"
                   onmouseover="this.style.background='rgba(255,0,127,0.1)'; this.style.borderColor='#FF007F';"
                   onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.2)';">
                   Ticket Pia / チケットぴあ
                 </a>
                 <a href="https://eplus.jp/hmpa/" target="_blank"
                   style="display: inline-flex; align-items: center; color: #fff; text-decoration: none; font-size: 0.9rem; background: rgba(255,255,255,0.05); padding: 8px 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s;"
+                  class="btn-pulse"
                   onmouseover="this.style.background='rgba(255,0,127,0.1)'; this.style.borderColor='#FF007F';"
                   onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.2)';">
                   e+ / イープラス
