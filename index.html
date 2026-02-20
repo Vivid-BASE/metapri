@@ -1818,9 +1818,9 @@
 
     /* Base Hidden State */
     .scroll-hidden {
-      opacity: 0;
+      opacity: 1;
+      /* Default visible for SEO/No-JS */
       transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-      /* Bouncy */
     }
 
     /* 1. Vertical Section (Producer & Band) - Back to Front (Scale) + Fade */
@@ -1831,7 +1831,7 @@
     }
 
     .anim-vertical.visible {
-      opacity: 1;
+      opacity: 1 !important;
       transform: scale(1) translateY(0);
     }
 
@@ -1848,9 +1848,8 @@
     }
 
     .anim-fan-center.visible {
-      opacity: 1;
+      opacity: 1 !important;
       transform: scale(1);
-      /* Delayed slightly more */
     }
 
     /* Left (KEIKA) - From Left to Center */
@@ -1859,7 +1858,7 @@
     }
 
     .anim-fan-left.visible {
-      opacity: 1;
+      opacity: 1 !important;
       transform: translateX(0) scale(1);
     }
 
@@ -1869,7 +1868,7 @@
     }
 
     .anim-fan-right.visible {
-      opacity: 1;
+      opacity: 1 !important;
       transform: translateX(0) scale(1);
     }
 
@@ -2227,13 +2226,17 @@
   <div class="overlay"
     style="position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; z-index: 5; pointer-events: none;">
     <div class="logo-container">
-      <img src="images/LOGO2.png" alt="Heavy Metal Princess Academy" class="logo-image">
+      <h1 style="margin:0; padding:0; display:inline-block;">
+        <img src="images/LOGO2.png" alt="HEAVY METAL PRINCESS ACADEMY (HMPA) 公式サイト" class="logo-image">
+      </h1>
     </div>
   </div>
 
   <header class="site-header">
     <div class="header-logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
-      <img src="images/logo.png" alt="Heavy Metal Princess Academy Logo">
+      <h1 style="margin:0; padding:0; display:inline-block;">
+        <img src="images/logo.png" alt="HEAVY METAL PRINCESS ACADEMY (HMPA) Logo">
+      </h1>
     </div>
     <nav class="main-nav">
       <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="nav-link">HOME</a>
@@ -2357,7 +2360,8 @@
 
         <div class="about-content-en">
           <p>
-            The era of Japanese girls' heavy metal has arrived. From the top of the US and European charts to sold-out
+            The era of **Japanese Girls' Heavy Metal** has arrived. From the top of the US and European charts to
+            sold-out
             world tours, Japanese female metal acts are a global phenomenon. As the world watches, a formidable new
             project rises from the heart of this movement.
           </p>
@@ -2365,13 +2369,14 @@
             Heavy Metal Princess Academy.
           </p>
           <p>
-            This is a premier training unit dedicated to forging the next generation of female vocalists, led by the
-            original architects of the Japanese metal scene.
+            This is a premier **Girls Metal** training unit featuring legendary members from **Aldious**, **Mary's
+            Blood**, and **CYNTIA**. Led by the
+            original architects of the **Japanese Metal** scene, we discover and forge the next generation of female
+            vocalists.
           </p>
           <p>
-            Under the visionary guidance of General Producer Masafumi "Marcy" Nishida (the legendary voice of
-            EARTHSHAKER), we discover and nurture raw talent. Whether they are seasoned singers or newcomers who have
-            never touched a microphone, we empower them to conquer the global stage.
+            Under the visionary guidance of General Producer **Masafumi "Marcy" Nishida** (the legendary voice of
+            **EARTHSHAKER**), we nurture raw talent for the global stage.
           </p>
         </div>
 
@@ -2384,24 +2389,18 @@
         <div class="about-content-jp">
           <p style="margin-bottom: 20px;">
             <strong style="display: block; margin-bottom: 5px;">今や世界を圧巻する日本のガールズヘヴィメタル！</strong>
-            現在アメリカ、ヨーロッパのヒットチャートを賑わしているジャパニーズ・ガールズメタルバンド。<br>
+            現在アメリカ、ヨーロッパのヒットチャートを賑わしている**ジャパニーズ・ガールズメタル**バンド。<br>
             数多くのアーティストが海外でのツアーを行いセールス、動員を伸ばしています。<br>
-            日本国内にも数多いアーティストが海外を目指し活動している中<br class="pc-br">
-            <strong>期待の新たなプロジェクトが誕生します。</strong>
+            国内にも数多くの才能が海外を目指す中、**本物の「ガールズメタル」スーパーユニットが誕生します。**
           </p>
           <p style="margin-bottom: 20px;">
-            <strong>日本のガールズヘヴィメタルのレジェンド達による<br class="pc-br"></strong>
-            <strong>女性ボーカリストを養成してゆくユニット。</strong><br>
-            <strong>その名も <span style="color: #FF007F;">Heavy Metal Princess Academy</span><br class="sp-br">
-              <span style="font-size: 0.9em; color: #FF007F;">（ヘヴィ・メタル・プリンセス・アカデミー）</span></strong>
+            <strong>Aldious、Mary's Blood、CYNTIAのメンバーら、日本のレジェンド達による<br class="pc-br"></strong>
+            <strong>女性ボーカリスト養成ユニット。</strong><br>
+            <strong>その名も <span style="color: #FF007F;">Heavy Metal Princess Academy（メタプリ）</span></strong>
           </p>
           <p>
-            総合プロデューサーにはジャパニーズメタルのレジェンド<br>
-            EARTHSHAKER のボーカリスト<br>
-            <strong>西田 "Marcy" 昌史氏</strong><br>
-            を迎え、今までヘヴィメタルに触れたこともない<br class="pc-br">
-            興味があるけど、歌ったことはないというシンガーを<br class="pc-br">
-            発掘し、世界のシーンを目指して育成をしてゆきます。
+            総合プロデューサーには**ジャパメタ**のレジェンド、**EARTHSHAKER**のボーカリスト**西田 "Marcy" 昌史氏**を迎え、
+            今までの**嬢メタル**の伝統を継承しつつ、世界レベルのシンガーを発掘・育成してゆきます。
           </p>
         </div>
       </div>
@@ -2432,7 +2431,7 @@
       <div class="member-group">
         <h3 class="group-title">PRODUCER</h3>
         <div class="member-card scroll-hidden anim-vertical" style="transition-delay: 0.3s;">
-          <img src="images/marcy.png" alt="Masafumi Marcy Nishida" class="member-image">
+          <img src="images/marcy.png" alt="西田 'Marcy' 昌史 (EARTHSHAKER) - HMPA 総合プロデューサー" class="member-image">
           <div class="member-info">
             <h4 class="member-name-en">Masafumi "Marcy" Nishida<br><span style="font-size:0.8em; color:#aaa;">(西田
                 "Marcy"
@@ -2465,7 +2464,7 @@
 
         <div class="member-card scroll-hidden anim-vertical" style="transition-delay: 0.3s;"
           data-modal-image="images/MARI02.jpeg">
-          <img src="images/MARI01.jpeg" alt="MARI" class="member-image">
+          <img src="images/MARI01.jpeg" alt="MARI (Mary's Blood) - HMPA ドラム担当" class="member-image">
           <div class="member-info">
             <h4 class="member-name-en">MARI</h4>
             <div class="member-role">Drums (Mary's Blood)</div>
@@ -2493,7 +2492,7 @@
 
         <div class="member-card scroll-hidden anim-vertical" style="transition-delay: 0.3s;"
           data-modal-image="images/YUI02.jpeg">
-          <img src="images/YUI01.jpeg" alt="YUI" class="member-image">
+          <img src="images/YUI01.jpeg" alt="YUI (CYNTIA) - HMPA ギター担当" class="member-image">
           <div class="member-info">
             <h4 class="member-name-en">YUI</h4>
             <div class="member-role">Guitar (CYNTIA)</div>
@@ -2519,7 +2518,7 @@
 
         <div class="member-card scroll-hidden anim-vertical" style="transition-delay: 0.3s;"
           data-modal-image="images/SAWA02.jpeg">
-          <img src="images/SAWA01.jpeg" alt="SAWA" class="member-image">
+          <img src="images/SAWA01.jpeg" alt="SAWA (ALDIOUS) - HMPA ベース担当" class="member-image">
           <div class="member-info">
             <h4 class="member-name-en">SAWA</h4>
             <div class="member-role">Bass (ALDIOUS)</div>
@@ -2552,7 +2551,7 @@
           <!-- Reordered: KEIKA, HINA, CHIO -->
           <!-- KEIKA (Left) -->
           <div class="candidate-card scroll-hidden anim-fan anim-fan-left" style="transition-delay: 0.2s;">
-            <img src="images/KEIKA02.jpeg" alt="KEYKA" class="member-image">
+            <img src="images/KEIKA02.jpeg" alt="KEYKA - HMPA プリンセス/ボーカル候補" class="member-image">
             <div class="member-info">
               <h4 class="member-name-en">KEYKA</h4>
               <div class="princess-vocal-role">PRINCESS / VOCAL</div>
@@ -2573,7 +2572,7 @@
 
           <!-- HINA (Center) -->
           <div class="candidate-card scroll-hidden anim-fan anim-fan-center" style="transition-delay: 0.6s;">
-            <img src="images/HINA02.jpeg" alt="HINA" class="member-image">
+            <img src="images/HINA02.jpeg" alt="HINA - HMPA プリンセス/ボーカル候補" class="member-image">
             <div class="member-info">
               <h4 class="member-name-en">HINA</h4>
               <div class="princess-vocal-role">PRINCESS / VOCAL</div>
@@ -2594,7 +2593,7 @@
 
           <!-- CHIO (Right) -->
           <div class="candidate-card scroll-hidden anim-fan anim-fan-right" style="transition-delay: 0.4s;">
-            <img src="images/CHIO02.jpeg" alt="CHIO" class="member-image">
+            <img src="images/CHIO02.jpeg" alt="CHIO - HMPA プリンセス/ボーカル候補" class="member-image">
             <div class="member-info">
               <h4 class="member-name-en">CHIO</h4>
               <div class="princess-vocal-role">PRINCESS / VOCAL</div>
@@ -2989,9 +2988,10 @@
       const animateTargets = document.querySelectorAll('.about-content-en, .about-content-jp, .about-container, .scroll-hidden');
 
       animateTargets.forEach(el => {
-        // Init styles for non-custom elements (backwards compatibility)
+        // Init styles: Hide and shift for animation
+        // This ensures they are visible (for SEO) if JS is off, but animated if JS is on.
+        el.style.opacity = '0';
         if (!el.classList.contains('scroll-hidden')) {
-          el.style.opacity = '0';
           el.style.transform = 'translateY(30px)';
           el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
         }
