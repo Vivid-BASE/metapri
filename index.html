@@ -13,19 +13,21 @@
 
     gtag('config', 'G-2VYYFREWLJ');
   </script>
-  <meta name="description" content="HMPA（ヘビーメタルプリンセスアカデミー）始動。Aldious、Mary's Blood、CYNTIAのメンバーが参加。西田昌史プロデュース。">
-  <meta property="og:title" content="HEAVY METAL PRINCESS ACADEMY | ヘヴィ・メタル・プリンセス・アカデミー">
-  <meta property="og:description" content="HMPA（ヘビーメタルプリンセスアカデミー）始動。Aldious、Mary's Blood、CYNTIAのメンバーが参加。西田昌史プロデュース。">
-  <meta property="og:image" content="https://official-5pt.pages.dev/images/ogp.jpg">
+  <meta name="description"
+    content="HMPA (Heavy Metal Princess Academy) launch. Aldious, Mary's Blood, and CYNTIA members participating. Produced by Masafumi 'Marcy' Nishida. Girls Metal Super Unit starting Feb 21st.">
+  <meta property="og:title" content="HEAVY METAL PRINCESS ACADEMY | Official Website">
+  <meta property="og:description"
+    content="Girls Metal Super Unit featuring members from Aldious, Mary's Blood, and CYNTIA. Produced by Masafumi 'Marcy' Nishida. Official site launch.">
+  <meta property="og:image" content="https://official-5pt.pages.dev/images/zentai01.jpeg">
   <meta property="og:url" content="https://official-5pt.pages.dev/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="HEAVY METAL PRINCESS ACADEMY">
-  <meta name="twitter:description" content="HMPA（ヘビーメタルプリンセスアカデミー）始動。Aldious、Mary's Blood、CYNTIAのメンバーが参加。西田昌史プロデュース。">
-  <meta name="twitter:image" content="https://official-5pt.pages.dev/images/ogp.jpg">
+  <meta name="twitter:description" content="HMPA Launch: Girls Metal Super Unit. Produced by Masafumi 'Marcy' Nishida.">
+  <meta name="twitter:image" content="https://official-5pt.pages.dev/images/zentai01.jpeg">
   <meta name="twitter:site" content="@meta_pri_0516">
   <meta name="keywords"
-    content="HMPA, Heavy Metal Princess Academy, ヘビーメタルプリンセスアカデミー, メタプリ, BABYMETAL, BAND-MAID, NEMOPHILA, LOVEBITES, ANGRA, Nova Era, EARTHSHAKER, アースシェイカー, Aldious, Mary's Blood, CYNTIA, YUI, Gacharic Spin, HAGANE, 花冷え, Japanese Girls Metal, ジャパメタ, J-METAL, 嬢メタル, メタルカヴァー, メタルカバー, Power Metal, パワーメタル, Melodic Speed Metal, メロスピ, Neo-Classical Metal, ネオクラ, SHOW-YA, DESTROSE, LOUDNESS, Female Fronted Metal, Shred, Guitar Playthrough, Reaction, BURRN!, BRIDEAR">
+    content="HMPA, Heavy Metal Princess Academy, ヘビーメタルプリンセスアカデミー, メタプリ, ガールズバンド, ガールズメタル, Girls Metal, Japanese Rock, Aldious, Mary's Blood, CYNTIA, Masafumi Marcy Nishida, 嬢メタル, ジャパメタ, J-METAL, Ladies Metal">
   <title>HEAVY METAL PRINCESS ACADEMY | ヘヴィ・メタル・プリンセス・アカデミー</title>
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1966,8 +1968,11 @@
 
   <script>
     (function () {
-      // PRODUCTION LAUNCH: Feb 21, 2026 12:00:00 JST
-      const countDownDate = new Date("Feb 21, 2026 12:00:00").getTime();
+      // PRODUCTION LAUNCH: Feb 21, 2026 12:00:00 JST (Independent of user system clock)
+      // JS uses UTC behind the scenes. Jan=0, Feb=1, etc.
+      // Date(year, month, day, hours, minutes, seconds, ms) in UTC:
+      // Feb 21, 2026 12:00:00 JST is Feb 21, 2026 03:00:00 UTC
+      const countDownDate = Date.UTC(2026, 1, 21, 3, 0, 0);
       const overlay = document.getElementById('launchOverlay');
       const timerDisplay = document.getElementById('countdownTimer');
 
@@ -1978,8 +1983,16 @@
         return;
       }
 
+      // Noindex for non-production domains
+      if (window.location.hostname !== 'official-5pt.pages.dev' && window.location.hostname !== 'www.official-5pt.pages.dev') {
+        const meta = document.createElement('meta');
+        meta.name = 'robots';
+        meta.content = 'noindex, nofollow';
+        document.head.appendChild(meta);
+      }
+
       function updateTimer() {
-        const now = new Date().getTime();
+        const now = Date.now();
         const distance = countDownDate - now;
 
         if (distance < 0) {
@@ -2012,6 +2025,90 @@
       const timerInterval = setInterval(updateTimer, 1000);
       updateTimer();
     })();
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://official-5pt.pages.dev/",
+      "name": "HEAVY METAL PRINCESS ACADEMY",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://official-5pt.pages.dev/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "NEWS",
+          "url": "https://official-5pt.pages.dev/#news"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ABOUT",
+          "url": "https://official-5pt.pages.dev/#about"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "MEMBERS",
+          "url": "https://official-5pt.pages.dev/#members"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "SHOWS",
+          "url": "https://official-5pt.pages.dev/#shows"
+        }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Heavy Metal Princess Academy 1st Recital",
+      "startDate": "2026-05-16T17:00:00+09:00",
+      "endDate": "2026-05-16T20:00:00+09:00",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "AKABANE ReNY alpha",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kita-ku",
+          "addressRegion": "Tokyo",
+          "postalCode": "115-0045",
+          "streetAddress": "Akabane 1-7-9",
+          "addressCountry": "JP"
+        }
+      },
+      "image": [
+        "https://official-5pt.pages.dev/images/zentai01.jpeg"
+      ],
+      "description": "The first recital of HMPA featuring metal legends and new princesses.",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://eplus.jp/sf/detail/4282030001-P0030001",
+        "price": "4500",
+        "priceCurrency": "JPY",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-02-21T12:00:00+09:00"
+      },
+      "performer": {
+        "@type": "MusicGroup",
+        "name": "HEAVY METAL PRINCESS ACADEMY"
+      }
+    }
   </script>
   <script type="application/ld+json">
     {
@@ -2542,13 +2639,15 @@
 
             <div style="margin-bottom: 35px;">
               <div
-                style="font-family: 'Cinzel', serif; font-size: 1.6rem; color: #FF007F; line-height: 1; letter-spacing: 2px; margin-bottom: 10px;">
-                [VENUE]<br><a href="https://ruido.org/akabane_reny/" target="_blank"
-                  style="color: #FF007F; text-decoration: none; border-bottom: 2px dashed #FF007F; padding-bottom: 2px;">AKABANE
-                  ReNY alpha</a></div>
+                style="font-family: 'Cinzel', serif; color: #FF007F; line-height: 1.2; letter-spacing: 2px; margin-bottom: 10px;">
+                <span style="font-size: 1.6rem; display: block; margin-bottom: 5px;">[VENUE]</span>
+                <a href="https://ruido.org/akabane_reny/" target="_blank"
+                  style="color: #FF007F; text-decoration: none; border-bottom: 1px dashed #FF007F; padding-bottom: 2px; font-size: 1.4rem; display: inline-block;">AKABANE
+                  ReNY alpha</a>
+              </div>
               <div style="font-size: 1.4rem; color: #fff; font-weight: bold;">
                 <a href="https://ruido.org/akabane_reny/" target="_blank"
-                  style="color: #fff; text-decoration: none; border-bottom: 2px dashed #fff;">赤羽ReNY alpha</a>
+                  style="color: #fff; text-decoration: none; border-bottom: 1px dashed #fff;">赤羽ReNY alpha</a>
               </div>
             </div>
 
