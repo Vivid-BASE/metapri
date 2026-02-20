@@ -1951,8 +1951,6 @@
 </head>
 
 <body>
-
-  <!-- Password Protection Overlay -->
   <!-- PRODUCTION COUNTDOWN OVERLAY -->
   <div id="launchOverlay"
     style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; font-family: 'Cinzel', serif;">
@@ -1969,10 +1967,16 @@
   <script>
     (function () {
       // PRODUCTION LAUNCH: Feb 21, 2026 12:00:00 JST
-      // PREVIEW OVERRIDE: Set to PAST date to unlock immediately
-      const countDownDate = new Date("Feb 01, 2026 12:00:00").getTime();
+      const countDownDate = new Date("Feb 21, 2026 12:00:00").getTime();
       const overlay = document.getElementById('launchOverlay');
       const timerDisplay = document.getElementById('countdownTimer');
+
+      // PREVIEW MODE: Allow bypassing via URL parameter '?preview=true'
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('preview') === 'true') {
+        overlay.style.display = 'none';
+        return;
+      }
 
       function updateTimer() {
         const now = new Date().getTime();
@@ -1980,7 +1984,6 @@
 
         if (distance < 0) {
           clearInterval(timerInterval);
-          // Auto-open
           overlay.style.transition = 'opacity 1s ease';
           overlay.style.opacity = '0';
           setTimeout(() => {
@@ -1994,15 +1997,11 @@
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Format with leading zeros
         const d = days < 10 ? "0" + days : days;
         const h = hours < 10 ? "0" + hours : hours;
         const m = minutes < 10 ? "0" + minutes : minutes;
         const s = seconds < 10 ? "0" + seconds : seconds;
 
-        // Display days if > 0, otherwise just HH:MM:SS ?
-        // User asked for "numbers decreasing". Usually showing days is helpful if it's > 24h.
-        // I'll show D:HH:MM:SS format to be clear.
         if (days > 0) {
           timerDisplay.innerHTML = d + ":" + h + ":" + m + ":" + s;
         } else {
@@ -2011,7 +2010,7 @@
       }
 
       const timerInterval = setInterval(updateTimer, 1000);
-      updateTimer(); // Initial call
+      updateTimer();
     })();
   </script>
   <script type="application/ld+json">
