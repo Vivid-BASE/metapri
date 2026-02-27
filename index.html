@@ -1510,6 +1510,54 @@
       background: #ff3399;
     }
 
+    /* Scroll Indicator for NEWS (Mobile) */
+    .news-scroll-indicator {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .news-scroll-indicator {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 15px;
+        right: 25px;
+        color: #FF007F;
+        font-family: 'Cinzel', serif;
+        font-size: 0.8rem;
+        font-weight: bold;
+        pointer-events: none;
+        animation: bounceScroll 1.5s infinite;
+        text-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
+      }
+
+      .news-scroll-indicator i {
+        margin-top: 3px;
+        font-size: 1rem;
+      }
+    }
+
+    @keyframes bounceScroll {
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0);
+      }
+
+      40% {
+        transform: translateY(-8px);
+      }
+
+      60% {
+        transform: translateY(-4px);
+      }
+    }
+
     /* NEWS Item Responsive Styles */
     .news-item-row {
       display: flex;
@@ -2442,6 +2490,13 @@
             </div>
           </div>
         </div>
+        
+        <!-- Mobile Scroll Indicator -->
+        <div class="news-scroll-indicator">
+          <span>SCROLL</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        
       </div>
     </section>
 
