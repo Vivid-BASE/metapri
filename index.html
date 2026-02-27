@@ -1485,19 +1485,20 @@
       border: 1px solid rgba(255, 0, 127, 0.2);
       border-radius: 8px;
       background: rgba(0, 0, 0, 0.2);
-      -webkit-overflow-scrolling: touch;
+      /* Removed -webkit-overflow-scrolling: touch; because it hides custom scrollbars on iOS */
       touch-action: pan-y;
       position: relative;
     }
 
     /* Custom Scrollbar for NEWS */
     .news-container::-webkit-scrollbar {
-      width: 6px;
+      width: 8px;
     }
 
     .news-container::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.15);
       border-radius: 10px;
+      border: 1px solid rgba(255, 0, 127, 0.1);
     }
 
     .news-container::-webkit-scrollbar-thumb {
