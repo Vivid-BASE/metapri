@@ -63,12 +63,18 @@ export default {
             if (!resendResponse.ok) {
                 const errorData = await resendResponse.text();
                 console.error('Resend API (Notification) error:', errorData);
-                throw new Error('Failed to send notification email');
+                return new Response(JSON.stringify({
+                    success: false,
+                    error: 'Failed to send notification email',
+                    debug: errorData
+                }), {
+                    status: 502,
+                    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+                });
             }
 
             // Send auto-reply to the user
-            // Note: This will only work once the domain is verified in Resend.
-            // Until then, it may fail if 'email' is not the verified sender.
+            let autoReplyStatus = 'skipped';
             const autoReplyResponse = await fetch('https://api.resend.com/emails', {
                 method: 'POST',
                 headers: {
@@ -85,7 +91,7 @@ export default {
             <p>以下の内容で受け付けいたしました。</p>
             <hr>
             <p><strong>件名:</strong> ${subject}</p>
-            <p><strong>回答:</strong></p>
+            <p><strong>内容:</strong></p>
             <p>${message.replace(/\n/g, '<br>')}</p>
             <hr>
             <p>担当者より折り返しご連絡いたしますので、今しばらくお待ちください。</p>
@@ -98,12 +104,16 @@ export default {
             if (!autoReplyResponse.ok) {
                 const errorData = await autoReplyResponse.text();
                 console.warn('Resend API (Auto-reply) error:', errorData);
-                // We don't throw here to ensure the submission is still considered "successful" 
-                // even if the auto-reply fails (likely due to Resend restrictions).
+                autoReplyStatus = `failed: ${errorData}`;
+            } else {
+                autoReplyStatus = 'success';
             }
 
-            // Return success response
-            return new Response(JSON.stringify({ success: true }), {
+            // Return success response with debug info
+            return new Response(JSON.stringify({
+                success: true,
+                autoReply: autoReplyStatus
+            }), {
                 status: 200,
                 headers: {
                     'Content-Type': 'application/json',

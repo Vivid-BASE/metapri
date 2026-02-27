@@ -8,3 +8,8 @@ compatibility_date = "2024-01-01"
 
 [vars]
 # Public variables can go here if needed
+
+[env.staging]
+name = "contact-form-worker-staging"
+# Set staging secrets using: wrangler secret put RESEND_API_KEY --env staging
+# Set staging secrets using: wrangler secret put NOTIFICATION_EMAIL --env staging
