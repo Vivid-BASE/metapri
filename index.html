@@ -1509,6 +1509,41 @@
       background: #ff3399;
     }
 
+    /* NEWS Item Responsive Styles */
+    .news-item-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      padding: 15px 10px;
+      transition: all 0.3s;
+    }
+
+    .news-date-col {
+      width: 150px;
+      flex-shrink: 0;
+      font-family: 'Cinzel', serif;
+      color: #FF007F;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      .news-item-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 10px 5px !important;
+      }
+
+      .news-date-col {
+        width: auto !important;
+        margin-bottom: 5px !important;
+        font-size: 0.9rem !important;
+      }
+
+      .news-container {
+        padding: 5px !important;
+      }
+    }
+
     /* Keep existing styles just in case but they seem unused in current HTML */
     .news-item {
       display: flex;
@@ -2403,9 +2438,8 @@
           </a>
 
           <!-- NEWS ITEM 3: HP OPEN -->
-          <div
-            style="display: flex; align-items: baseline; margin-bottom: 20px; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); padding: 15px 10px;">
-            <div style="width: 150px; flex-shrink: 0; font-family: 'Cinzel', serif; color: #FF007F; font-weight: bold;">
+          <div class="news-item-row" style="margin-bottom: 20px; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3);">
+            <div class="news-date-col">
               2026.02.21
             </div>
             <div style="flex-grow: 1;">
