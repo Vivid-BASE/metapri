@@ -1479,12 +1479,14 @@
     .news-container {
       max-height: 400px;
       overflow-y: auto;
+      overflow-x: hidden;
       padding: 10px;
       text-align: left;
       border: 1px solid rgba(255, 0, 127, 0.2);
       border-radius: 8px;
       background: rgba(0, 0, 0, 0.2);
       -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
       position: relative;
     }
 
@@ -2300,7 +2302,8 @@
           <!-- NEWS ITEM 1: YouTube -->
           <a href="https://www.youtube.com/watch?v=LSHBZbRf32Y" target="_blank"
             style="text-decoration: none; display: block; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); transition: all 0.3s; margin-bottom: 20px;">
-            <div style="display: flex; align-items: baseline; padding: 15px 10px; transition: all 0.3s;"
+            <div
+              style="display: flex; flex-wrap: wrap; align-items: baseline; padding: 15px 10px; transition: all 0.3s;"
               onmouseover="this.style.background='rgba(255,0,127,0.05)'"
               onmouseout="this.style.background='transparent'">
               <div
@@ -2325,7 +2328,8 @@
           <!-- NEWS ITEM 2: YouTube -->
           <a href="https://www.youtube.com/watch?v=iMCh-9Nemm0" target="_blank"
             style="text-decoration: none; display: block; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); transition: all 0.3s; margin-bottom: 20px;">
-            <div style="display: flex; align-items: baseline; padding: 15px 10px; transition: all 0.3s;"
+            <div
+              style="display: flex; flex-wrap: wrap; align-items: baseline; padding: 15px 10px; transition: all 0.3s;"
               onmouseover="this.style.background='rgba(255,0,127,0.05)'"
               onmouseout="this.style.background='transparent'">
               <div
@@ -2349,7 +2353,8 @@
           <!-- NEWS ITEM 1: YouTube (Linked) -->
           <a href="https://www.youtube.com/watch?v=2ZgN-2QM5wM" target="_blank"
             style="text-decoration: none; display: block; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); transition: all 0.3s; margin-bottom: 20px;">
-            <div style="display: flex; align-items: baseline; padding: 15px 10px; transition: all 0.3s;"
+            <div
+              style="display: flex; flex-wrap: wrap; align-items: baseline; padding: 15px 10px; transition: all 0.3s;"
               onmouseover="this.style.background='rgba(255,0,127,0.05)'"
               onmouseout="this.style.background='transparent'">
               <div
@@ -2374,7 +2379,8 @@
           <!-- NEWS ITEM 2: LIVE (Linked to shows) -->
           <a href="#shows"
             style="text-decoration: none; display: block; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); transition: all 0.3s; margin-bottom: 20px;">
-            <div style="display: flex; align-items: baseline; padding: 15px 10px; transition: all 0.3s;"
+            <div
+              style="display: flex; flex-wrap: wrap; align-items: baseline; padding: 15px 10px; transition: all 0.3s;"
               onmouseover="this.style.background='rgba(255,0,127,0.05)'"
               onmouseout="this.style.background='transparent'">
               <div
