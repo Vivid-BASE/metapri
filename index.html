@@ -473,6 +473,36 @@
       text-shadow: 0 0 10px #FF007F;
     }
 
+    .footer-copyright {
+      margin-top: 30px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      color: #888;
+      letter-spacing: 1px;
+    }
+
+    .stealth-link {
+      color: #888;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .stealth-link:hover {
+      text-decoration: none;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 768px) {
+      .footer-copyright .separator {
+        display: none;
+      }
+
+      .footer-copyright .produced-by {
+        display: block;
+        margin-top: 8px;
+      }
+    }
+
     /* Styles for Mobile Bottom Nav - Hidden on Desktop */
     .mobile-footer-nav {
       display: none;
@@ -2490,13 +2520,13 @@
             </div>
           </div>
         </div>
-        
+
         <!-- Mobile Scroll Indicator -->
         <div class="news-scroll-indicator">
           <span>SCROLL</span>
           <i class="fa-solid fa-chevron-down"></i>
         </div>
-        
+
       </div>
     </section>
 
@@ -3173,7 +3203,12 @@
         <a href="#contact">CONTACT</a>
       </div>
 
-      &copy; 2026 Heavy Metal Princess Academy. All Rights Reserved.
+      <div class="footer-copyright">
+        <span class="copyright-text">&copy; 2026 Heavy Metal Princess Academy. All Rights Reserved.</span>
+        <span class="separator"> | </span>
+        <span class="produced-by">Produced by <a href="https://showtimeboxx.com/creative/"
+            class="stealth-link">SHOWTIMEBOXX CRIATIVE</a></span>
+      </div>
     </footer>
 
   </div> <!-- End of main-content-wrapper -->
