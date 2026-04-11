@@ -1620,8 +1620,7 @@
     /* NEWS Item Responsive Styles */
     .news-item-row {
       display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
+      align-items: flex-start; /* Changed from baseline to flex-start for top-alignment */
       padding: 15px 10px;
       transition: all 0.3s;
     }
@@ -3642,40 +3641,53 @@
               date: cells[0] ? cells[0].v : '',
               titleEn: cells[1] ? cells[1].v : '',
               titleJp: cells[2] ? cells[2].v : '',
-              link: cells[3] ? cells[3].v : '#',
-              icon: cells[4] ? cells[4].v : 'chevron'
+              link: (cells[3] && cells[3].v) ? cells[3].v : '',
+              icon: (cells[4] && cells[4].v) ? cells[4].v : ''
             };
           });
 
           items.forEach(item => {
             if (!item.date && !item.titleEn) return; // Skip empty rows
 
-            const newsItem = document.createElement('a');
-            newsItem.href = item.link || '#';
-            newsItem.className = 'news-item-link';
-            if (item.link && item.link.startsWith('http')) {
-              newsItem.target = '_blank';
+            const hasLink = item.link && item.link !== '#' && item.link !== '';
+            const newsItem = document.createElement(hasLink ? 'a' : 'div');
+            
+            if (hasLink) {
+              newsItem.href = item.link;
+              newsItem.className = 'news-item-link';
+              if (item.link.startsWith('http')) {
+                newsItem.target = '_blank';
+              }
+              // Add pointer cursor and hover effect class if needed
+              newsItem.style.cursor = 'pointer';
+            } else {
+              newsItem.className = 'news-item-link'; // Reuse class for border-bottom
+              newsItem.style.cursor = 'default';
             }
 
             // Icon logic
-            let iconHtml = '<i class="fa-solid fa-chevron-right"></i>';
+            let iconHtml = '';
             if (item.icon && item.icon.toLowerCase() === 'youtube') {
               iconHtml = '<i class="fa-brands fa-youtube" style="font-size: 1.2rem; color: #ff0000;"></i>';
+            } else if (item.icon && item.icon.toLowerCase() === 'chevron') {
+              iconHtml = '<i class="fa-solid fa-chevron-right"></i>';
+            } else if (item.icon && item.icon.trim() !== '') {
+              // Generic icon if something else is specified
+              iconHtml = `<i class="fa-solid fa-${item.icon}"></i>`;
             }
 
             newsItem.innerHTML = `
-              <div class="news-item-row" onmouseover="this.style.background='rgba(255,0,127,0.05)'"
-                onmouseout="this.style.background='transparent'">
+              <div class="news-item-row" ${hasLink ? `onmouseover="this.style.background='rgba(255,0,127,0.05)'" onmouseout="this.style.background='transparent'"` : ''}>
                 <div class="news-date-col">${item.date}</div>
-                <div style="flex-grow: 1;">
-                  <div style="font-family: 'Cinzel', serif; font-size: 1.1rem; color: #fff; margin-bottom: 5px; letter-spacing: 1px;">
+                <div style="flex-grow: 1; min-width: 0;"> <!-- Added min-width: 0 to allow internal wrapping -->
+                  <div style="font-family: 'Cinzel', serif; font-size: 1.1rem; color: #fff; margin-bottom: 5px; letter-spacing: 1px; word-wrap: break-word; line-height: 1.4;">
                     ${item.titleEn}
                   </div>
-                  <div style="font-family: 'Yu Mincho', serif; font-size: 0.85rem; color: #aaa;">
+                  <div style="font-family: 'Yu Mincho', serif; font-size: 0.85rem; color: #aaa; line-height: 1.6;">
                     ${item.titleJp}
                   </div>
                 </div>
-                <div style="color: #FF007F; font-size: 0.8rem; padding-left: 10px;">
+                <div style="color: #FF007F; font-size: 0.8rem; padding-left: 15px; width: 30px; display: flex; justify-content: flex-end; align-items: center; align-self: center;">
                   ${iconHtml}
                 </div>
               </div>
