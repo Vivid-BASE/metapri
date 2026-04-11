@@ -1071,6 +1071,7 @@
       align-items: center;
       gap: 40px;
       transition: all 0.3s ease;
+      scroll-margin-top: 100px;
     }
 
     .member-card:hover {
@@ -1186,6 +1187,11 @@
       /* Pink hover */
       box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
       background: rgba(50, 40, 50, 0.95);
+    }
+
+    .candidate-card,
+    .member-card {
+      scroll-margin-top: 100px;
     }
 
 
@@ -2816,7 +2822,7 @@
       <div class="member-group">
         <h3 class="group-title">SUPPORT MUSICIAN</h3>
 
-        <div class="member-card scroll-hidden anim-vertical" style="transition-delay: 0.3s;"
+        <div class="member-card scroll-hidden anim-vertical" id="kanon" style="transition-delay: 0.3s;"
           data-modal-image="images/kanon.jpg">
           <img src="images/kanon.jpg" alt="Kanon Inazuki - ガールズメタルユニットHMPA ギター担当" class="member-image">
           <div class="member-info">
