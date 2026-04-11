@@ -1609,6 +1609,14 @@
       }
     }
 
+    .news-item-link {
+      text-decoration: none;
+      display: block;
+      border-bottom: 0.5px solid rgba(255, 0, 127, 0.3);
+      transition: all 0.3s;
+      margin-bottom: 20px;
+    }
+
     /* NEWS Item Responsive Styles */
     .news-item-row {
       display: flex;
@@ -2432,7 +2440,7 @@
       style="padding: 100px 20px 60px 20px; text-align: center; background: transparent; position: relative;">
       <h2 class="section-title">NEWS</h2>
       <div style="max-width: 800px; margin: 0 auto; position: relative;">
-        <div class="news-container">
+        <div class="news-container" id="news-item-container">
           <!-- NEWS ITEM: 2nd MV "MORE" Out Now -->
           <a href="https://www.youtube.com/watch?v=aBBJ6XejZyU" target="_blank"
             style="text-decoration: none; display: block; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); transition: all 0.3s; margin-bottom: 20px;">
@@ -3611,6 +3619,65 @@
         url.searchParams.set('t', new Date().getTime());
         window.location.href = url.toString();
       };
+
+      // --- NEWS Spreadsheet Integration ---
+      const NEWS_GAS_URL = 'YOUR_GAS_WEB_APP_URL_HERE'; // Replace with provided URL
+
+      async function fetchNews() {
+        const container = document.getElementById('news-item-container');
+        if (!container || NEWS_GAS_URL === 'YOUR_GAS_WEB_APP_URL_HERE') return;
+
+        try {
+          const response = await fetch(NEWS_GAS_URL);
+          if (!response.ok) throw new Error('Fetch failed');
+          const data = await response.json();
+
+          if (!Array.isArray(data) || data.length === 0) return;
+
+          // Clear existing hardcoded items
+          container.innerHTML = '';
+
+          data.forEach(item => {
+            const newsItem = document.createElement('a');
+            newsItem.href = item.link || '#';
+            newsItem.className = 'news-item-link';
+            if (item.link && item.link.startsWith('http')) {
+              newsItem.target = '_blank';
+            }
+
+            // Icon logic
+            let iconHtml = '<i class="fa-solid fa-chevron-right"></i>';
+            if (item.icon === 'youtube') {
+              iconHtml = '<i class="fa-brands fa-youtube" style="font-size: 1.2rem; color: #ff0000;"></i>';
+            }
+
+            newsItem.innerHTML = `
+              <div class="news-item-row" onmouseover="this.style.background='rgba(255,0,127,0.05)'"
+                onmouseout="this.style.background='transparent'">
+                <div class="news-date-col">${item.date}</div>
+                <div style="flex-grow: 1;">
+                  <div style="font-family: 'Cinzel', serif; font-size: 1.1rem; color: #fff; margin-bottom: 5px; letter-spacing: 1px;">
+                    ${item.titleEn}
+                  </div>
+                  <div style="font-family: 'Yu Mincho', serif; font-size: 0.85rem; color: #aaa;">
+                    ${item.titleJp}
+                  </div>
+                </div>
+                <div style="color: #FF007F; font-size: 0.8rem; padding-left: 10px;">
+                  ${iconHtml}
+                </div>
+              </div>
+            `;
+            container.appendChild(newsItem);
+          });
+        } catch (error) {
+          console.error('Error fetching news:', error);
+          // Keep hardcoded fallback
+        }
+      }
+
+      // Initial fetch
+      fetchNews();
 
     });
   </script>
