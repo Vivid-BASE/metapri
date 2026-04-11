@@ -3620,24 +3620,36 @@
         window.location.href = url.toString();
       };
 
-      // --- NEWS Spreadsheet Integration ---
-      const NEWS_GAS_URL = 'YOUR_GAS_WEB_APP_URL_HERE'; // Replace with provided URL
+      // --- NEWS Spreadsheet Integration (JSONP approach for CORS/Local compatibility) ---
+      const SHEET_ID = '1y7hKpkZwJnA6DWJufoOLALdkv0IssZoJnoWAhwafDUI';
+      const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=responseHandler:handleNewsResponse`;
 
-      async function fetchNews() {
+      window.handleNewsResponse = function (jsonData) {
         const container = document.getElementById('news-item-container');
-        if (!container || NEWS_GAS_URL === 'YOUR_GAS_WEB_APP_URL_HERE') return;
+        if (!container) return;
 
         try {
-          const response = await fetch(NEWS_GAS_URL);
-          if (!response.ok) throw new Error('Fetch failed');
-          const data = await response.json();
-
-          if (!Array.isArray(data) || data.length === 0) return;
+          const rows = jsonData.table.rows;
+          if (!Array.isArray(rows) || rows.length <= 1) return;
 
           // Clear existing hardcoded items
           container.innerHTML = '';
 
-          data.forEach(item => {
+          // Skip header row (index 0)
+          const items = rows.slice(1).map(row => {
+            const cells = row.c;
+            return {
+              date: cells[0] ? cells[0].v : '',
+              titleEn: cells[1] ? cells[1].v : '',
+              titleJp: cells[2] ? cells[2].v : '',
+              link: cells[3] ? cells[3].v : '#',
+              icon: cells[4] ? cells[4].v : 'chevron'
+            };
+          });
+
+          items.forEach(item => {
+            if (!item.date && !item.titleEn) return; // Skip empty rows
+
             const newsItem = document.createElement('a');
             newsItem.href = item.link || '#';
             newsItem.className = 'news-item-link';
@@ -3647,7 +3659,7 @@
 
             // Icon logic
             let iconHtml = '<i class="fa-solid fa-chevron-right"></i>';
-            if (item.icon === 'youtube') {
+            if (item.icon && item.icon.toLowerCase() === 'youtube') {
               iconHtml = '<i class="fa-brands fa-youtube" style="font-size: 1.2rem; color: #ff0000;"></i>';
             }
 
@@ -3671,9 +3683,14 @@
             container.appendChild(newsItem);
           });
         } catch (error) {
-          console.error('Error fetching news:', error);
-          // Keep hardcoded fallback
+          console.error('Error processing news data:', error);
         }
+      };
+
+      function fetchNews() {
+        const script = document.createElement('script');
+        script.src = SHEET_URL;
+        document.body.appendChild(script);
       }
 
       // Initial fetch
