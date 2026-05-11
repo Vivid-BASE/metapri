@@ -1790,6 +1790,87 @@
       font-size: 1.2em;
     }
 
+    /* SHOP LIST Styles */
+    .shop-list-section {
+      padding: 120px 20px;
+      text-align: center;
+      background: #050505;
+      border-top: 1px solid #333;
+    }
+
+    .shop-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 60px auto 0;
+    }
+
+    .shop-area {
+      text-align: left;
+    }
+
+    .area-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      color: #FF007F;
+      border-bottom: 2px solid #FF007F;
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: baseline;
+      gap: 15px;
+    }
+
+    .area-title span {
+      font-family: 'Yu Mincho', serif;
+      font-size: 0.9rem;
+      color: #aaa;
+      letter-spacing: 2px;
+    }
+
+    .shop-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .shop-list li {
+      font-family: 'Yu Mincho', serif;
+      font-size: 1rem;
+      color: #ddd;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 0, 127, 0.1);
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+    }
+
+    .shop-list li::before {
+      content: '▶';
+      font-size: 0.6rem;
+      color: #FF007F;
+      margin-right: 15px;
+      opacity: 0.5;
+    }
+
+    .shop-list li:hover {
+      color: #FF007F;
+      text-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+      padding-left: 10px;
+      background: rgba(255, 0, 127, 0.05);
+    }
+
+    @media (max-width: 768px) {
+      .shop-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+      .area-title {
+        font-size: 1.5rem;
+      }
+    }
+
     /* Member Modal Styles */
     .member-modal {
       display: none;
@@ -2457,7 +2538,7 @@
       <a href="#video" class="nav-link">VIDEO</a>
       <a href="#members" class="nav-link">MEMBERS</a>
       <a href="#shows" class="nav-link">SHOWS</a>
-      <a href="#store" class="nav-link">STORE</a>
+      <a href="#shop-list" class="nav-link">STORE</a>
       <a href="#contact" class="nav-link">CONTACT</a>
 
       <!-- SNS Icons -->
@@ -3289,14 +3370,53 @@
       </div>
     </section>
 
-    <section id="store" class="store-section"
-      style="padding: 120px 20px; text-align: center; background: #050505; border-top: 1px solid #333;">
-      <h2 class="section-title">STORE</h2>
-      <div style="margin-top: 60px;">
-        <!-- <a href="https://customfever.shop/?all_items=true" target="_blank" class="store-btn">GO TO OFFICIAL STORE</a> -->
-        <div
-          style="font-family: 'Cinzel', serif; font-size: 2rem; color: #fff; letter-spacing: 5px; text-shadow: 0 0 10px rgba(255, 0, 127, 0.5);">
-          COMING SOON</div>
+    <section id="shop-list" class="shop-list-section">
+      <h2 class="section-title">SHOP LIST</h2>
+      <div class="shop-grid">
+        <div class="shop-area">
+          <h3 class="area-title">TOKYO<span>東京都</span></h3>
+          <ul class="shop-list">
+            <li>LABI LIFE SELECT 品川大井町</li>
+            <li>テックランド練馬本店</li>
+            <li>LABI 渋谷</li>
+            <li>LABI 新宿西口館</li>
+            <li>テックランド平和台駅前店</li>
+            <li>テックランドNew葛西店</li>
+            <li>YAMADA New web.com 府中店</li>
+            <li>LABI LIFE SELECT 立川</li>
+            <li>テックランドNew八王子別所店</li>
+            <li>LABI LIFE SELECT 自由が丘</li>
+            <li>テックランド錦糸町店</li>
+            <li>テックランド東京本店</li>
+            <li>テックランド足立店</li>
+            <li>LABI東京八重洲</li>
+            <li>YAMADA web.com 武蔵村山店</li>
+            <li>TLS足立竹ノ塚</li>
+            <li>YAMADA web.com 江東新砂店</li>
+            <li>テックランド江戸川店</li>
+            <li>テックランド大泉学園店家電館</li>
+          </ul>
+        </div>
+        <div class="shop-area">
+          <h3 class="area-title">KANAGAWA<span>神奈川県</span></h3>
+          <ul class="shop-list">
+            <li>テックランド新山下店</li>
+            <li>YAMADA web.com 久里浜店</li>
+            <li>テックランド川崎店</li>
+            <li>テックランド厚木店</li>
+            <li>Tecc LIFE SELECT 港北センター店</li>
+            <li>LABI大船</li>
+            <li>LABI 上大岡</li>
+            <li>Tecc LIFE SELECT 湘南平塚店</li>
+            <li>テックランド向ヶ丘店</li>
+            <li>テックランド青葉店</li>
+            <li>YAMADA web.comクロスガーデン川崎幸店</li>
+            <li>LABI LIFE SELECT茅ヶ崎店</li>
+            <li>テックランド磯子店</li>
+            <li>家電住まいる館YAMADA戸塚店</li>
+            <li>LABI藤沢</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -3349,7 +3469,7 @@
         <a href="#video">VIDEO</a>
         <a href="#members">MEMBERS</a>
         <a href="#shows">SHOWS</a>
-        <a href="#store">STORE</a>
+        <a href="#shop-list">STORE</a>
         <a href="#contact">CONTACT</a>
       </div>
 
