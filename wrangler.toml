@@ -1,4 +1,4 @@
-name = "contact-form-worker"
+name = "metapri"
 main = "worker.js"
 compatibility_date = "2024-01-01"
 
