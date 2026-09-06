@@ -188,82 +188,14 @@
       opacity: 1;
     }
 
-    @media (max-width: 768px) {}
+    /* Ensure modals are hidden immediately during initial parse */
+    .member-modal {
+      display: none !important;
+    }
+    .member-modal.active {
+      display: flex !important;
+    }
   </style>
-
-  <!-- Modal Sections -->
-  <div id="memberModal" class="member-modal">
-    <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <img id="modalImage" src="" alt="" class="modal-image">
-      <div class="modal-info">
-        <h3 id="modalName"></h3>
-        <p id="modalRole" class="modal-role"></p>
-        <div id="modalDescEn" class="modal-desc-en"></div>
-        <div id="modalDescJp" class="modal-desc-jp"></div>
-        <div id="modalSns" class="modal-sns-links"
-          style="margin-top: 20px; display: flex; gap: 20px; justify-content: flex-start;"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Shop List Modal -->
-  <div id="shopListModal" class="member-modal" style="z-index: 2100;">
-    <div class="modal-content" style="max-width: 800px; max-height: 85vh; overflow: hidden; display: flex; flex-direction: column;">
-      <span class="close-modal" id="closeShopModal">&times;</span>
-      <div class="modal-info" style="padding: 40px; overflow-y: auto; flex-grow: 1;">
-        <h2 class="section-title" style="font-size: 2rem; margin-bottom: 10px;">SHOP LIST</h2>
-        <p style="font-family: 'Yu Mincho', serif; color: #aaa; text-align: center; margin-bottom: 40px;">取扱店舗一覧</p>
-        
-        <div class="shop-grid" style="margin-top: 0; gap: 30px;">
-          <div class="shop-area">
-            <h3 class="area-title" style="font-size: 1.4rem;">TOKYO<span>東京都</span></h3>
-            <ul class="shop-list">
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI+LIFE+SELECT+品川大井町" target="_blank">LABI LIFE SELECT 品川大井町</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド練馬本店" target="_blank">テックランド練馬本店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI+渋谷" target="_blank">LABI 渋谷</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI+新宿西口館" target="_blank">LABI 新宿西口館</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド平和台駅前店" target="_blank">テックランド平和台駅前店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランドNew葛西店" target="_blank">テックランドNew葛西店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+YAMADA+New+web.com+府中店" target="_blank">YAMADA New web.com 府中店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI+LIFE+SELECT+立川" target="_blank">LABI LIFE SELECT 立川</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランドNew八王子別所店" target="_blank">テックランドNew八王子別所店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI+LIFE+SELECT+自由が丘" target="_blank">LABI LIFE SELECT 自由が丘</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド錦糸町店" target="_blank">テックランド錦糸町店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド東京本店" target="_blank">テックランド東京本店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド足立店" target="_blank">テックランド足立店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI東京八重洲" target="_blank">LABI東京八重洲</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+YAMADA+web.com+武蔵村山店" target="_blank">YAMADA web.com 武蔵村山店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+TLS足立竹ノ塚" target="_blank">TLS足立竹ノ塚</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+YAMADA+web.com+江東新砂店" target="_blank">YAMADA web.com 江東新砂店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド江戸川店" target="_blank">テックランド江戸川店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド大泉学園店家電館" target="_blank">テックランド大泉学園店家電館</a></li>
-            </ul>
-          </div>
-          <div class="shop-area">
-            <h3 class="area-title" style="font-size: 1.4rem;">KANAGAWA<span>神奈川県</span></h3>
-            <ul class="shop-list">
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド新山下店" target="_blank">テックランド新山下店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+YAMADA+web.com+久里浜店" target="_blank">YAMADA web.com 久里浜店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド川崎店" target="_blank">テックランド川崎店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド厚木店" target="_blank">テックランド厚木店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+Tecc+LIFE+SELECT+港北センター店" target="_blank">Tecc LIFE SELECT 港北センター店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI大船" target="_blank">LABI大船</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI+上大岡" target="_blank">LABI 上大岡</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+Tecc+LIFE+SELECT+湘南平塚店" target="_blank">Tecc LIFE SELECT 湘南平塚店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド向ヶ丘店" target="_blank">テックランド向ヶ丘店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド青葉店" target="_blank">テックランド青葉店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+YAMADA+web.comクロスガーデン川崎幸店" target="_blank">YAMADA web.comクロスガーデン川崎幸店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI+LIFE+SELECT茅ヶ崎店" target="_blank">LABI LIFE SELECT茅ヶ崎店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド磯子店" target="_blank">テックランド磯子店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+家電住まいる館YAMADA戸塚店" target="_blank">家電住まいる館YAMADA戸塚店</a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI藤沢" target="_blank">LABI藤沢</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Social Share Script -->
   <script>
@@ -3989,6 +3921,80 @@
 
     });
   </script>
+
+  <!-- Modal Sections -->
+  <div id="memberModal" class="member-modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <img id="modalImage" src="" alt="" class="modal-image">
+      <div class="modal-info">
+        <h3 id="modalName"></h3>
+        <p id="modalRole" class="modal-role"></p>
+        <div id="modalDescEn" class="modal-desc-en"></div>
+        <div id="modalDescJp" class="modal-desc-jp"></div>
+        <div id="modalSns" class="modal-sns-links"
+          style="margin-top: 20px; display: flex; gap: 20px; justify-content: flex-start;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shop List Modal -->
+  <div id="shopListModal" class="member-modal" style="z-index: 2100;">
+    <div class="modal-content" style="max-width: 800px; max-height: 85vh; overflow: hidden; display: flex; flex-direction: column;">
+      <span class="close-modal" id="closeShopModal">&times;</span>
+      <div class="modal-info" style="padding: 40px; overflow-y: auto; flex-grow: 1;">
+        <h2 class="section-title" style="font-size: 2rem; margin-bottom: 10px;">SHOP LIST</h2>
+        <p style="font-family: 'Yu Mincho', serif; color: #aaa; text-align: center; margin-bottom: 40px;">取扱店舗一覧</p>
+        
+        <div class="shop-grid" style="margin-top: 0; gap: 30px;">
+          <div class="shop-area">
+            <h3 class="area-title" style="font-size: 1.4rem;">TOKYO<span>東京都</span></h3>
+            <ul class="shop-list">
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI+LIFE+SELECT+品川大井町" target="_blank">LABI LIFE SELECT 品川大井町</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド練馬本店" target="_blank">テックランド練馬本店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI+渋谷" target="_blank">LABI 渋谷</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI+新宿西口館" target="_blank">LABI 新宿西口館</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド平和台駅前店" target="_blank">テックランド平和台駅前店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランドNew葛西店" target="_blank">テックランドNew葛西店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+YAMADA+New+web.com+府中店" target="_blank">YAMADA New web.com 府中店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI+LIFE+SELECT+立川" target="_blank">LABI LIFE SELECT 立川</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランドNew八王子別所店" target="_blank">テックランドNew八王子別所店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI+LIFE+SELECT+自由が丘" target="_blank">LABI LIFE SELECT 自由が丘</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド錦糸町店" target="_blank">テックランド錦糸町店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド東京本店" target="_blank">テックランド東京本店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド足立店" target="_blank">テックランド足立店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI東京八重洲" target="_blank">LABI東京八重洲</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+YAMADA+web.com+武蔵村山店" target="_blank">YAMADA web.com 武蔵村山店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+TLS足立竹ノ塚" target="_blank">TLS足立竹ノ塚</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+YAMADA+web.com+江東新砂店" target="_blank">YAMADA web.com 江東新砂店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド江戸川店" target="_blank">テックランド江戸川店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド大泉学園店家電館" target="_blank">テックランド大泉学園店家電館</a></li>
+            </ul>
+          </div>
+          <div class="shop-area">
+            <h3 class="area-title" style="font-size: 1.4rem;">KANAGAWA<span>神奈川県</span></h3>
+            <ul class="shop-list">
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド新山下店" target="_blank">テックランド新山下店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+YAMADA+web.com+久里浜店" target="_blank">YAMADA web.com 久里浜店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド川崎店" target="_blank">テックランド川崎店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド厚木店" target="_blank">テックランド厚木店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+Tecc+LIFE+SELECT+港北センター店" target="_blank">Tecc LIFE SELECT 港北センター店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI大船" target="_blank">LABI大船</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI+上大岡" target="_blank">LABI 上大岡</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+Tecc+LIFE+SELECT+湘南平塚店" target="_blank">Tecc LIFE SELECT 湘南平塚店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド向ヶ丘店" target="_blank">テックランド向ヶ丘店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド青葉店" target="_blank">テックランド青葉店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+YAMADA+web.comクロスガーデン川崎幸店" target="_blank">YAMADA web.comクロスガーデン川崎幸店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI+LIFE+SELECT茅ヶ崎店" target="_blank">LABI LIFE SELECT茅ヶ崎店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド磯子店" target="_blank">テックランド磯子店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+家電住まいる館YAMADA戸塚店" target="_blank">家電住まいる館YAMADA戸塚店</a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+LABI藤沢" target="_blank">LABI藤沢</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- deploy trigger 2 -->
 </body>
