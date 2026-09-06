@@ -3413,9 +3413,17 @@
 
           <div
             style="margin-top: 50px; padding-top: 30px; border-top: 1px solid rgba(255, 0, 127, 0.3); text-align: center; font-size: 0.9rem;">
-            <div style="color: #FF007F; font-family: 'Cinzel', serif; margin-bottom: 10px; font-weight: bold;">INQUIRY / お問い合わせ</div>
-            <div style="color: #fff;">
-              <a href="mailto:hmp.academy0516@gmail.com" style="color: #fff; text-decoration: underline;">hmp.academy0516@gmail.com</a>
+            <div style="color: #FF007F; font-family: 'Cinzel', serif; margin-bottom: 15px; font-weight: bold;">INQUIRY / お問い合わせ</div>
+            <div style="color: #fff; margin-bottom: 20px; font-size: 0.95rem;">
+              Heavy Metal Princess Academy 事務局
+            </div>
+            <div>
+              <a href="#contact" id="inquiryAsakusaBtn"
+                style="display: inline-block; padding: 12px 30px; background: transparent; border: 1px solid #FF007F; color: #fff; font-family: 'Cinzel', serif; font-size: 0.95rem; letter-spacing: 1.5px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(255, 0, 127, 0.1);"
+                onmouseover="this.style.background='#FF007F'; this.style.boxShadow='0 0 20px rgba(255, 0, 127, 0.5)'; this.style.transform='translateY(-2px)';"
+                onmouseout="this.style.background='transparent'; this.style.boxShadow='0 0 15px rgba(255, 0, 127, 0.1)'; this.style.transform='translateY(0)';">
+                CONTACT FORM / お問い合わせフォーム
+              </a>
             </div>
           </div>
         </div>
@@ -3804,6 +3812,39 @@
             }, 5000);
           }
         });
+      }
+
+      // --- Inquiry Button & URL Parameter for Asakusa Contact Form ---
+      const inquiryAsakusaBtn = document.getElementById('inquiryAsakusaBtn');
+      const subjectInput = document.getElementById('subject');
+      const contactSection = document.getElementById('contact');
+      const nameInput = document.getElementById('name');
+
+      const setAsakusaSubjectAndScroll = (e) => {
+        if (e) e.preventDefault();
+        if (subjectInput) {
+          subjectInput.value = '2027.1.10 浅草花劇場公演について';
+        }
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        if (nameInput) {
+          setTimeout(() => {
+            nameInput.focus();
+          }, 600);
+        }
+      };
+
+      if (inquiryAsakusaBtn) {
+        inquiryAsakusaBtn.addEventListener('click', setAsakusaSubjectAndScroll);
+      }
+
+      // Check URL parameters or hash on load
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('subject') === 'asakusa' || window.location.hash === '#inquiry-asakusa') {
+        setTimeout(() => {
+          setAsakusaSubjectAndScroll();
+        }, 500);
       }
 
       // Global Reset Function
