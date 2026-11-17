@@ -3251,7 +3251,7 @@
 
         <!-- HINA (Vo) SOLO LIVE -->
         <div
-          style="border: 1px solid #FF007F; padding: 60px 40px; background: rgba(5, 5, 5, 0.95); position: relative; overflow: hidden; margin-bottom: 60px;">
+          style="border: 1px solid #FF007F; padding: 45px 30px; background: rgba(5, 5, 5, 0.95); position: relative; overflow: hidden; margin-bottom: 45px; border-radius: 4px; box-shadow: 0 4px 25px rgba(0,0,0,0.6);">
           <!-- Subtle decoration -->
           <div
             style="position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, #FF007F, transparent);">
@@ -3261,12 +3261,33 @@
             HINA (Vo) SOLO LIVE
           </div>
           <h3
-            style="font-family: 'Cinzel', serif; font-size: 2.2rem; color: #fff; text-align: center; margin-bottom: 40px; letter-spacing: 3px; line-height: 1.3;">
+            style="font-family: 'Cinzel', serif; font-size: 2rem; color: #fff; text-align: center; margin-bottom: 25px; letter-spacing: 2px; line-height: 1.3;">
             LOUD &amp; PROUD vol.459
           </h3>
 
-          <!-- フライヤー画像 -->
-          <div style="margin-bottom: 50px; text-align: center;">
+          <!-- Summary Block (Always Visible) -->
+          <div style="max-width: 620px; margin: 0 auto 25px auto; text-align: left; background: rgba(255, 0, 127, 0.05); border: 1px solid rgba(255, 0, 127, 0.25); border-left: 4px solid #FF007F; padding: 18px 22px; font-size: 0.95rem; line-height: 1.9; border-radius: 4px;">
+            <div><strong style="color: #FF007F; font-family: 'Cinzel', serif; letter-spacing: 1px;">[DATE]</strong> <span style="color: #fff; font-weight: bold; font-size: 1.05rem;">2026年11月22日(日)</span> <span style="color: #FF007F; font-family: 'Cinzel', serif;">(2026.11.22 SUN)</span></div>
+            <div><strong style="color: #FF007F; font-family: 'Cinzel', serif; letter-spacing: 1px;">[VENUE]</strong> <span style="color: #fff; font-weight: bold;">吉祥寺クレッシェンド (KICHIJOJI CRESCENDO)</span></div>
+            <div><strong style="color: #FF007F; font-family: 'Cinzel', serif; letter-spacing: 1px;">[TIME]</strong> OPEN 16:30 / START 17:00 <span style="color: #FF007F; font-size: 0.85rem;">★HINA出演 17:00～17:35</span></div>
+            <div><strong style="color: #FF007F; font-family: 'Cinzel', serif; letter-spacing: 1px;">[ACT]</strong> HINA (Heavy Metal Princess Academy) / SURGE'K / Rose'n'Ciel 他</div>
+          </div>
+
+          <!-- Toggle Button -->
+          <div style="text-align: center;">
+            <button type="button" onclick="toggleShowDetails(this, 'show-details-hina')"
+              style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 30px; background: rgba(255, 0, 127, 0.15); border: 1px solid #FF007F; color: #fff; font-family: 'Cinzel', serif; font-size: 0.95rem; font-weight: bold; letter-spacing: 1.5px; border-radius: 4px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(255, 0, 127, 0.2);"
+              onmouseover="this.style.background='#FF007F'; this.style.boxShadow='0 0 25px rgba(255, 0, 127, 0.6)';"
+              onmouseout="this.style.background='rgba(255, 0, 127, 0.15)'; this.style.boxShadow='0 0 15px rgba(255, 0, 127, 0.2)';">
+              <span>MORE DETAILS / 詳細・チケット情報</span>
+              <i class="fa-solid fa-chevron-down" style="transition: transform 0.3s ease;"></i>
+            </button>
+          </div>
+
+          <!-- Accordion Content (Initially Hidden) -->
+          <div id="show-details-hina" style="display: none; margin-top: 40px; padding-top: 40px; border-top: 1px dashed rgba(255, 0, 127, 0.35);">
+            <!-- フライヤー画像 -->
+            <div style="margin-bottom: 50px; text-align: center;">
             <a href="images/hina-solo-20261122.jpg" target="_blank" rel="noopener noreferrer" style="display: inline-block; max-width: 100%; text-decoration: none;">
               <img src="images/hina-solo-20261122.jpg" alt="LOUD &amp; PROUD vol.459 フライヤー" style="max-width: 100%; width: 440px; height: auto; border: 1px solid rgba(255, 0, 127, 0.4); box-shadow: 0 0 25px rgba(255, 0, 127, 0.25); border-radius: 4px; display: block; margin: 0 auto; transition: transform 0.3s ease;">
             </a>
@@ -3424,11 +3445,12 @@
               ・<strong>会場公式サイト:</strong> <a href="http://www.kichijoji-crescendo.net/" target="_blank" rel="noopener noreferrer" style="color: #FF007F; text-decoration: underline;">吉祥寺クレッシェンド 公式サイト</a>
             </div>
           </div>
+          </div> <!-- /#show-details-hina -->
         </div>
 
         <!-- 7TH HEAVEN FESTIVAL 2026 OKINAWA -->
         <div
-          style="border: 1px solid #FF007F; padding: 60px 40px; background: rgba(5, 5, 5, 0.95); position: relative; overflow: hidden; margin-bottom: 60px;">
+          style="border: 1px solid #FF007F; padding: 45px 30px; background: rgba(5, 5, 5, 0.95); position: relative; overflow: hidden; margin-bottom: 45px; border-radius: 4px; box-shadow: 0 4px 25px rgba(0,0,0,0.6);">
           <!-- Subtle decoration -->
           <div
             style="position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, #FF007F, transparent);">
@@ -3438,12 +3460,33 @@
             7th Heaven Koza 26th Anniversary Premium Live
           </div>
           <h3
-            style="font-family: 'Cinzel', serif; font-size: 2.2rem; color: #fff; text-align: center; margin-bottom: 40px; letter-spacing: 3px; line-height: 1.3;">
+            style="font-family: 'Cinzel', serif; font-size: 2rem; color: #fff; text-align: center; margin-bottom: 25px; letter-spacing: 2px; line-height: 1.3;">
             7TH HEAVEN FESTIVAL 2026
           </h3>
 
-          <!-- フライヤー画像 -->
-          <div style="margin-bottom: 50px; text-align: center;">
+          <!-- Summary Block (Always Visible) -->
+          <div style="max-width: 620px; margin: 0 auto 25px auto; text-align: left; background: rgba(255, 0, 127, 0.05); border: 1px solid rgba(255, 0, 127, 0.25); border-left: 4px solid #FF007F; padding: 18px 22px; font-size: 0.95rem; line-height: 1.9; border-radius: 4px;">
+            <div><strong style="color: #FF007F; font-family: 'Cinzel', serif; letter-spacing: 1px;">[DATE]</strong> <span style="color: #fff; font-weight: bold; font-size: 1.05rem;">2026年12月5日(土)・12月6日(日)</span> <span style="color: #FF007F; font-family: 'Cinzel', serif;">(2DAYS)</span></div>
+            <div><strong style="color: #FF007F; font-family: 'Cinzel', serif; letter-spacing: 1px;">[VENUE]</strong> <span style="color: #fff; font-weight: bold;">沖縄 7th Heaven KOZA</span></div>
+            <div><strong style="color: #FF007F; font-family: 'Cinzel', serif; letter-spacing: 1px;">[TIME]</strong> 12/5 OPEN 18:00 START 19:00 / 12/6 OPEN 17:00 START 17:30</div>
+            <div><strong style="color: #FF007F; font-family: 'Cinzel', serif; letter-spacing: 1px;">[LINEUP]</strong> MARI / YUI / SAWA / CHIO / KEYKA 他</div>
+          </div>
+
+          <!-- Toggle Button -->
+          <div style="text-align: center;">
+            <button type="button" onclick="toggleShowDetails(this, 'show-details-okinawa')"
+              style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 30px; background: rgba(255, 0, 127, 0.15); border: 1px solid #FF007F; color: #fff; font-family: 'Cinzel', serif; font-size: 0.95rem; font-weight: bold; letter-spacing: 1.5px; border-radius: 4px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(255, 0, 127, 0.2);"
+              onmouseover="this.style.background='#FF007F'; this.style.boxShadow='0 0 25px rgba(255, 0, 127, 0.6)';"
+              onmouseout="this.style.background='rgba(255, 0, 127, 0.15)'; this.style.boxShadow='0 0 15px rgba(255, 0, 127, 0.2)';">
+              <span>MORE DETAILS / 詳細・チケット情報</span>
+              <i class="fa-solid fa-chevron-down" style="transition: transform 0.3s ease;"></i>
+            </button>
+          </div>
+
+          <!-- Accordion Content (Initially Hidden) -->
+          <div id="show-details-okinawa" style="display: none; margin-top: 40px; padding-top: 40px; border-top: 1px dashed rgba(255, 0, 127, 0.35);">
+            <!-- フライヤー画像 -->
+            <div style="margin-bottom: 50px; text-align: center;">
             <a href="images/7th-heaven-fes2026.jpg" target="_blank" rel="noopener noreferrer" style="display: inline-block; max-width: 100%; text-decoration: none;">
               <img src="images/7th-heaven-fes2026.jpg" alt="7TH HEAVEN FESTIVAL 2026 フライヤー" style="max-width: 100%; width: 420px; height: auto; border: 1px solid rgba(255, 0, 127, 0.4); box-shadow: 0 0 25px rgba(255, 0, 127, 0.25); border-radius: 4px; display: block; margin: 0 auto; transition: transform 0.3s ease;">
             </a>
@@ -3661,23 +3704,48 @@
               7th Heaven Koza（TEL: 098-982-1987 / MAIL: <a href="mailto:7thyoyaku@gmail.com" style="color: #fff; text-decoration: underline;">7thyoyaku@gmail.com</a>）
             </div>
           </div>
+          </div> <!-- /#show-details-okinawa -->
         </div>
 
         <!-- 3rd Recital TOKYO ASAKUSA -->
         <div
-          style="border: 1px solid #FF007F; padding: 60px 40px; background: rgba(5, 5, 5, 0.95); position: relative; overflow: hidden; margin-bottom: 60px;">
+          style="border: 1px solid #FF007F; padding: 45px 30px; background: rgba(5, 5, 5, 0.95); position: relative; overflow: hidden; margin-bottom: 45px; border-radius: 4px; box-shadow: 0 4px 25px rgba(0,0,0,0.6);">
           <!-- Subtle decoration -->
           <div
             style="position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, #FF007F, transparent);">
           </div>
 
+          <div style="font-family: 'Cinzel', serif; font-size: 0.95rem; color: #FF007F; letter-spacing: 2px; margin-bottom: 8px;">
+            3rd RECITAL TOKYO
+          </div>
           <h3
-            style="font-family: 'Cinzel', serif; font-size: 2.2rem; color: #fff; text-align: center; margin-bottom: 50px; letter-spacing: 3px; line-height: 1.3;">
+            style="font-family: 'Cinzel', serif; font-size: 2rem; color: #fff; text-align: center; margin-bottom: 25px; letter-spacing: 2px; line-height: 1.3;">
             Heavy Metal Princess Academy<br>3rd Recital TOKYO ASAKUSA
           </h3>
 
-          <!-- Main Info -->
-          <div style="margin-bottom: 60px; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); padding-bottom: 40px;">
+          <!-- Summary Block (Always Visible) -->
+          <div style="max-width: 620px; margin: 0 auto 25px auto; text-align: left; background: rgba(255, 0, 127, 0.05); border: 1px solid rgba(255, 0, 127, 0.25); border-left: 4px solid #FF007F; padding: 18px 22px; font-size: 0.95rem; line-height: 1.9; border-radius: 4px;">
+            <div><strong style="color: #FF007F; font-family: 'Cinzel', serif; letter-spacing: 1px;">[DATE]</strong> <span style="color: #fff; font-weight: bold; font-size: 1.05rem;">2027年1月10日(日)</span> <span style="color: #FF007F; font-family: 'Cinzel', serif;">(2027.01.10 SUN)</span></div>
+            <div><strong style="color: #FF007F; font-family: 'Cinzel', serif; letter-spacing: 1px;">[VENUE]</strong> <span style="color: #fff; font-weight: bold;">東京浅草花劇場 (TOKYO ASAKUSA KAGEKIJO)</span></div>
+            <div><strong style="color: #FF007F; font-family: 'Cinzel', serif; letter-spacing: 1px;">[TIME]</strong> OPEN 16:30 / START 17:00</div>
+            <div><strong style="color: #FF007F; font-family: 'Cinzel', serif; letter-spacing: 1px;">[TICKET]</strong> 全席指定 (VIP / S / A)</div>
+          </div>
+
+          <!-- Toggle Button -->
+          <div style="text-align: center;">
+            <button type="button" onclick="toggleShowDetails(this, 'show-details-asakusa')"
+              style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 30px; background: rgba(255, 0, 127, 0.15); border: 1px solid #FF007F; color: #fff; font-family: 'Cinzel', serif; font-size: 0.95rem; font-weight: bold; letter-spacing: 1.5px; border-radius: 4px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(255, 0, 127, 0.2);"
+              onmouseover="this.style.background='#FF007F'; this.style.boxShadow='0 0 25px rgba(255, 0, 127, 0.6)';"
+              onmouseout="this.style.background='rgba(255, 0, 127, 0.15)'; this.style.boxShadow='0 0 15px rgba(255, 0, 127, 0.2)';">
+              <span>MORE DETAILS / 詳細・チケット情報</span>
+              <i class="fa-solid fa-chevron-down" style="transition: transform 0.3s ease;"></i>
+            </button>
+          </div>
+
+          <!-- Accordion Content (Initially Hidden) -->
+          <div id="show-details-asakusa" style="display: none; margin-top: 40px; padding-top: 40px; border-top: 1px dashed rgba(255, 0, 127, 0.35);">
+            <!-- Main Info -->
+            <div style="margin-bottom: 60px; border-bottom: 0.5px solid rgba(255, 0, 127, 0.3); padding-bottom: 40px;">
             <div style="margin-bottom: 35px;">
               <div
                 style="font-family: 'Cinzel', serif; font-size: 1.6rem; color: #FF007F; line-height: 1; letter-spacing: 2px; margin-bottom: 10px;">
@@ -3825,6 +3893,7 @@
               </a>
             </div>
           </div>
+          </div> <!-- /#show-details-asakusa -->
         </div>
 
         <!-- PAST SHOWS ARCHIVE -->
@@ -4439,6 +4508,27 @@
 
       // Initial fetch
       fetchNews();
+
+      // --- Shows Details Accordion Toggle Function ---
+      window.toggleShowDetails = function (btn, detailsId) {
+        const content = document.getElementById(detailsId);
+        if (!content) return;
+        const isHidden = content.style.display === 'none' || content.style.display === '';
+        const icon = btn.querySelector('i');
+        const textSpan = btn.querySelector('span');
+
+        if (isHidden) {
+          content.style.display = 'block';
+          if (textSpan) textSpan.textContent = 'CLOSE DETAILS / 閉じる';
+          if (icon) icon.style.transform = 'rotate(180deg)';
+          btn.setAttribute('aria-expanded', 'true');
+        } else {
+          content.style.display = 'none';
+          if (textSpan) textSpan.textContent = 'MORE DETAILS / 詳細・チケット情報';
+          if (icon) icon.style.transform = 'rotate(0deg)';
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      };
 
     });
   </script>
